@@ -1,0 +1,97 @@
+/* ========================================= */
+/* FONTOLO LAYOUT SYSTEM                    */
+/* Containers, grids, and layout utilities  */
+/* ========================================= */
+
+/* Container System */
+.container {
+    width: 100%;
+    max-width: var(--breakpoint-xxl);
+    margin-left: auto;
+    margin-right: auto;
+    background: white;
+    border-radius: var(--border-radius-lg);
+    box-shadow: 0 10px 30px hsla(var(--color-neutral-hue), 20%, 30%, 0.1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: calc(100vh - 2 * var(--space-lg));
+}
+
+.container-fluid {
+    width: 100%;
+    max-width: none;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Grid System */
+.grid {
+    display: grid;
+    gap: var(--space-md);
+}
+
+.grid-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-1 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* Grid Gaps */
+.grid-gap-sm { gap: var(--space-sm); }
+.grid-gap-md { gap: var(--space-md); }
+.grid-gap-lg { gap: var(--space-lg); }
+
+/* Cell/Item Component */
+.cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-sm);
+    border: 1px solid var(--ui-border-color);
+    border-radius: var(--border-radius-md);
+    background-color: white;
+    min-height: 100px;
+}
+
+/* Main Content Layout (2-column) */
+.main-content {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    flex-grow: 1;
+    overflow: hidden;
+}
+
+/* Sidebar Layout */
+.sidebar {
+    overflow-y: auto;
+    padding: var(--space-lg);
+    border-right: 1px solid var(--ui-border-color);
+    background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 1%));
+    display: flex;
+    flex-direction: column;
+}
+
+/* Content Panels */
+.panel {
+    overflow-y: auto;
+    padding: var(--space-lg);
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+/* Section Spacing */
+.section {
+    margin-bottom: var(--space-xl);
+}
+
+.section:last-child {
+    margin-bottom: 0;
+}
