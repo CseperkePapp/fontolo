@@ -4,6 +4,32 @@
 /* ========================================= */
 
 /* ========================================= */
+/* HEADER COMPONENTS                        */
+/* ========================================= */
+.app-header {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--ui-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+}
+
+.app-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.header-controls {
+    margin-left: auto; 
+    display: flex; 
+    align-items: stretch;
+    gap: var(--space-md);
+}
+
+/* ========================================= */
 /* BUTTON COMPONENTS                        */
 /* ========================================= */
 .btn {
