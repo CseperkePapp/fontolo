@@ -1,5 +1,11 @@
 # Fontolo - Live CSS Configurator and Design System
 
+🚧 **Work in Progress** - This project is currently being reorganized and is not ready for use.
+
+Check back soon for a complete css and design system generator!
+
+---
+
 *A customizable, token-driven design system and live CSS configuration tool for modern web development — from no-code builders to seasoned front-end pros.*
 
 ## 🎯 What is Fontolo?
