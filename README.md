@@ -58,13 +58,6 @@ cd fontolo
 open fontolo.html
 ```
 
-# Open in browser
-open fontolo.html
-
-# Or serve with any local server
-python -m http.server 8000
-# Then visit http://localhost:8000
-
 ## 📖 User's Guide
 
 1. Open the live demo
