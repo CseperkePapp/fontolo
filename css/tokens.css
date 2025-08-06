@@ -1,0 +1,138 @@
+/* ========================================= */
+/* FONTOLO DESIGN TOKENS                    */
+/* Core configurable design system tokens   */
+/* ========================================= */
+
+:root {
+    /* --- Base Units & Ratios --- */
+    --base-font-size: 16px;
+    --base-line-height: 1.6;
+    --golden-ratio: 1.618;
+
+    /* --- Color HSL Values --- */
+    --color-primary-hue: 240;
+    --color-primary-saturation: 0%;
+    --color-primary-lightness: 50%;
+    
+    --color-secondary-hue: 150;
+    --color-secondary-saturation: 0%;
+    --color-secondary-lightness: 40%;
+    
+    --color-accent-hue: 0;
+    --color-accent-saturation: 85%;
+    --color-accent-lightness: 50%;
+    
+    --color-neutral-hue: 220;
+    --color-neutral-saturation: 0%;
+    --color-neutral-lightness: 50%;
+    --color-neutral-dark-lightness: 20%;
+    --color-neutral-light-lightness: 95%;
+    
+    --background-hue: 220;
+    --background-saturation: 0%;
+    --background-lightness: 95%;
+
+    /* --- Font Families --- */
+    --font-family-body: 'Inter', sans-serif;
+    --font-family-heading: 'Roboto', sans-serif;
+
+    /* --- Font Weights --- */
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    --line-height-heading: 1.2;
+
+    /* --- Border Radii --- */
+    --border-radius-sm: 0.25rem;
+    --border-radius-md: 0.5rem;
+    --border-radius-lg: 1rem;
+    --border-radius-full: 9999px;
+
+    /* --- Animation Durations --- */
+    --anim-duration-medium: 0.5s;
+    --anim-duration-quick: calc(var(--anim-duration-medium) / 2.5);
+    --anim-duration-short: calc(var(--anim-duration-medium) / 1.5);
+    --anim-duration-long: calc(var(--anim-duration-medium) * 1.5);
+
+    /* --- Animation Easing --- */
+    --ease-smooth: ease-in-out;
+    --ease-accelerate: ease-in;
+    --ease-decelerate: ease-out;
+    --ease-constant: linear;
+    --ease-springy: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ease-snap: cubic-bezier(0.86, 0, 0.07, 1);
+
+    /* --- Responsive Breakpoints --- */
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1400px;
+
+    /* --- Border Image --- */
+    --border-image-source: url(https://pappcseperke.hu/wp-content/uploads/2021/02/Diamonds_60x60.png);
+    --border-image-slice: 25;
+    --border-image-width: 15px;
+    --border-image-outset: 0;
+
+    /* --- UI Framework Tokens --- */
+    --ui-border-width: 2px;
+    --ui-border-style: solid;
+    --ui-border-color: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), calc(var(--color-neutral-lightness) + 35%));
+
+    /* ========================================= */
+    /* CALCULATED/DERIVED TOKENS                */
+    /* ========================================= */
+
+    /* --- Derived Colors --- */
+    --color-primary: hsl(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness));
+    --color-primary-darker: hsl(var(--color-primary-hue), var(--color-primary-saturation), calc(var(--color-primary-lightness) - 10%));
+    --color-primary-lighter: hsl(var(--color-primary-hue), var(--color-primary-saturation), calc(var(--color-primary-lightness) + 15%));
+    --color-secondary: hsl(var(--color-secondary-hue), var(--color-secondary-saturation), var(--color-secondary-lightness));
+    --color-secondary-darker: hsl(var(--color-secondary-hue), var(--color-secondary-saturation), calc(var(--color-secondary-lightness) - 10%));
+    --color-accent: hsl(var(--color-accent-hue), var(--color-accent-saturation), var(--color-accent-lightness));
+    --color-neutral: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), var(--color-neutral-lightness));
+    --color-text-dark: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), var(--color-neutral-dark-lightness));
+    --color-text-light: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), var(--color-neutral-light-lightness));
+    --color-text-default: var(--color-text-dark);
+    --color-text-secondary: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), var(--color-neutral-lightness));
+    --color-background: hsl(var(--background-hue), var(--background-saturation), var(--background-lightness));
+
+    /* --- Typography Scale --- */
+    --font-size-xs: calc(1rem / var(--golden-ratio) / var(--golden-ratio));
+    --font-size-sm: calc(1rem / var(--golden-ratio));
+    --font-size-base: 1rem;
+    --font-size-lg: calc(1rem * var(--golden-ratio));
+    --font-size-xl: calc(1rem * var(--golden-ratio) * var(--golden-ratio));
+    --font-size-2xl: calc(1rem * var(--golden-ratio) * var(--golden-ratio) * var(--golden-ratio));
+    --font-size-3xl: calc(1rem * var(--golden-ratio) * var(--golden-ratio) * var(--golden-ratio) * var(--golden-ratio));
+
+    /* --- Spacing Scale --- */
+    --space-xxs: calc(0.25rem / var(--golden-ratio));
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: calc(1rem * var(--golden-ratio));
+    --space-xl: calc(1rem * var(--golden-ratio) * var(--golden-ratio));
+    --space-xxl: calc(1rem * var(--golden-ratio) * var(--golden-ratio) * var(--golden-ratio));
+
+    /* --- Animation Presets --- */
+    --anim-default-transition: var(--anim-duration-short) var(--ease-smooth);
+    --anim-show-element: var(--anim-duration-medium) var(--ease-accelerate);
+    --anim-hide-element: var(--anim-duration-medium) var(--ease-decelerate);
+    --anim-button-hover: var(--anim-duration-quick) var(--ease-decelerate);
+    --anim-modal-open: var(--anim-duration-long) var(--ease-springy);
+    --anim-playful: var(--anim-duration-medium) var(--ease-springy) alternate 2;
+    --anim-serious: var(--anim-duration-short) var(--ease-accelerate) alternate 2;
+    --anim-bold: var(--anim-duration-short) var(--ease-decelerate) alternate 2;
+
+    /* --- Heading Colors --- */
+    --h1-color: var(--color-primary);
+    --h2-color: var(--color-primary);
+    --h3-color: var(--color-primary);
+    --h4-color: var(--color-secondary);
+    --h5-color: var(--color-text-default);
+    --h6-color: var(--color-text-default);
+}
