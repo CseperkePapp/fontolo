@@ -49,7 +49,7 @@ Built and battle-tested within Fontolo itself:
 
 ### **Try Online**
 
-**[Live Demo →](https://cseperkepapp.github.io/fontolo)**
+**[Live Demo →](https://cseperkepapp.github.io/fontolo/index.html)**
 
 Or run locally:
 ```bash
