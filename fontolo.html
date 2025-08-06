@@ -1,0 +1,464 @@
+<html lang="en">
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontolo - Live CSS System Configurator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Fontolo CSS Framework -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+
+
+
+    <div class="container">
+
+        <header class="app-header">
+
+            <h1 class="text-xl-rem" style="margin: 0;">CSS System Configurator</h1>
+
+             <div class="header-controls">
+
+                <div class="tab-controls">
+
+                    <button class="tab-btn active" data-tab="sample">Sample</button>
+
+                    <button class="tab-btn" data-tab="palette">Palette</button>
+
+                    <button class="tab-btn" data-tab="headers">Headers</button>
+
+                    <button class="tab-btn" data-tab="cards">Cards</button>
+
+                    <button class="tab-btn" data-tab="interaction">Interaction</button>
+
+                    <button class="tab-btn" data-tab="animations">Animations</button>
+
+                </div>
+
+                <button id="generateCssBtn" class="btn btn-primary">Generate & Download CSS</button>
+
+            </div>
+
+        </header>
+
+
+
+        <main id="tab-container" class="main-content">
+
+            <div class="config-panel">
+
+                <nav class="config-nav">
+
+                    <button class="config-nav-btn" data-section="base">Base</button>
+
+                    <button class="config-nav-btn" data-section="colors">Colors</button>
+
+                    <button class="config-nav-btn" data-section="fonts">Fonts</button>
+
+                    <button class="config-nav-btn" data-section="frames">Frames</button>
+
+                    <button class="config-nav-btn" data-section="animations">Anims</button>
+
+                </nav>
+
+                <div id="config-sections-container">
+
+                    <div class="config-section" id="base-section">
+
+                        <h3 class="text-lg font-semibold mb-md">Base Configuration</h3>
+
+                        <div class="config-item"><label for="baseFontSize">Base Font Size (px):</label><input type="number" id="baseFontSize" min="10" max="24" value="16"><div class="slider-value" id="baseFontSizeValue">16px</div></div>
+
+                        <div class="config-item"><label for="goldenRatio">Scale Ratio (Modular Scale)</label><input type="range" id="goldenRatio" class="slider" min="0" max="7" value="5" step="1"><div class="slider-value" id="goldenRatioValue">φ 1.618</div></div>
+
+                        <div class="config-item"><label for="lineHeight">Base Line Height:</label><input type="range" id="lineHeight" class="slider" min="1.2" max="2" value="1.6" step="0.05"><div class="slider-value" id="lineHeightValue">1.6</div></div>
+
+                    </div>
+
+                    <div class="config-section" id="colors-section">
+
+                        <div class="accordion-item primary-color">
+
+                            <button class="accordion-header"><h3>Primary Color</h3><svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></button>
+
+                            <div class="accordion-content"><div class="config-item"><label for="primaryHue">Hue: <span id="primaryHueValue"></span><span class="color-preview" id="primaryColorPreview"></span></label><input type="range" id="primaryHue" min="0" max="360" value="240" class="slider"></div><div class="config-item"><label for="primarySaturation">Saturation: <span id="primarySaturationValue"></span></label><input type="range" id="primarySaturation" min="0" max="100" value="0" class="slider"></div><div class="config-item"><label for="primaryLightness">Lightness: <span id="primaryLightnessValue"></span></label><input type="range" id="primaryLightness" min="10" max="90" value="50" class="slider"></div></div>
+
+                        </div>
+
+                        <div class="accordion-item secondary-color">
+
+                            <button class="accordion-header"><h3>Secondary Color</h3><svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></button>
+
+                            <div class="accordion-content"><div class="config-item"><label for="secondaryHue">Hue: <span id="secondaryHueValue"></span><span class="color-preview" id="secondaryColorPreview"></span></label><input type="range" id="secondaryHue" min="0" max="360" value="150" class="slider"></div><div class="config-item"><label for="secondarySaturation">Saturation: <span id="secondarySaturationValue"></span></label><input type="range" id="secondarySaturation" min="0" max="100" value="0" class="slider"></div><div class="config-item"><label for="secondaryLightness">Lightness: <span id="secondaryLightnessValue"></span></label><input type="range" id="secondaryLightness" min="10" max="90" value="40" class="slider"></div></div>
+
+                        </div>
+
+                        <div class="accordion-item accent-color">
+
+                            <button class="accordion-header"><h3>Accent Color</h3><svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></button>
+
+                            <div class="accordion-content"><div class="config-item"><label for="accentHue">Hue: <span id="accentHueValue"></span><span class="color-preview" id="accentColorPreview"></span></label><input type="range" id="accentHue" min="0" max="360" value="0" class="slider"></div><div class="config-item"><label for="accentSaturation">Saturation: <span id="accentSaturationValue"></span></label><input type="range" id="accentSaturation" min="0" max="100" value="85" class="slider"></div><div class="config-item"><label for="accentLightness">Lightness: <span id="accentLightnessValue"></span></label><input type="range" id="accentLightness" min="10" max="90" value="50" class="slider"></div></div>
+
+                        </div>
+
+                         <div class="accordion-item neutral-color">
+
+                            <button class="accordion-header"><h3>Neutral Color</h3><svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></button>
+
+                            <div class="accordion-content">
+
+                                <div class="config-item"><label class="flex justify-between items-center"><span>Accessibility Lock</span> <input type="checkbox" id="accessibilityLock" checked></label></div>
+
+                                <hr class="my-4 border-t border-gray-300">
+
+                                <div class="config-item"><label for="neutralHue">Hue: <span id="neutralHueValue"></span></label><input type="range" id="neutralHue" min="0" max="360" value="220" class="slider"></div><div class="config-item"><label for="neutralSaturation">Saturation: <span id="neutralSaturationValue"></span></label><input type="range" id="neutralSaturation" min="0" max="30" value="0" class="slider"></div><div class="config-item"><label for="neutralLightness">Base Lightness: <span id="neutralLightnessValue"></span><span class="color-preview" id="neutralColorPreview"></span></label><input type="range" id="neutralLightness" min="10" max="90" value="50" class="slider"></div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="accordion-item background-color">
+
+                            <button class="accordion-header"><h3>Backgrounds</h3><svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" /></svg></button>
+
+                            <div class="accordion-content">
+
+                                <div id="background-config-rows">
+
+                                    <div class="config-item">
+
+                                        <label for="backgroundHue">Hue: <span id="backgroundHueValue"></span><span class="color-preview" id="backgroundColorPreview"></span></label>
+
+                                        <input type="range" id="backgroundHue" min="0" max="360" value="220" class="slider">
+
+                                    </div>
+
+                                    <div class="config-item">
+
+                                        <label for="backgroundSaturation">Saturation: <span id="backgroundSaturationValue"></span></label>
+
+                                        <input type="range" id="backgroundSaturation" min="0" max="100" value="0" class="slider">
+
+                                    </div>
+
+                                    <div class="config-item">
+
+                                        <label for="backgroundLightness">Lightness: <span id="backgroundLightnessValue"></span></label>
+
+                                        <input type="range" id="backgroundLightness" min="80" max="100" value="95" class="slider">
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                    </div>
+
+                     <div class="config-section" id="fonts-section">
+
+                        <div class="config-item">
+
+                            <label for="fontFamilyBody">Body Font Family:</label>
+
+                            <input type="text" id="fontFamilyBody" value="'Inter', sans-serif">
+
+                            <p class="text-xs" style="color: var(--color-text-secondary); margin-top: calc(-1 * var(--space-sm));">Enter a font from Google Fonts to load it automatically.</p>
+
+                        </div>
+
+                        <div class="config-item">
+
+                            <label for="fontFamilyHeading">Heading Font Family:</label>
+
+                            <input type="text" id="fontFamilyHeading" value="'Roboto', sans-serif">
+
+                            <p class="text-xs" style="color: var(--color-text-secondary); margin-top: calc(-1 * var(--space-sm));">Enter a font from Google Fonts to load it automatically.</p>
+
+                        </div>
+
+                        <h4 class="font-medium text-sm mt-md mb-xs">Heading Colors</h4>
+
+                        <div class="config-item"><label for="h1Color">H1 Color</label><div id="h1Color" class="custom-select" data-heading="h1"></div></div>
+
+                        <div class="config-item"><label for="h2Color">H2 Color</label><div id="h2Color" class="custom-select" data-heading="h2"></div></div>
+
+                        <div class="config-item"><label for="h3Color">H3 Color</label><div id="h3Color" class="custom-select" data-heading="h3"></div></div>
+
+                        <div class="config-item"><label for="h4Color">H4 Color</label><div id="h4Color" class="custom-select" data-heading="h4"></div></div>
+
+                        <hr class="my-4 border-t border-gray-300">
+
+                        <div class="config-item"><label for="darkLightness">Dark Text Lightness: <span id="darkLightnessValue"></span><span class="color-preview" id="neutralDarkColorPreview"></span></label><input type="range" id="darkLightness" min="0" max="40" value="20" class="slider"></div>
+
+                        <div class="config-item"><label for="mediumLightness">Medium Text Lightness: <span id="mediumLightnessValue"></span><span class="color-preview" id="neutralMediumColorPreview"></span></label><input type="range" id="mediumLightness" min="30" max="70" value="50" class="slider"></div>
+
+                    </div>
+
+                    <div class="config-section" id="frames-section">
+
+                        <div class="config-item"><label for="borderColor">Border Color</label><div id="borderColor" class="custom-select" data-heading="border"></div></div>
+
+                        <div class="config-item"><label for="borderStyle">Border Style</label><select id="borderStyle" class="w-full"><option>solid</option><option>dashed</option><option>dotted</option><option>double</option></select></div>
+
+                        <div class="config-item"><label for="borderRadiusMd">Corner Radius (rem):</label><input type="range" id="borderRadiusMd" class="slider" min="0" max="2" value="0.5" step="0.1"><div class="slider-value" id="borderRadiusMdValue">0.5rem</div></div>
+
+                        <div class="config-item"><label for="uiBorderWidth">Border Width (px):</label><input type="range" id="uiBorderWidth" class="slider" min="0" max="8" value="2" step="0.5"><div class="slider-value" id="uiBorderWidthValue">2px</div></div>
+
+                        <hr class="my-4 border-t border-gray-300">
+
+                        <h4 class="font-medium text-sm mb-xs">Border Image</h4>
+
+                        <div class="config-item"><label for="borderImageSource">Image URL:</label><input type="text" id="borderImageSource" value="https://pappcseperke.hu/wp-content/uploads/2021/02/Diamonds_60x60.png"></div>
+
+                        <div class="config-item"><label for="borderImageSlice">Slice:</label><input type="number" id="borderImageSlice" value="25"></div>
+
+                        <div class="config-item"><label for="borderImageWidth">Width (px):</label><input type="number" id="borderImageWidth" value="15"></div>
+
+                        <div class="config-item"><label for="borderImageOutset">Outset:</label><input type="number" id="borderImageOutset" value="0"></div>
+
+                    </div>
+
+                    <div class="config-section" id="animations-section">
+
+                        <div class="config-item"><label for="animDuration">Base Animation Duration (s):</label><input type="range" id="animDuration" class="slider" min="0.1" max="1.5" value="0.5" step="0.05"><div class="slider-value" id="animDurationValue">0.5s</div></div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <div id="preview-container">
+
+                 <div class="preview-panel active" id="tab-sample-preview">
+
+                    <div class="section" id="text-sample">
+
+                       <h2 class="text-2xl-rem">Sample Content</h2>
+
+                       <h4 class="text-lg">A Subheading for Context</h4>
+
+                       <p>This is a sample paragraph to demonstrate the base font, line height, and color. Adjusting the "Base Line Height" slider on the left will change the spacing between these lines of text. It includes <a href="#" style="color: var(--color-accent);">an accent-colored link</a> to show how it integrates. Árvíztűrő ütvefúrógép.</p>
+
+                   </div>
+
+                   <div class="section" style="margin-top: var(--space-xl);">
+
+                        <div style="display: flex; gap: var(--space-md);">
+
+                            <button class="btn btn-primary">Primary</button>
+
+                            <button class="btn btn-secondary">Secondary</button>
+
+                        </div>
+
+                   </div>
+
+                   <div class="section" style="margin-top: var(--space-xl);" id="spacing">
+
+                       <h3 class="text-xl-rem text-dark mb-md">Spacing Scale</h3>
+
+                        <div class="grid" style="grid-template-columns: repeat(6, 1fr); gap: var(--space-sm);">
+
+                           <div class="spacing-item flex-column justify-start"><div class="spacing-box" style="width: var(--space-xxs); height: var(--space-xxs);"></div><div class="text-center mt-2"><div class="color-name">XXS</div><div class="color-value" id="spaceXxsValue"></div></div></div>
+
+                           <div class="spacing-item flex-column justify-start"><div class="spacing-box" style="width: var(--space-xs); height: var(--space-xs);"></div><div class="text-center mt-2"><div class="color-name">XS</div><div class="color-value" id="spaceXsValue"></div></div></div>
+
+                           <div class="spacing-item flex-column justify-start"><div class="spacing-box" style="width: var(--space-sm); height: var(--space-sm);"></div><div class="text-center mt-2"><div class="color-name">SM</div><div class="color-value" id="spaceSmValue"></div></div></div>
+
+                           <div class="spacing-item flex-column justify-start"><div class="spacing-box" style="width: var(--space-md); height: var(--space-md);"></div><div class="text-center mt-2"><div class="color-name">MD</div><div class="color-value" id="spaceMdValue"></div></div></div>
+
+                           <div class="spacing-item flex-column justify-start"><div class="spacing-box" style="width: var(--space-lg); height: var(--space-lg);"></div><div class="text-center mt-2"><div class="color-name">LG</div><div class="color-value" id="spaceLgValue"></div></div></div>
+
+                           <div class="spacing-item flex-column justify-start"><div class="spacing-box" style="width: var(--space-xl); height: var(--space-xl);"></div><div class="text-center mt-2"><div class="color-name">XL</div><div class="color-value" id="spaceXlValue"></div></div></div>
+
+                       </div>
+
+                   </div>
+
+                </div>
+
+
+
+                <div class="preview-panel" id="tab-palette-preview">
+
+                    <div class="section" id="colors-preview">
+
+                        <h2 class="text-2xl-rem text-dark mb-md">Color Palette</h2>
+
+                        <div class="color-grid mb-lg">
+
+                            <div class="color-swatch"><div class="color-box color-primary-box"></div><div class="color-name">Primary</div><div class="color-value" id="primary-color-value"></div></div>
+
+                            <div class="color-swatch"><div class="color-box color-primary-dark-box"></div><div class="color-name">Primary Darker</div><div class="color-value" id="primary-dark-color-value"></div></div>
+
+                            <div class="color-swatch"><div class="color-box color-primary-light-box"></div><div class="color-name">Primary Lighter</div><div class="color-value" id="primary-light-color-value"></div></div>
+
+                            <div class="color-swatch"><div class="color-box color-secondary-box"></div><div class="color-name">Secondary</div><div class="color-value" id="secondary-color-value"></div></div>
+
+                            <div class="color-swatch"><div class="color-box color-accent-box"></div><div class="color-name">Accent</div><div class="color-value" id="accent-color-value"></div></div>
+
+                            <div class="color-swatch"><div class="color-box color-background-box"></div><div class="color-name">Background</div><div class="color-value" id="background-color-value"></div></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="preview-panel" id="tab-headers-preview">
+
+                    <div class="section" id="typography">
+
+                        <h2 class="text-2xl-rem text-dark mb-md">Typography Scale & Text</h2>
+
+                        <div class="typography-scale">
+
+                            <div class="example"><div class="size-label">H1</div><h1 class="text-3xl-rem">Árvíztűrő ütvefúrógép</h1></div>
+
+                            <div class="example"><div class="size-label">H2</div><h2 class="text-2xl-rem">Árvíztűrő ütvefúrógép</h2></div>
+
+                            <div class="example"><div class="size-label">H3</div><h3 class="text-xl-rem">Árvíztűrő ütvefúrógép</h3></div>
+
+                            <div class="example"><div class="size-label">H4</div><h4 class="text-lg">Árvíztűrő ütvefúrógép</h4></div>
+
+                            <div class="example"><div class="size-label">Body</div><p class="text-base-rem">Árvíztűrő ütvefúrógép.</p></div>
+
+                            <div class="example"><div class="size-label">Small</div><p class="text-sm">Árvíztűrő ütvefúrógép.</p></div>
+
+                            <div class="example"><div class="size-label">Extra Small</div><p class="text-xs">Árvíztűrő ütvefúrógép.</p></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="preview-panel" id="tab-cards-preview">
+
+                    <h2 class="text-2xl-rem text-dark mb-md">Frames & Borders</h2>
+
+                    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: start;">
+
+                        <div>
+
+                            <h3 class="text-xl-rem">Standard Border</h3>
+
+                            <div class="sample-card">
+
+                                <h3 class="text-xl-rem">Sample Card</h3>
+
+                                <p>This card demonstrates the current border width and corner radius settings.</p>
+
+                                <button class="btn btn-primary btn-sm">Read More</button>
+
+                            </div>
+
+                        </div>
+
+                        <div>
+
+                            <h3 class="text-xl-rem">Border Image</h3>
+
+                             <div class="sample-border-image">
+
+                                <p>This box uses the border-image property.</p>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="preview-panel" id="tab-interaction-preview">
+
+                     <div class="section" id="buttons">
+
+                        <h2 class="text-2xl-rem text-dark mb-md">Buttons</h2>
+
+                        <div class="d-flex flex-wrap gap-md mb-lg">
+
+                            <button class="btn btn-primary playful">Primary Button</button>
+
+                            <button class="btn btn-secondary serious">Secondary Button</button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="section" id="grid-layout">
+
+                        <h2 class="text-2xl-rem text-dark mb-md">Grid Layout</h2>
+
+                        <div class="grid mb-lg">
+
+                            <div class="cell"><h3 class="mb-xs text-xl-rem">Cell 1</h3><p class="text-sm">With a primary button</p><button class="btn btn-primary btn-sm">Action</button></div>
+
+                            <div class="cell"><h3 class="mb-xs text-xl-rem">Cell 2</h3><p class="text-sm">With a secondary button</p><button class="btn btn-secondary btn-sm">Action</button></div>
+
+                            <div class="cell"><h3 class="mb-xs text-xl-rem">Cell 3</h3><p class="text-sm">With a default button</p><button class="btn">Action</button></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="preview-panel" id="tab-animations-preview">
+
+                     <div class="section" id="animations">
+
+                        <h2 class="text-2xl-rem text-dark mb-md">Animation Demo</h2>
+
+                         <p>Hover over the boxes below to see the animation types.</p>
+
+                        <div class="d-flex gap-md">
+
+                            <div class="animation-box playful"></div>
+
+                            <div class="animation-box serious"></div>
+
+                            <div class="animation-box bold"></div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            
+
+        </main>
+
+    </div>
+
+</body>
+
+
+</html>
