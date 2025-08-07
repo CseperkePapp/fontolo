@@ -1,0 +1,218 @@
+/* ========================================= */
+/* FONTOLO LANDING PAGE STYLES              */
+/* Extends the core design system           */
+/* ========================================= */
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: var(--space-xxl) var(--space-lg);
+    background: linear-gradient(135deg, 
+        hsl(var(--color-primary-hue), var(--color-primary-saturation), 97%) 0%,
+        hsl(var(--color-secondary-hue), var(--color-secondary-saturation), 96%) 100%);
+    border-bottom: 1px solid var(--ui-border-color);
+}
+
+.hero-title {
+    font-size: calc(var(--font-size-3xl) * 1.2);
+    margin-bottom: var(--space-md);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--space-xl);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: var(--line-height-heading);
+}
+
+.cta-group {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: var(--space-lg);
+}
+
+/* Status Banner */
+.status-banner {
+    background-color: hsl(var(--color-accent-hue), var(--color-accent-saturation), 95%);
+    border: 1px solid hsl(var(--color-accent-hue), var(--color-accent-saturation), 80%);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-sm) var(--space-md);
+    display: inline-block;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: hsl(var(--color-accent-hue), var(--color-accent-saturation), 30%);
+    margin-bottom: var(--space-lg);
+}
+
+/* Proof Section */
+.proof-section {
+    padding: var(--space-xl) var(--space-lg);
+    background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 1%));
+    border-bottom: 1px solid var(--ui-border-color);
+}
+
+/* Integration Cards */
+.integration-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-lg);
+    margin-top: var(--space-xl);
+}
+
+.integration-card {
+    background: white;
+    border: 1px solid var(--ui-border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-lg);
+    text-align: center;
+    transition: all var(--anim-default-transition);
+    position: relative;
+}
+
+.integration-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 25px hsla(var(--color-neutral-hue), 20%, 30%, 0.1);
+}
+
+.integration-card.coming-soon::after {
+    content: "Coming Soon";
+    position: absolute;
+    top: var(--space-sm);
+    right: var(--space-sm);
+    background-color: var(--color-accent);
+    color: white;
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Roadmap */
+.roadmap {
+    padding: var(--space-xl) var(--space-lg);
+}
+
+.roadmap-item {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--ui-border-color);
+}
+
+.roadmap-item:last-child {
+    border-bottom: none;
+}
+
+.roadmap-status {
+    flex-shrink: 0;
+    width: 100px;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius-sm);
+    text-align: center;
+}
+
+.status-active {
+    background-color: hsl(var(--color-accent-hue), var(--color-accent-saturation), 90%);
+    color: hsl(var(--color-accent-hue), var(--color-accent-saturation), 30%);
+}
+
+.status-next {
+    background-color: hsl(var(--color-primary-hue), var(--color-primary-saturation), 90%);
+    color: hsl(var(--color-primary-hue), var(--color-primary-saturation), 30%);
+}
+
+.status-planned {
+    background-color: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), 90%);
+    color: var(--color-text-secondary);
+}
+
+/* Demo Embed */
+.demo-embed {
+    border: 1px solid var(--ui-border-color);
+    border-radius: var(--border-radius-lg);
+    overflow: hidden;
+    margin: var(--space-xl) 0;
+    background: white;
+}
+
+.demo-header {
+    background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) - 2%));
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.demo-content {
+    padding: var(--space-lg);
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(45deg, 
+        hsl(var(--color-primary-hue), var(--color-primary-saturation), 98%) 0%,
+        hsl(var(--color-secondary-hue), var(--color-secondary-saturation), 97%) 100%);
+}
+
+/* Content Constraints */
+.content-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-container-narrow {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.site-footer {
+    padding: var(--space-lg);
+    text-align: center;
+    border-top: 1px solid var(--ui-border-color);
+    background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 1%));
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--space-xl) var(--space-md);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .cta-group {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .integration-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .roadmap-item {
+        flex-direction: column;
+        gap: var(--space-sm);
+    }
+    
+    .roadmap-status {
+        width: auto;
+        align-self: flex-start;
+    }
+}
