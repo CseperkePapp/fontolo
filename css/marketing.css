@@ -1,0 +1,389 @@
+/* ========================================= */
+/* FONTOLO MARKETING COMPONENTS              */
+/* Extends the core design system            */
+/* Components have NO external margins       */
+/* ========================================= */
+
+/* ========================================= */
+/* HERO SECTIONS                            */
+/* ========================================= */
+
+.hero {
+    background: linear-gradient(135deg, 
+        hsl(var(--color-primary-hue), var(--color-primary-saturation), 97%) 0%,
+        hsl(var(--color-secondary-hue), var(--color-secondary-saturation), 96%) 100%);
+    padding: var(--space-xxl) var(--space-lg);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    /* NO external margins */
+}
+
+.hero-container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    /* NO external margins - internal spacing handled by .stack */
+}
+
+.hero-title {
+    font-size: calc(var(--font-size-3xl) * 1.2);
+    font-weight: var(--font-weight-bold);
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: var(--line-height-heading);
+    /* NO margins - spacing handled by parent .stack */
+}
+
+.hero-subtitle {
+    font-size: var(--font-size-xl);
+    color: var(--color-text-secondary);
+    line-height: var(--base-line-height);
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    /* NO vertical margins - handled by parent .stack */
+}
+
+/* ========================================= */
+/* STATUS & ANNOUNCEMENT BADGES             */
+/* ========================================= */
+
+.status-badge {
+    display: inline-block;
+    background-color: hsl(var(--color-accent-hue), var(--color-accent-saturation), 95%);
+    border: 1px solid hsl(var(--color-accent-hue), var(--color-accent-saturation), 80%);
+    color: hsl(var(--color-accent-hue), var(--color-accent-saturation), 30%);
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    /* NO external margins */
+}
+
+.status-badge.primary {
+    background-color: hsl(var(--color-primary-hue), var(--color-primary-saturation), 95%);
+    border-color: hsl(var(--color-primary-hue), var(--color-primary-saturation), 80%);
+    color: hsl(var(--color-primary-hue), var(--color-primary-saturation), 30%);
+}
+
+.status-badge.success {
+    background-color: hsl(140, 60%, 95%);
+    border-color: hsl(140, 60%, 80%);
+    color: hsl(140, 60%, 30%);
+}
+
+/* ========================================= */
+/* CONTENT CONTAINERS & SECTIONS           */
+/* ========================================= */
+
+.content-container {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+    /* NO vertical margins/padding */
+}
+
+.content-container-narrow {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+    /* NO vertical margins/padding */
+}
+
+.section-container {
+    padding: var(--space-xxl) 0;
+    /* NO external margins - use .page-flow on body */
+}
+
+.section-container.bg-light {
+    background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 1%));
+}
+
+.section-container.bg-primary {
+    background: linear-gradient(135deg, 
+        var(--color-primary) 0%,
+        var(--color-primary-darker) 100%);
+    color: white;
+}
+
+.section-header {
+    text-align: center;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    /* NO vertical margins - uses .stack for internal spacing */
+}
+
+/* ========================================= */
+/* MARKETING LAYOUT CONTAINERS             */
+/* ========================================= */
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-local, var(--space-xl));
+    /* NO external margins */
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: var(--space-local, var(--space-lg));
+    /* NO external margins */
+}
+
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-local, var(--space-lg));
+    /* NO external margins */
+}
+
+/* ========================================= */
+/* MARKETING COMPONENTS                     */
+/* ========================================= */
+
+.feature-card {
+    background: white;
+    border: 1px solid var(--ui-border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    transition: all var(--anim-default-transition);
+    position: relative;
+    /* NO external margins - spacing handled by grid gap */
+}
+
+.feature-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px hsla(var(--color-neutral-hue), 20%, 30%, 0.15);
+    border-color: var(--color-primary);
+}
+
+.feature-icon {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    border-radius: var(--border-radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: var(--font-size-xl);
+    margin-left: auto;
+    margin-right: auto;
+    /* NO vertical margins - spacing handled by parent .stack */
+}
+
+.testimonial-card {
+    background: white;
+    border: 1px solid var(--ui-border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    position: relative;
+    /* NO external margins - spacing handled by grid gap */
+}
+
+.testimonial-quote {
+    font-size: var(--font-size-lg);
+    font-style: italic;
+    color: var(--color-text-secondary);
+    line-height: var(--base-line-height);
+    /* NO external margins */
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    /* NO external margins - positioned by parent .stack */
+}
+
+.testimonial-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: var(--border-radius-full);
+    background: var(--color-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: var(--font-weight-bold);
+    flex-shrink: 0;
+    /* NO external margins */
+}
+
+.pricing-card {
+    background: white;
+    border: 2px solid var(--ui-border-color);
+    border-radius: var(--border-radius-lg);
+    padding: var(--space-xl);
+    text-align: center;
+    position: relative;
+    transition: all var(--anim-default-transition);
+    /* NO external margins - spacing handled by grid gap */
+}
+
+.pricing-card.featured {
+    border-color: var(--color-primary);
+    transform: scale(1.05);
+    box-shadow: 0 10px 30px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.2);
+}
+
+.pricing-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-primary);
+    color: white;
+    padding: var(--space-xs) var(--space-md);
+    border-radius: var(--border-radius-full);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+.pricing-amount {
+    font-size: var(--font-size-3xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    /* NO external margins */
+}
+
+.pricing-period {
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-base);
+    /* NO external margins */
+}
+
+.pricing-features {
+    list-style: none;
+    padding: 0;
+    /* NO external margins - positioned by parent .stack */
+}
+
+.pricing-features li {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid hsl(var(--color-neutral-hue), var(--color-neutral-saturation), 95%);
+    /* NO external margins */
+}
+
+.pricing-features li:last-child {
+    border-bottom: none;
+}
+
+/* ========================================= */
+/* CALL-TO-ACTION SECTIONS                 */
+/* ========================================= */
+
+.cta-section {
+    background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+    color: white;
+    text-align: center;
+    padding: var(--space-xxl) var(--space-lg);
+    /* NO external margins */
+}
+
+.cta-section .btn {
+    background: white;
+    color: var(--color-primary);
+    border-color: white;
+}
+
+.cta-section .btn:hover {
+    background: var(--color-background);
+    transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* FOOTER COMPONENTS                        */
+/* ========================================= */
+
+.site-footer {
+    background-color: hsl(var(--color-neutral-hue), var(--color-neutral-saturation), calc(var(--color-neutral-dark-lightness) + 5%));
+    color: var(--color-text-light);
+    padding: var(--space-xl) 0;
+    /* NO external margins */
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-xl);
+    /* NO external margins */
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    /* NO external margins - positioned by parent .stack */
+}
+
+.footer-links li {
+    /* NO external margins - uses internal spacing only when needed */
+}
+
+.footer-links li + li {
+    margin-top: var(--space-sm); /* Internal spacing between list items */
+}
+
+.footer-links a {
+    color: var(--color-text-light);
+    text-decoration: none;
+    transition: color var(--anim-default-transition);
+}
+
+.footer-links a:hover {
+    color: white;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: var(--space-lg);
+    border-top: 1px solid hsl(var(--color-neutral-hue), var(--color-neutral-saturation), 30%);
+    /* Internal spacing only */
+}
+
+/* ========================================= */
+/* RESPONSIVE ADJUSTMENTS                   */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    .hero {
+        padding: var(--space-xl) var(--space-md);
+    }
+    
+    .hero-title {
+        font-size: var(--font-size-3xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--font-size-lg);
+    }
+    
+    .content-container,
+    .content-container-narrow {
+        padding-left: var(--space-md);
+        padding-right: var(--space-md);
+    }
+    
+    .feature-grid,
+    .testimonial-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pricing-card.featured {
+        transform: none;
+    }
+    
+    .section-container {
+        padding: var(--space-xl) 0;
+    }
+}
