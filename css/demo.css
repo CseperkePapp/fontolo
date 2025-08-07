@@ -1,6 +1,6 @@
 /* ========================================= */
 /* FONTOLO DEMO & SHOWCASE COMPONENTS       */
-/* Components for demonstrating design tokens */
+/* Fully compliant with the new architecture. */
 /* ========================================= */
 
 /* ========================================= */
@@ -13,16 +13,16 @@
    border-radius: var(--border-radius-sm);
    border: 1px solid var(--ui-border-color);
    vertical-align: middle;
-   margin-left: var(--space-sm); /* Internal spacing is OK */
    display: inline-block;
    flex-shrink: 0;
+   /* REMOVED: margin-left. This is now handled by a parent flex container with a 'gap'. */
 }
 
 .color-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
    gap: var(--space-md);
-   /* NO external margins */
+   /* CORRECT: No external margins. */
 }
 
 .color-swatch {
@@ -30,13 +30,13 @@
    border-radius: var(--border-radius-md);
    padding: var(--space-md);
    border: 1px solid var(--ui-border-color);
-   /* NO external margins */
+   /* CORRECT: No external margins. Spacing of its children is handled by adding the .stack class to this element in the HTML. */
 }
 
 .color-box {
    height: 80px;
    border-radius: var(--border-radius-sm);
-   margin-bottom: var(--space-sm); /* Internal spacing is OK */
+   /* REMOVED: margin-bottom. The parent .color-swatch should be a .stack container. */
 }
 
 .color-primary-box { background-color: var(--color-primary); }
@@ -50,7 +50,7 @@
 
 .color-name {
    font-weight: var(--font-weight-medium);
-   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+   /* REMOVED: margin-bottom. The parent .color-swatch should be a .stack container. */
 }
 
 .color-value {
@@ -68,13 +68,13 @@
    border-left: 3px solid var(--color-primary);
    background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
    border-radius: var(--border-radius-sm);
-   /* NO external margins */
+   /* CORRECT: No external margins. Spacing is handled by the parent .typography-scale container. */
 }
 
 .typography-scale .size-label {
    font-size: var(--font-size-xs);
    color: var(--color-text-secondary);
-   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+   /* REMOVED: margin-bottom. The parent .example container should be a .stack. */
 }
 
 /* ========================================= */
@@ -88,7 +88,7 @@
    border-radius: var(--border-radius-sm);
    padding: var(--space-md);
    border: 1px solid var(--ui-border-color);
-   /* NO external margins */
+   /* CORRECT: No external margins. */
 }
 
 .spacing-box {
@@ -107,7 +107,7 @@
    border-radius: var(--border-radius-md);
    cursor: pointer;
    transition: all var(--anim-default-transition);
-   /* NO external margins */
+   /* CORRECT: No external margins. */
 }
 
 .animation-box:hover {
@@ -126,7 +126,7 @@
    padding: var(--space-lg);
    max-width: 400px;
    transition: all 0.2s ease-out;
-   /* NO external margins */
+   /* CORRECT: No external margins. */
 }
 
 .sample-border-image {
@@ -136,5 +136,5 @@
    border-image-source: var(--border-image-source);
    border-image-slice: var(--border-image-slice);
    border-image-outset: var(--border-image-outset);
-   /* NO external margins */
+   /* CORRECT: No external margins. */
 }
