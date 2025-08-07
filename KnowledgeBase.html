@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontolo CSS Knowledge Base</title>
+    <!-- Add all your CSS files here in the correct order -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/demo.css">
+    <link rel="stylesheet" href="css/overrides.css">
+    <link rel="stylesheet" href="css/utilities.css"> 
+</head>
+<body>
+
+    <div class="container">
+        <div class="section-flow" style="padding: var(--space-xl);">
+    
+            <!-- Page Header -->
+            <div class="stack">
+                <h1>Fontolo CSS Knowledge Base</h1>
+                <p class="text-lg color-text-secondary">A complete reference for the Fontolo CSS architecture, file by file.</p>
+            </div>
+        
+            <!-- Accordion Group Container -->
+            <div class="stack">
+        
+                <!-- Accordion: base.css -->
+                <div class="accordion-item neutral">
+                    <button class="accordion-header">
+                        <h3>base.css</h3>
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="stack">
+                            <h4>Purpose</h4>
+                            <p>This file establishes the foundational styles for the entire system. Its primary job is to create a consistent "reset" across all browsers by removing default margins and setting base font properties. This ensures that the layout system has full and predictable control over all spacing.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: layout.css -->
+                <div class="accordion-item neutral">
+                    <button class="accordion-header">
+                        <h3>layout.css</h3>
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="stack">
+                            <h4>Purpose</h4>
+                            <p>This is the most important file for controlling space and structure. It contains all the layout containers that manage the positioning of components, such as <code>.stack</code>, <code>.grid</code>, and <code>.flex</code>. It also defines the responsive behavior of the main application layout.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: components.css -->
+                <div class="accordion-item primary">
+                    <button class="accordion-header">
+                        <h3>components.css</h3>
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="stack">
+                            <h4>Purpose</h4>
+                            <p>This file is a central library for all the primary UI building blocks. It defines the self-contained appearance of each component (padding, colors, borders, etc.) while strictly following the "Inside vs. Outside" rule, meaning no component has any external margins.</p>
+                            <hr>
+                            <h4>Detailed Breakdown</h4>
+                            <div class="stack">
+                                <p><strong>Header Components:</strong> Includes <code>.app-header</code> and related classes that structure the main application header.</p>
+                                <p><strong>Button Components:</strong> Defines the base <code>.btn</code> class and its color and size modifiers (e.g., <code>.btn-primary</code>, <code>.btn-sm</code>).</p>
+                                <p><strong>Card Components:</strong> Contains the <code>.card</code> component and its internal sections like <code>.card-header</code>.</p>
+                                <p><strong>Form Components:</strong> Styles all form elements, including inputs, labels, sliders, and custom selects for a consistent look.</p>
+                                <p><strong>Accordion Components:</strong> Defines the styles for the <code>.accordion-item</code> and its interactive parts, including the expand/collapse animation.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: overrides.css -->
+                <div class="accordion-item accent">
+                    <button class="accordion-header">
+                        <h3>overrides.css</h3>
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="stack">
+                            <h4>Purpose</h4>
+                            <p>This file handles contextual styling. It contains rules that change a component's appearance based on where it's placed. For example, it makes typography smaller when inside a <code>.panel</code> or <code>.sidebar</code>. It should be loaded late in the CSS order to ensure its rules take precedence.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accordion: demo.css -->
+                <div class="accordion-item secondary">
+                    <button class="accordion-header">
+                        <h3>demo.css</h3>
+                        <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
+                    </button>
+                    <div class="accordion-content">
+                        <div class="stack">
+                            <h4>Purpose</h4>
+                            <p>This file contains styles that are specific to the live configurator demo page. It includes classes for the color swatches, spacing scale demonstrators, and other UI elements that are used for showcasing the design system rather than being part of the core component library.</p>
+                        </div>
+                    </div>
+                </div>
+        
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Basic accordion functionality
+        document.querySelectorAll('.accordion-header').forEach(button => {
+            button.addEventListener('click', () => {
+                const accordionContent = button.nextElementSibling;
+                button.classList.toggle('active');
+                accordionContent.classList.toggle('active');
+            });
+        });
+    </script>
+
+</body>
+</html>
