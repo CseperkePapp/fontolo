@@ -1,10 +1,11 @@
 /* ========================================= */
-/* FONTOLO COMPONENT SYSTEM                 */
-/* Components with NO external margins      */
+/* FONTOLO COMPONENT SYSTEM - FINAL          */
+/* Strictly adheres to the new architecture. */
+/* All components have NO external margins.  */
 /* ========================================= */
 
 /* ========================================= */
-/* HEADER COMPONENTS                        */
+/* APPLICATION & HEADER COMPONENTS          */
 /* ========================================= */
 .app-header {
     padding: var(--space-md) var(--space-lg);
@@ -13,14 +14,13 @@
     justify-content: space-between;
     align-items: center;
     background-color: white;
-    /* NO external margins */
 }
 
 .app-title {
     font-size: 1.125rem;
     font-weight: 600;
     line-height: 1.2;
-    margin: 0; /* Reset default margins */
+    margin: 0;
 }
 
 .header-controls {
@@ -29,6 +29,36 @@
     align-items: stretch;
     gap: var(--space-md);
 }
+
+/* ========================================= */
+/* NAVIGATION COMPONENTS                    */
+/* ========================================= */
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--ui-border-color);
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    border-radius: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    flex-grow: 1;
+    border-right: 1px solid var(--ui-border-color);
+}
+
+.nav-btn:last-child { border-right: none; }
+.nav-btn:hover { color: var(--color-text-default); }
+.nav-btn.active { color: var(--color-primary); }
 
 /* ========================================= */
 /* BUTTON COMPONENTS                        */
@@ -48,7 +78,6 @@
     line-height: 1;
     text-decoration: none;
     user-select: none;
-    /* NO external margins - spacing handled by containers */
 }
 
 .btn-primary {
@@ -83,7 +112,6 @@
     color: white;
 }
 
-/* Button Sizes */
 .btn-sm { padding: var(--space-xs) var(--space-md); font-size: var(--font-size-sm); }
 .btn-lg { padding: var(--space-md) var(--space-xl); font-size: var(--font-size-lg); }
 
@@ -96,7 +124,6 @@
     border-radius: var(--border-radius-md);
     padding: var(--space-lg);
     transition: all 0.2s ease-out;
-    /* NO external margins - spacing handled by containers */
 }
 
 .card:hover {
@@ -106,38 +133,13 @@
 .card-header {
     padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--ui-border-color);
-    margin: 0 0 var(--space-md) 0; /* Only internal bottom margin */
-}
-
-.card-body {
-    /* NO external margins - let internal stack pattern handle spacing */
+    /* REMOVED: margin rule. The parent .card should be a .stack to space this from the body. */
 }
 
 .card-footer {
     padding-top: var(--space-md);
     border-top: 1px solid var(--ui-border-color);
-    margin: var(--space-md) 0 0 0; /* Only internal top margin */
-}
-
-/* Sample Cards (specialized) */
-.sample-card {
-    background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
-    border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
-    border-radius: var(--border-radius-md);
-    padding: var(--space-lg);
-    max-width: 400px;
-    transition: all 0.2s ease-out;
-    /* NO external margins */
-}
-
-.sample-border-image {
-    padding: var(--space-lg);
-    border-style: solid;
-    border-width: var(--border-image-width);
-    border-image-source: var(--border-image-source);
-    border-image-slice: var(--border-image-slice);
-    border-image-outset: var(--border-image-outset);
-    /* NO external margins */
+    /* REMOVED: margin rule. The parent .card should be a .stack to space this from the body. */
 }
 
 /* ========================================= */
@@ -150,7 +152,6 @@
     padding: var(--space-xs);
     border-radius: var(--border-radius-md);
     border: 1px solid var(--ui-border-color);
-    /* NO external margins */
 }
 
 .tab-btn {
@@ -163,7 +164,6 @@
     cursor: pointer;
     transition: all 0.2s ease-out;
     background-color: transparent;
-    /* NO external margins */
 }
 
 .tab-btn:hover {
@@ -179,46 +179,6 @@
 }
 
 /* ========================================= */
-/* NAVIGATION COMPONENTS                    */
-/* ========================================= */
-.nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: var(--space-md);
-    border-bottom: 1px solid var(--ui-border-color);
-    /* NO external margins */
-}
-
-.nav-btn {
-    background: none;
-    border: none;
-    padding: var(--space-xs) var(--space-sm);
-    cursor: pointer;
-    border-radius: 0;
-    transition: background-color 0.2s ease, color 0.2s ease;
-    text-align: center;
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-text-secondary);
-    flex-grow: 1;
-    border-right: 1px solid var(--ui-border-color);
-    /* NO external margins */
-}
-
-.nav-btn:last-child {
-    border-right: none;
-}
-
-.nav-btn:hover {
-    color: var(--color-text-default);
-}
-
-.nav-btn.active {
-    color: var(--color-primary);
-}
-
-/* ========================================= */
 /* ACCORDION COMPONENTS                     */
 /* ========================================= */
 .accordion-item {
@@ -228,7 +188,6 @@
     overflow: hidden;
     background-color: white;
     transition: border-left-color 0.3s ease;
-    /* NO external margins - spacing handled by containers */
 }
 
 .accordion-item.primary { border-left-color: var(--color-primary); }
@@ -258,7 +217,7 @@
 
 .accordion-header h3 { 
     transition: color 0.2s ease; 
-    margin: 0; /* Reset default margins */
+    margin: 0;
     font-size: inherit; 
 }
 
@@ -292,15 +251,15 @@
 /* FORM COMPONENTS                          */
 /* ========================================= */
 .form-item {
-   /* NO external margins - spacing handled by containers like .stack */
+   /* Spacing is handled by making this a .stack container in the HTML */
 }
 
 .form-item label {
    display: block;
-   margin-bottom: var(--space-xs); /* Internal spacing is OK */
    font-weight: var(--font-weight-medium);
    color: var(--color-text-default);
    font-size: var(--font-size-sm);
+   /* REMOVED: margin-bottom. Parent .form-item should be a .stack. */
 }
 
 .form-item input[type="number"],
@@ -316,7 +275,6 @@
    background-color: white;
    color: var(--color-text-default);
    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-   /* NO external margins */
 }
 
 .form-item input:focus,
@@ -328,14 +286,17 @@
 }
 
 .form-item select {
-   -webkit-appearance: none;
-   -moz-appearance: none;
    appearance: none;
    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
    background-position: right 0.5rem center;
    background-repeat: no-repeat;
    background-size: 1.5em 1.5em;
    padding-right: 2.5rem;
+}
+
+.form-hint {
+    font-size: var(--font-size-xs); /* Corrected from sx to xs */
+    color: var(--color-text-secondary);
 }
 
 /* Range Sliders */
@@ -347,7 +308,13 @@
    outline: none;
    -webkit-appearance: none;
    position: relative;
-   /* NO external margins */
+}
+
+.slider-value {
+   font-size: var(--font-size-xs);
+   color: var(--color-text-secondary);
+   text-align: right;
+   /* REMOVED: margin-top. The parent .form-item should be a .stack. */
 }
 
 .slider::-webkit-slider-thumb {
@@ -378,43 +345,17 @@
    box-sizing: border-box;
 }
 
-/* Slider color variants */
 .primary .slider::-webkit-slider-thumb { background-color: var(--color-primary); }
 .primary .slider::-moz-range-thumb { background-color: var(--color-primary); }
-.primary .slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 4px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.25); }
-
 .secondary .slider::-webkit-slider-thumb { background-color: var(--color-secondary); }
 .secondary .slider::-moz-range-thumb { background-color: var(--color-secondary); }
-.secondary .slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 4px hsla(var(--color-secondary-hue), var(--color-secondary-saturation), var(--color-secondary-lightness), 0.25); }
-
 .accent .slider::-webkit-slider-thumb { background-color: var(--color-accent); }
 .accent .slider::-moz-range-thumb { background-color: var(--color-accent); }
-.accent .slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 4px hsla(var(--color-accent-hue), var(--color-accent-saturation), var(--color-accent-lightness), 0.25); }
 
-.slider-value {
-   font-size: var(--font-size-xs);
-   color: var(--color-text-secondary);
-   margin-top: var(--space-xs); /* Internal spacing is OK */
-   text-align: right;
-}
-
-/* ========================================= */
-/* FORM HINT COMPONENT                      */
-/* ========================================= */
-
-.form-hint {
-    font-size: var(--font-size-sx);
-    color: var(--color-text-secondary);
-}
-
-
-/* ========================================= */
-/* CUSTOM SELECT COMPONENTS                 */
-/* ========================================= */
+/* Custom Select */
 .custom-select {
    position: relative;
    font-size: var(--font-size-sm);
-   /* NO external margins */
 }
 
 .select-trigger {
@@ -494,172 +435,10 @@
    z-index: 1000;
    max-width: 90vw;
    text-align: center;
-   /* NO external margins */
 }
 
-.notification.show { 
-   bottom: var(--space-lg); 
-}
-
-.notification.error { 
-   background-color: hsl(0, 70%, 50%); 
-}
-
-.notification.success { 
-   background-color: hsl(140, 70%, 40%); 
-}
-
-.notification.info { 
-   background-color: var(--color-primary); 
-}
-
-.notification.warning { 
-   background-color: hsl(45, 100%, 50%); 
-   color: var(--color-text-dark);
-}
-
-/* ========================================= */
-/* PREVIEW & SHOWCASE COMPONENTS            */
-/* ========================================= */
-.color-preview {
-   width: 20px;
-   height: 20px;
-   border-radius: var(--border-radius-sm);
-   border: 1px solid var(--ui-border-color);
-   vertical-align: middle;
-   margin-left: var(--space-sm); /* Internal spacing is OK */
-   display: inline-block;
-   flex-shrink: 0;
-}
-
-.typography-scale .example {
-   padding: var(--space-sm);
-   border-left: 3px solid var(--color-primary);
-   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
-   border-radius: var(--border-radius-sm);
-   /* NO external margins */
-}
-
-.typography-scale .size-label {
-   font-size: var(--font-size-xs);
-   color: var(--color-text-secondary);
-   margin-bottom: var(--space-xs); /* Internal spacing is OK */
-}
-
-.color-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-   gap: var(--space-md);
-   /* NO external margins */
-}
-
-.color-swatch {
-   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
-   border-radius: var(--border-radius-md);
-   padding: var(--space-md);
-   border: 1px solid var(--ui-border-color);
-   /* NO external margins */
-}
-
-.color-box {
-   height: 80px;
-   border-radius: var(--border-radius-sm);
-   margin-bottom: var(--space-sm); /* Internal spacing is OK */
-}
-
-.color-primary-box { background-color: var(--color-primary); }
-.color-primary-dark-box { background-color: var(--color-primary-darker); }
-.color-primary-light-box { background-color: var(--color-primary-lighter); }
-.color-secondary-box { background-color: var(--color-secondary); }
-.color-accent-box { background-color: var(--color-accent); }
-.color-neutral-dark-box { background-color: var(--color-text-default); }
-.color-neutral-medium-box { background-color: var(--color-text-secondary); }
-.color-background-box { background-color: var(--color-background); border: 2px solid var(--ui-border-color); }
-
-.color-name {
-   font-weight: var(--font-weight-medium);
-   margin-bottom: var(--space-xs); /* Internal spacing is OK */
-}
-
-.color-value {
-   font-size: var(--font-size-sm);
-   color: var(--color-text-secondary);
-   font-family: monospace;
-}
-
-.spacing-item {
-   display: flex;
-   align-items: center;
-   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
-   border-radius: var(--border-radius-sm);
-   padding: var(--space-md);
-   border: 1px solid var(--ui-border-color);
-   /* NO external margins */
-}
-
-.spacing-box {
-   background-color: var(--color-primary);
-   border-radius: var(--border-radius-sm);
-}
-
-.animation-box {
-   width: 60px;
-   height: 60px;
-   background-color: var(--color-accent);
-   border-radius: var(--border-radius-md);
-   cursor: pointer;
-   transition: all var(--anim-default-transition);
-   /* NO external margins */
-}
-
-.animation-box:hover {
-   transform: scale(1.1) rotate(5deg);
-   background-color: var(--color-primary);
-}
-
-/* ========================================= */
-/* CONTEXTUAL TYPOGRAPHY                     */
-/* ========================================= */
-
-/* App interface context - smaller scale for dashboard/tool interfaces */
-.panel h1,
-#preview-container h1 {
-    font-size: var(--font-size-2xl);
-}
-
-.panel h2,
-#preview-container h2 {
-    font-size: var(--font-size-xl);
-}
-
-.panel h3,
-#preview-container h3 {
-    font-size: var(--font-size-lg);
-}
-
-/* Card context - even more compact */
-.card h3,
-.card h4 {
-    font-size: var(--font-size-base);
-    font-weight: var(--font-weight-semibold);
-}
-
-/* Sidebar context - compact sizing */
-.sidebar h3 {
-    font-size: var(--font-size-base);
-}
-
-.sidebar h4 {
-    font-size: var(--font-size-sm);
-    font-weight: var(--font-weight-semibold);
-}
-
-/* ========================================= */
-/* RESPONSIVE DESIGN                        */
-/* ========================================= */
-@media (max-width: 768px) {
-   .header-controls {
-       flex-direction: column;
-       gap: var(--space-sm);
-   }
-}
+.notification.show { bottom: var(--space-lg); }
+.notification.error { background-color: hsl(0, 70%, 50%); }
+.notification.success { background-color: hsl(140, 70%, 40%); }
+.notification.info { background-color: var(--color-primary); }
+.notification.warning { background-color: hsl(45, 100%, 50%); color: var(--color-text-dark); }
