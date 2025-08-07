@@ -38,6 +38,15 @@
 }
 
 /* ========================================= */
+/* COMPONENT-SPECIFIC LAYOUTS               */
+/* ========================================= */
+
+/* Adds a small gap to labels used as flex containers (e.g., for color swatches) */
+label.flex.items-center {
+    gap: var(--space-sm);
+}
+
+/* ========================================= */
 /* LAYER 3: FLOW SPACING (Stack patterns)   */
 /* ========================================= */
 
