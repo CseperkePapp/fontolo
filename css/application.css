@@ -1,0 +1,98 @@
+/* ========================================= */
+/* FONTOLO APPLICATION COMPONENTS           */
+/* App-level structural and navigation      */
+/* ========================================= */
+
+/* ========================================= */
+/* HEADER COMPONENTS                        */
+/* ========================================= */
+
+.app-header {
+    padding: var(--space-md) var(--space-lg);
+    border-bottom: 1px solid var(--ui-border-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    /* NO external margins */
+}
+
+.app-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0; /* Reset default margins */
+}
+
+.header-controls {
+    margin-left: auto; 
+    display: flex; 
+    align-items: stretch;
+    gap: var(--space-md);
+}
+
+/* ========================================= */
+/* NAVIGATION COMPONENTS                    */
+/* ========================================= */
+
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--ui-border-color);
+    /* NO external margins */
+}
+
+.nav-btn {
+    background: none;
+    border: none;
+    padding: var(--space-xs) var(--space-sm);
+    cursor: pointer;
+    border-radius: 0;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    text-align: center;
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    flex-grow: 1;
+    border-right: 1px solid var(--ui-border-color);
+    /* NO external margins */
+}
+
+.nav-btn:last-child {
+    border-right: none;
+}
+
+.nav-btn:hover {
+    color: var(--color-text-default);
+}
+
+.nav-btn.active {
+    color: var(--color-primary);
+}
+
+/* ========================================= */
+/* CONTENT PANELS                           */
+/* ========================================= */
+
+.panel {
+    overflow-y: auto;
+    padding: var(--space-lg);
+    display: none;
+}
+
+.panel.active {
+    display: block;
+}
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                        */
+/* ========================================= */
+
+@media (max-width: 768px) {
+   .header-controls {
+       flex-direction: column;
+       gap: var(--space-sm);
+   }
+}
