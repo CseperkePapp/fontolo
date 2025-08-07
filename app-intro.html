@@ -12,145 +12,264 @@
 </head>
 <body>
     <div class="container">
+        <!-- Top Header with Main Navigation -->
         <header class="app-header">
             <h1 class="app-title">Fontolo - CSS Design System Configurator</h1>
             <div class="header-controls">
+                <div class="tab-controls">
+                    <button class="tab-btn active" data-tab="overview">Overview</button>
+                    <button class="tab-btn" data-tab="features">Features</button>
+                    <button class="tab-btn" data-tab="examples">Examples</button>
+                </div>
                 <a href="index.html" class="btn">← Choose Style</a>
                 <a href="fontolodemo.html" class="btn btn-primary">Try Configurator</a>
             </div>
         </header>
 
         <main class="main-content">
-            <!-- Sidebar Navigation -->
+            <!-- Sidebar: Integration Options -->
             <div class="sidebar">
                 <nav class="nav">
-                    <button class="nav-btn active" data-section="overview">Overview</button>
-                    <button class="nav-btn" data-section="features">Features</button>
-                    <button class="nav-btn" data-section="integration">Integration</button>
-                    <button class="nav-btn" data-section="examples">Examples</button>
+                    <button class="nav-btn active" data-section="wordpress">WordPress</button>
+                    <button class="nav-btn" data-section="frameworks">Frameworks</button>
+                    <button class="nav-btn" data-section="vanilla">Vanilla CSS</button>
                 </nav>
                 
                 <div id="sections-container">
-                    <!-- Overview Section -->
-                    <div class="panel active" id="overview-section">
-                        <h3 class="text-lg font-semibold mb-md">What is Fontolo?</h3>
-                        
-                        <p class="mb-md">Fontolo is a live CSS design system configurator that lets you create complete, professional design systems with real-time preview.</p>
-                        
-                        <h4 class="font-medium text-sm mt-md mb-xs">Key Benefits</h4>
-                        <ul class="text-sm mb-md">
-                            <li>• Self-demonstrating system</li>
-                            <li>• Complete framework export</li>
-                            <li>• Live preview</li>
-                            <li>• Professional components</li>
-                        </ul>
-                        
-                        <div class="mt-lg">
-                            <a href="fontolodemo.html" class="btn btn-primary">Start Configuring</a>
-                        </div>
-                    </div>
-
-                    <!-- Features Section -->
-                    <div class="panel" id="features-section">
-                        <h3 class="text-lg font-semibold mb-md">Core Features</h3>
+                    <!-- WordPress Integration -->
+                    <div class="panel active" id="wordpress-section">
+                        <h3 class="text-lg font-semibold mb-md">WordPress Integration</h3>
                         
                         <div class="accordion-item primary">
-                            <button class="accordion-header">
-                                <h4>Live Configuration</h4>
+                            <button class="accordion-header active">
+                                <h4>theme.json Export</h4>
                                 <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                 </svg>
                             </button>
-                            <div class="accordion-content">
-                                <ul class="text-sm">
-                                    <li>• Real-time preview</li>
-                                    <li>• Modular scale support</li>
-                                    <li>• HSL color system</li>
-                                    <li>• Smart accessibility</li>
-                                </ul>
+                            <div class="accordion-content active">
+                                <p class="text-sm mb-sm">Complete FSE theme configuration with Global Styles support</p>
+                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
                             </div>
                         </div>
                         
                         <div class="accordion-item secondary">
                             <button class="accordion-header">
-                                <h4>Export Options</h4>
+                                <h4>Classic Themes</h4>
                                 <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
                                     <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
                                 </svg>
                             </button>
                             <div class="accordion-content">
-                                <ul class="text-sm">
-                                    <li>• Complete CSS framework</li>
-                                    <li>• WordPress theme.json</li>
-                                    <li>• Tailwind configuration</li>
-                                    <li>• Component library</li>
-                                </ul>
+                                <p class="text-sm mb-sm">CSS custom properties for traditional WordPress themes</p>
+                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item accent">
+                            <button class="accordion-header">
+                                <h4>Page Builders</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="text-sm mb-sm">Elementor, Beaver Builder, and JetEngine integration guides</p>
+                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Integration Section -->
-                    <div class="panel" id="integration-section">
-                        <h3 class="text-lg font-semibold mb-md">Integration Paths</h3>
+                    <!-- Modern Frameworks -->
+                    <div class="panel" id="frameworks-section">
+                        <h3 class="text-lg font-semibold mb-md">Modern Frameworks</h3>
                         
-                        <div class="mb-lg">
-                            <h4 class="font-medium mb-sm">WordPress</h4>
-                            <p class="text-sm text-secondary mb-sm">Complete theme.json generation with FSE compatibility</p>
-                            <span class="text-xs bg-accent text-white px-2 py-1 rounded">Coming Soon</span>
+                        <div class="accordion-item primary">
+                            <button class="accordion-header active">
+                                <h4>Tailwind CSS</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content active">
+                                <p class="text-sm mb-sm">tailwind.config.js generation with design tokens</p>
+                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                            </div>
                         </div>
                         
-                        <div class="mb-lg">
-                            <h4 class="font-medium mb-sm">Modern Frameworks</h4>
-                            <p class="text-sm text-secondary mb-sm">Tailwind configs and React/Vue components</p>
-                            <span class="text-xs bg-accent text-white px-2 py-1 rounded">Coming Soon</span>
-                        </div>
-                        
-                        <div class="mb-lg">
-                            <h4 class="font-medium mb-sm">Vanilla CSS</h4>
-                            <p class="text-sm text-secondary mb-sm">Complete CSS framework ready to use</p>
-                            <span class="text-xs bg-primary text-white px-2 py-1 rounded">Available Now</span>
+                        <div class="accordion-item secondary">
+                            <button class="accordion-header">
+                                <h4>React/Vue</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="text-sm mb-sm">Component examples and CSS-in-JS integration</p>
+                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                            </div>
                         </div>
                     </div>
 
-                    <!-- Examples Section -->
-                    <div class="panel" id="examples-section">
-                        <h3 class="text-lg font-semibold mb-md">Live Examples</h3>
+                    <!-- Vanilla CSS -->
+                    <div class="panel" id="vanilla-section">
+                        <h3 class="text-lg font-semibold mb-md">Vanilla CSS</h3>
                         
-                        <p class="text-sm text-secondary mb-md">This page itself is built with the Fontolo design system, demonstrating the app-style layout pattern.</p>
-                        
-                        <div class="sample-card mb-md">
-                            <h4 class="text-lg mb-xs">Component Example</h4>
-                            <p class="text-sm mb-sm">This card uses the exported design tokens</p>
-                            <button class="btn btn-primary btn-sm">Sample Button</button>
+                        <div class="accordion-item primary">
+                            <button class="accordion-header active">
+                                <h4>Complete Framework</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content active">
+                                <p class="text-sm mb-sm">Design tokens + utilities + components ready to use</p>
+                                <span class="text-xs" style="background: var(--color-primary); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Available Now</span>
+                            </div>
                         </div>
                         
-                        <a href="landing-intro.html" class="btn btn-outline">View Landing Style</a>
+                        <div class="accordion-item secondary">
+                            <button class="accordion-header">
+                                <h4>Custom Properties</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content">
+                                <p class="text-sm mb-sm">CSS variables for integration with existing projects</p>
+                                <span class="text-xs" style="background: var(--color-primary); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Available Now</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-lg">
+                            <a href="fontolodemo.html" class="btn btn-primary btn-sm">Try Now</a>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Main Content Area -->
+            <!-- Main Content Area: Overview/Features/Examples -->
             <div id="preview-container">
-                <div class="panel active">
+                <!-- Overview Tab -->
+                <div class="panel active" id="tab-overview-preview">
                     <div class="section">
-                        <h2 class="text-2xl mb-lg">App-Style Layout Demo</h2>
-                        <p class="text-lg mb-md">This layout mimics the configurator interface - perfect for tools, dashboards, and documentation.</p>
+                        <h2 class="text-2xl mb-lg">What is Fontolo?</h2>
+                        <p class="text-lg mb-md">Fontolo is a live CSS design system configurator that generates complete, professional design systems with real-time preview.</p>
                         
-                        <div class="grid grid-2 gap-lg mb-lg">
+                        <div class="grid grid-2 gap-lg mb-xl">
                             <div class="cell">
-                                <h3 class="text-xl mb-sm">Sidebar Navigation</h3>
-                                <p class="text-sm">Organized sections with collapsible content</p>
+                                <h3 class="text-xl mb-sm">Self-Demonstrating</h3>
+                                <p class="text-sm">The interface itself proves the design system works across different component types and layouts.</p>
                             </div>
                             <div class="cell">
-                                <h3 class="text-xl mb-sm">Main Content</h3>
-                                <p class="text-sm">Dynamic content area with live updates</p>
+                                <h3 class="text-xl mb-sm">Complete Export</h3>
+                                <p class="text-sm">Get tokens, utilities, and battle-tested components - not just color palettes.</p>
+                            </div>
+                            <div class="cell">
+                                <h3 class="text-xl mb-sm">Live Preview</h3>
+                                <p class="text-sm">See changes instantly across typography, colors, spacing, and animations.</p>
+                            </div>
+                            <div class="cell">
+                                <h3 class="text-xl mb-sm">Multiple Integrations</h3>
+                                <p class="text-sm">Export for WordPress, Tailwind, React, or vanilla CSS workflows.</p>
                             </div>
                         </div>
                         
-                        <div class="flex gap-md">
-                            <a href="fontolodemo.html" class="btn btn-primary">Try Live Configurator</a>
+                        <div class="flex gap-md mb-lg">
+                            <a href="fontolodemo.html" class="btn btn-primary">Start Configuring</a>
                             <a href="landing-intro.html" class="btn btn-secondary">View Landing Style</a>
                         </div>
+                        
+                        <p class="text-sm text-secondary">💡 Use the sidebar to explore integration options for your preferred development workflow.</p>
+                    </div>
+                </div>
+
+                <!-- Features Tab -->
+                <div class="panel" id="tab-features-preview">
+                    <div class="section">
+                        <h2 class="text-2xl mb-lg">Core Features</h2>
+                        
+                        <div class="sample-card mb-lg">
+                            <h3 class="text-xl mb-md">Live Configuration</h3>
+                            <div class="grid grid-2 gap-md">
+                                <div>
+                                    <h4 class="font-medium mb-xs">Design Tokens</h4>
+                                    <ul class="text-sm">
+                                        <li>• HSL color system with automatic variants</li>
+                                        <li>• Modular typography scales (Golden ratio, custom)</li>
+                                        <li>• Consistent spacing system</li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="font-medium mb-xs">Smart Features</h4>
+                                    <ul class="text-sm">
+                                        <li>• Automatic accessibility checking</li>
+                                        <li>• Dynamic font loading from Google Fonts</li>
+                                        <li>• Real-time preview across all components</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sample-card mb-lg">
+                            <h3 class="text-xl mb-md">Professional Components</h3>
+                            <p class="mb-md">Built and battle-tested within Fontolo itself:</p>
+                            <div class="grid grid-3 gap-sm">
+                                <button class="btn btn-primary btn-sm">Buttons</button>
+                                <div class="text-xs border rounded p-2">Cards</div>
+                                <div class="text-xs border rounded p-2">Forms</div>
+                                <div class="text-xs border rounded p-2">Tabs</div>
+                                <div class="text-xs border rounded p-2">Accordions</div>
+                                <div class="text-xs border rounded p-2">Notifications</div>
+                            </div>
+                        </div>
+                        
+                        <div class="sample-card">
+                            <h3 class="text-xl mb-md">Export Options</h3>
+                            <div class="flex gap-md flex-wrap">
+                                <span class="text-xs bg-primary text-white px-3 py-1 rounded">Complete CSS Framework</span>
+                                <span class="text-xs bg-accent text-white px-3 py-1 rounded">theme.json (Coming Soon)</span>
+                                <span class="text-xs bg-secondary text-white px-3 py-1 rounded">Tailwind Config (Coming Soon)</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Examples Tab -->
+                <div class="panel" id="tab-examples-preview">
+                    <div class="section">
+                        <h2 class="text-2xl mb-lg">Live Examples</h2>
+                        <p class="text-lg mb-xl">This entire page is built with the Fontolo design system, demonstrating the app-style layout pattern perfect for tools and dashboards.</p>
+                        
+                        <div class="grid grid-2 gap-lg mb-xl">
+                            <div>
+                                <h3 class="text-xl mb-md">Typography Scale</h3>
+                                <div class="space-y-sm">
+                                    <h1 class="text-3xl">Heading 1</h1>
+                                    <h2 class="text-2xl">Heading 2</h2>
+                                    <h3 class="text-xl">Heading 3</h3>
+                                    <p class="text-base">Body text with proper line height</p>
+                                    <p class="text-sm">Small text for captions</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl mb-md">Component Examples</h3>
+                                <div class="space-y-md">
+                                    <div class="flex gap-sm">
+                                        <button class="btn btn-primary btn-sm">Primary</button>
+                                        <button class="btn btn-secondary btn-sm">Secondary</button>
+                                    </div>
+                                    <div class="sample-card">
+                                        <h4 class="font-medium mb-xs">Sample Card</h4>
+                                        <p class="text-sm">Using the exported design tokens</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <p class="text-center text-secondary mb-md">
+                            <a href="landing-intro.html" class="text-primary">View the landing page style</a> to see how the same design system creates a completely different layout.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -158,9 +277,24 @@
     </div>
 
     <script>
-        // Simple navigation handling
+        // Tab navigation (header)
+        document.querySelector('.tab-controls').addEventListener('click', (e) => {
+            if (!e.target.matches('.tab-btn')) return;
+            const tabId = e.target.dataset.tab;
+            
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            document.querySelectorAll('#preview-container .panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.getElementById(`tab-${tabId}-preview`).classList.add('active');
+        });
+        
+        // Sidebar navigation
         document.querySelector('.nav').addEventListener('click', (e) => {
             if (!e.target.matches('.nav-btn')) return;
+            const sectionId = e.target.dataset.section;
             
             document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
             e.target.classList.add('active');
@@ -168,17 +302,27 @@
             document.querySelectorAll('#sections-container .panel').forEach(panel => {
                 panel.classList.remove('active');
             });
-            document.getElementById(`${e.target.dataset.section}-section`).classList.add('active');
+            document.getElementById(`${sectionId}-section`).classList.add('active');
         });
         
         // Accordion handling
         document.querySelectorAll('.accordion-header').forEach(header => {
             header.addEventListener('click', () => {
+                const parent = header.closest('.panel');
                 const content = header.nextElementSibling;
                 const wasActive = header.classList.contains('active');
                 
-                header.classList.toggle('active');
-                content.classList.toggle('active');
+                // Close all accordions in this section
+                parent.querySelectorAll('.accordion-header').forEach(h => {
+                    h.classList.remove('active');
+                    if (h.nextElementSibling) h.nextElementSibling.classList.remove('active');
+                });
+                
+                // Open clicked accordion if it wasn't active
+                if (!wasActive) {
+                    header.classList.add('active');
+                    content.classList.add('active');
+                }
             });
         });
     </script>
