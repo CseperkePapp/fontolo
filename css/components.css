@@ -403,10 +403,10 @@
 /* ========================================= */
 
 .form-hint {
-    font-size: var(--font-size-xs);
+    font-size: var(--font-size-s);
     color: var(--color-text-secondary);
     /* Use a negative margin to pull the hint closer to the input above it */
-    margin-top: calc(-1 * var(--space-sm)); 
+    margin-top: calc(-.5 * var(--space-sm)); 
 }
 
 
