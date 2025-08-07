@@ -46,6 +46,13 @@ label.flex.items-center {
     gap: var(--space-sm);
 }
 
+.flex-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+
 /* ========================================= */
 /* LAYER 3: FLOW SPACING (Stack patterns)   */
 /* ========================================= */
