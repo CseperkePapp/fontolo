@@ -1,0 +1,140 @@
+/* ========================================= */
+/* FONTOLO DEMO & SHOWCASE COMPONENTS       */
+/* Components for demonstrating design tokens */
+/* ========================================= */
+
+/* ========================================= */
+/* COLOR DEMONSTRATION COMPONENTS           */
+/* ========================================= */
+
+.color-preview {
+   width: 20px;
+   height: 20px;
+   border-radius: var(--border-radius-sm);
+   border: 1px solid var(--ui-border-color);
+   vertical-align: middle;
+   margin-left: var(--space-sm); /* Internal spacing is OK */
+   display: inline-block;
+   flex-shrink: 0;
+}
+
+.color-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: var(--space-md);
+   /* NO external margins */
+}
+
+.color-swatch {
+   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border-radius: var(--border-radius-md);
+   padding: var(--space-md);
+   border: 1px solid var(--ui-border-color);
+   /* NO external margins */
+}
+
+.color-box {
+   height: 80px;
+   border-radius: var(--border-radius-sm);
+   margin-bottom: var(--space-sm); /* Internal spacing is OK */
+}
+
+.color-primary-box { background-color: var(--color-primary); }
+.color-primary-dark-box { background-color: var(--color-primary-darker); }
+.color-primary-light-box { background-color: var(--color-primary-lighter); }
+.color-secondary-box { background-color: var(--color-secondary); }
+.color-accent-box { background-color: var(--color-accent); }
+.color-neutral-dark-box { background-color: var(--color-text-default); }
+.color-neutral-medium-box { background-color: var(--color-text-secondary); }
+.color-background-box { background-color: var(--color-background); border: 2px solid var(--ui-border-color); }
+
+.color-name {
+   font-weight: var(--font-weight-medium);
+   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+}
+
+.color-value {
+   font-size: var(--font-size-sm);
+   color: var(--color-text-secondary);
+   font-family: monospace;
+}
+
+/* ========================================= */
+/* TYPOGRAPHY DEMONSTRATION                 */
+/* ========================================= */
+
+.typography-scale .example {
+   padding: var(--space-sm);
+   border-left: 3px solid var(--color-primary);
+   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border-radius: var(--border-radius-sm);
+   /* NO external margins */
+}
+
+.typography-scale .size-label {
+   font-size: var(--font-size-xs);
+   color: var(--color-text-secondary);
+   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+}
+
+/* ========================================= */
+/* SPACING DEMONSTRATION                    */
+/* ========================================= */
+
+.spacing-item {
+   display: flex;
+   align-items: center;
+   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border-radius: var(--border-radius-sm);
+   padding: var(--space-md);
+   border: 1px solid var(--ui-border-color);
+   /* NO external margins */
+}
+
+.spacing-box {
+   background-color: var(--color-primary);
+   border-radius: var(--border-radius-sm);
+}
+
+/* ========================================= */
+/* ANIMATION DEMONSTRATION                  */
+/* ========================================= */
+
+.animation-box {
+   width: 60px;
+   height: 60px;
+   background-color: var(--color-accent);
+   border-radius: var(--border-radius-md);
+   cursor: pointer;
+   transition: all var(--anim-default-transition);
+   /* NO external margins */
+}
+
+.animation-box:hover {
+   transform: scale(1.1) rotate(5deg);
+   background-color: var(--color-primary);
+}
+
+/* ========================================= */
+/* SAMPLE CARDS (DEMO-SPECIFIC)            */
+/* ========================================= */
+
+.sample-card {
+   background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color);
+   border-radius: var(--border-radius-md);
+   padding: var(--space-lg);
+   max-width: 400px;
+   transition: all 0.2s ease-out;
+   /* NO external margins */
+}
+
+.sample-border-image {
+   padding: var(--space-lg);
+   border-style: solid;
+   border-width: var(--border-image-width);
+   border-image-source: var(--border-image-source);
+   border-image-slice: var(--border-image-slice);
+   border-image-outset: var(--border-image-outset);
+   /* NO external margins */
+}
