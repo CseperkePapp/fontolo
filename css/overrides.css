@@ -1,0 +1,41 @@
+/* ========================================= */
+/* FONTOLO CONTEXTUAL OVERRIDES             */
+/* Context-specific component adjustments   */
+/* ========================================= */
+
+/* ========================================= */
+/* CONTEXTUAL TYPOGRAPHY                     */
+/* ========================================= */
+
+/* App interface context - smaller scale for dashboard/tool interfaces */
+.panel h1,
+#preview-container h1 {
+    font-size: var(--font-size-2xl);
+}
+
+.panel h2,
+#preview-container h2 {
+    font-size: var(--font-size-xl);
+}
+
+.panel h3,
+#preview-container h3 {
+    font-size: var(--font-size-lg);
+}
+
+/* Card context - even more compact */
+.card h3,
+.card h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Sidebar context - compact sizing */
+.sidebar h3 {
+    font-size: var(--font-size-base);
+}
+
+.sidebar h4 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
