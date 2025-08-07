@@ -1,7 +1,10 @@
 /* ========================================= */
 /* FONTOLO INDEX PAGE STYLES                */
-/* Simple redirect/selection page styles    */
+/* Fully compatible with the CSS Architecture */
 /* ========================================= */
+
+/* Note: This file assumes the <body> tag has a layout class like 'page-flow' 
+   or the main container has a class like '.stack' to handle vertical spacing. */
 
 body {
     margin: 0;
@@ -22,6 +25,7 @@ body {
     text-align: center;
     box-shadow: 0 20px 40px hsla(var(--color-neutral-hue), 20%, 30%, 0.1);
     max-width: 600px;
+    /* NO external margins. Assumes it's inside a layout container. */
 }
 
 .logo {
@@ -31,19 +35,19 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: var(--space-sm);
+    /* margin-bottom is removed - handled by .stack */
 }
 
 .tagline {
     color: var(--color-text-secondary);
-    margin-bottom: var(--space-xl);
     font-size: var(--font-size-lg);
+    /* margin-bottom is removed - handled by .stack */
 }
 
 .options-grid {
     display: grid;
     gap: var(--space-lg);
-    margin-bottom: var(--space-xl);
+    /* margin-bottom is removed - handled by .stack */
 }
 
 .option-card {
@@ -55,6 +59,7 @@ body {
     transition: all var(--anim-default-transition);
     position: relative;
     overflow: hidden;
+    /* NO external margins */
 }
 
 .option-card:hover {
@@ -66,13 +71,15 @@ body {
 .option-title {
     font-size: var(--font-size-xl);
     font-weight: var(--font-weight-semibold);
-    margin-bottom: var(--space-sm);
     color: var(--color-primary);
+    /* Internal margins are OK if needed, but stack is better */
+    margin: 0 0 var(--space-sm) 0;
 }
 
 .option-description {
     color: var(--color-text-secondary);
-    margin-bottom: var(--space-md);
+    /* Internal margins are OK if needed, but stack is better */
+    margin: 0 0 var(--space-md) 0;
 }
 
 .option-preview {
@@ -83,7 +90,6 @@ body {
 
 .configurator-link {
     display: inline-block;
-    margin-top: var(--space-lg);
     padding: var(--space-sm) var(--space-lg);
     background: var(--color-primary);
     color: white;
@@ -91,6 +97,7 @@ body {
     border-radius: var(--border-radius-md);
     font-weight: var(--font-weight-semibold);
     transition: all var(--anim-default-transition);
+    /* margin-top is removed - handled by .stack */
 }
 
 .configurator-link:hover {
@@ -99,11 +106,11 @@ body {
 }
 
 .language-selector {
-    margin-top: var(--space-lg);
     padding-top: var(--space-lg);
     border-top: 1px solid var(--ui-border-color);
     color: var(--color-text-secondary);
     font-size: var(--font-size-sm);
+    /* margin-top is removed - handled by .stack */
 }
 
 /* Responsive adjustments */

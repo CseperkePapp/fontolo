@@ -1,9 +1,9 @@
 /* ========================================= */
 /* FONTOLO UTILITY CLASSES                  */
-/* Reusable utility classes for rapid development */
+/* VISUAL-ONLY utilities - NO SPACING       */
 /* ========================================= */
 
-/* Typography Utilities */
+/* Typography Utilities - VISUAL ONLY */
 .text-xs { font-size: var(--font-size-xs); }
 .text-sm { font-size: var(--font-size-sm); }
 .text-base { font-size: var(--font-size-base); }
@@ -12,14 +12,14 @@
 .text-2xl { font-size: var(--font-size-2xl); }
 .text-3xl { font-size: var(--font-size-3xl); }
 
-/* Font Weights */
+/* Font Weights - VISUAL ONLY */
 .font-light { font-weight: var(--font-weight-light); }
 .font-normal { font-weight: var(--font-weight-normal); }
 .font-medium { font-weight: var(--font-weight-medium); }
 .font-semibold { font-weight: var(--font-weight-semibold); }
 .font-bold { font-weight: var(--font-weight-bold); }
 
-/* Text Colors */
+/* Text Colors - VISUAL ONLY */
 .text-primary { color: var(--color-primary); }
 .text-secondary { color: var(--color-secondary); }
 .text-accent { color: var(--color-accent); }
@@ -27,7 +27,7 @@
 .text-dark { color: var(--color-text-dark); }
 .text-light { color: var(--color-text-light); }
 
-/* Background Colors */
+/* Background Colors - VISUAL ONLY */
 .bg-primary { background-color: var(--color-primary); }
 .bg-secondary { background-color: var(--color-secondary); }
 .bg-accent { background-color: var(--color-accent); }
@@ -36,71 +36,18 @@
 .bg-white { background-color: white; }
 .bg-transparent { background-color: transparent; }
 
-/* Spacing Utilities */
-.m-0 { margin: 0; }
-.m-xxs { margin: var(--space-xxs); }
-.m-xs { margin: var(--space-xs); }
-.m-sm { margin: var(--space-sm); }
-.m-md { margin: var(--space-md); }
-.m-lg { margin: var(--space-lg); }
-.m-xl { margin: var(--space-xl); }
-.m-xxl { margin: var(--space-xxl); }
+/* Text Alignment - VISUAL ONLY */
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
 
-.mt-0 { margin-top: 0; }
-.mt-xxs { margin-top: var(--space-xxs); }
-.mt-xs { margin-top: var(--space-xs); }
-.mt-sm { margin-top: var(--space-sm); }
-.mt-md { margin-top: var(--space-md); }
-.mt-lg { margin-top: var(--space-lg); }
-.mt-xl { margin-top: var(--space-xl); }
-
-.mb-0 { margin-bottom: 0; }
-.mb-xxs { margin-bottom: var(--space-xxs); }
-.mb-xs { margin-bottom: var(--space-xs); }
-.mb-sm { margin-bottom: var(--space-sm); }
-.mb-md { margin-bottom: var(--space-md); }
-.mb-lg { margin-bottom: var(--space-lg); }
-.mb-xl { margin-bottom: var(--space-xl); }
-
-.p-0 { padding: 0; }
-.p-xxs { padding: var(--space-xxs); }
-.p-xs { padding: var(--space-xs); }
-.p-sm { padding: var(--space-sm); }
-.p-md { padding: var(--space-md); }
-.p-lg { padding: var(--space-lg); }
-.p-xl { padding: var(--space-xl); }
-
-/* Display Utilities */
+/* Display Properties - BEHAVIORAL ONLY */
 .block { display: block; }
 .inline { display: inline; }
 .inline-block { display: inline-block; }
-.flex { display: flex; }
-.grid { display: grid; }
 .hidden { display: none; }
 
-/* Flexbox Utilities */
-.flex-row { flex-direction: row; }
-.flex-col { flex-direction: column; }
-.justify-start { justify-content: flex-start; }
-.justify-center { justify-content: center; }
-.justify-between { justify-content: space-between; }
-.justify-around { justify-content: space-around; }
-.items-start { align-items: flex-start; }
-.items-center { align-items: center; }
-.items-end { align-items: flex-end; }
-.items-stretch { align-items: stretch; }
-.flex-wrap { flex-wrap: wrap; }
-.flex-1 { flex: 1; }
-
-/* Gap Utilities */
-.gap-xxs { gap: var(--space-xxs); }
-.gap-xs { gap: var(--space-xs); }
-.gap-sm { gap: var(--space-sm); }
-.gap-md { gap: var(--space-md); }
-.gap-lg { gap: var(--space-lg); }
-.gap-xl { gap: var(--space-xl); }
-
-/* Border Utilities */
+/* Border Utilities - VISUAL ONLY */
 .border { border: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color); }
 .border-t { border-top: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color); }
 .border-r { border-right: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color); }
@@ -108,19 +55,14 @@
 .border-l { border-left: var(--ui-border-width) var(--ui-border-style) var(--ui-border-color); }
 .border-0 { border: none; }
 
-/* Border Radius Utilities */
+/* Border Radius Utilities - VISUAL ONLY */
 .rounded-sm { border-radius: var(--border-radius-sm); }
 .rounded { border-radius: var(--border-radius-md); }
 .rounded-lg { border-radius: var(--border-radius-lg); }
 .rounded-full { border-radius: var(--border-radius-full); }
 .rounded-none { border-radius: 0; }
 
-/* Text Alignment */
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-
-/* Animation Utilities */
+/* Animation Utilities - BEHAVIORAL ONLY */
 .playful:hover { animation: playfulBounce var(--anim-playful); }
 .serious:hover { animation: seriousFade var(--anim-serious); }
 .bold:hover { animation: boldSlide var(--anim-bold); }
@@ -143,3 +85,17 @@
     50% { transform: translateX(-10px) scale(1.1); } 
     100% { transform: translateX(0) scale(1); } 
 }
+
+/* 
+============================================
+ALL SPACING UTILITIES REMOVED:
+============================================
+- No margin utilities (.m-*, .mt-*, .mr-*, .mb-*, .ml-*, .mx-*, .my-*)
+- No padding utilities (.p-*, .pt-*, .pr-*, .pb-*, .pl-*, .px-*, .py-*)
+- No gap utilities (.gap-*, .row-gap-*, .col-gap-*)
+- No flex spacing utilities (.flex > * + *, etc.)
+
+Layout and spacing are now handled exclusively by:
+- css/layout.css (gap-based containers and stack patterns)
+- css/components.css (component internal spacing only)
+*/

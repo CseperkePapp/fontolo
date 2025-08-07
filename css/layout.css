@@ -1,9 +1,112 @@
 /* ========================================= */
 /* FONTOLO LAYOUT SYSTEM                    */
-/* Containers, grids, and layout utilities  */
+/* Three-layer spacing model implementation */
 /* ========================================= */
 
-/* Container System */
+/* ========================================= */
+/* LAYER 2: INTERNAL SPACING (gap property) */
+/* ========================================= */
+
+/* Basic Layout Primitives */
+.flex {
+    display: flex;
+    gap: var(--space-local, var(--space-md));
+}
+
+.grid {
+    display: grid;
+    gap: var(--space-local, var(--space-md));
+}
+
+/* Specialized Containers */
+.button-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-local, var(--space-md));
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--space-local, var(--space-lg));
+}
+
+.inline-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-local, var(--space-sm));
+}
+
+/* ========================================= */
+/* LAYER 3: FLOW SPACING (Stack patterns)   */
+/* ========================================= */
+
+/* Page-level vertical rhythm */
+.page-flow > * + * {
+    margin-top: var(--space-local, var(--space-xl));
+}
+
+/* Section-level vertical rhythm */
+.section-flow > * + * {
+    margin-top: var(--space-local, var(--space-lg));
+}
+
+/* General-purpose content stacking */
+.stack > * + * {
+    margin-top: var(--space-local, var(--space-md));
+}
+
+/* Typography-specific rhythm */
+.prose > * + * {
+    margin-top: var(--space-local, var(--space-md));
+}
+
+.prose > h1 + * {
+    margin-top: var(--space-lg);
+}
+
+.prose > h2 + * {
+    margin-top: var(--space-lg);
+}
+
+.prose > h3 + * {
+    margin-top: var(--space-md);
+}
+
+/* ========================================= */
+/* CONTEXTUAL SPACING MODIFIERS             */
+/* ========================================= */
+
+/* Spacing contexts using --space-local */
+.tight { 
+    --space-local: var(--space-sm); 
+}
+
+.loose { 
+    --space-local: var(--space-lg); 
+}
+
+.extra-loose { 
+    --space-local: var(--space-xl); 
+}
+
+/* Component-specific contexts */
+.hero { 
+    --space-local: var(--space-xl); 
+}
+
+.sidebar { 
+    --space-local: var(--space-sm); 
+}
+
+.footer { 
+    --space-local: var(--space-md); 
+}
+
+/* ========================================= */
+/* CONTAINER SYSTEM                         */
+/* ========================================= */
+
 .container {
     width: 100%;
     max-width: var(--breakpoint-xxl);
@@ -23,39 +126,6 @@
     max-width: none;
     margin-left: auto;
     margin-right: auto;
-}
-
-/* Grid System */
-.grid {
-    display: grid;
-    gap: var(--space-md);
-}
-
-.grid-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
-.grid-1 { grid-template-columns: 1fr; }
-.grid-2 { grid-template-columns: repeat(2, 1fr); }
-.grid-3 { grid-template-columns: repeat(3, 1fr); }
-.grid-4 { grid-template-columns: repeat(4, 1fr); }
-.grid-5 { grid-template-columns: repeat(5, 1fr); }
-.grid-6 { grid-template-columns: repeat(6, 1fr); }
-
-/* Grid Gaps */
-.grid-gap-sm { gap: var(--space-sm); }
-.grid-gap-md { gap: var(--space-md); }
-.grid-gap-lg { gap: var(--space-lg); }
-
-/* Cell/Item Component */
-.cell {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: var(--space-sm);
-    border: 1px solid var(--ui-border-color);
-    border-radius: var(--border-radius-md);
-    background-color: white;
-    min-height: 100px;
 }
 
 /* Main Content Layout (2-column) */
@@ -87,11 +157,55 @@
     display: block;
 }
 
-/* Section Spacing */
-.section {
-    margin-bottom: var(--space-xl);
-}
+/* ========================================= */
+/* FLEXBOX UTILITIES                        */
+/* ========================================= */
 
-.section:last-child {
-    margin-bottom: 0;
+.flex-row { flex-direction: row; }
+.flex-col { flex-direction: column; }
+.justify-start { justify-content: flex-start; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-around { justify-content: space-around; }
+.items-start { align-items: flex-start; }
+.items-center { align-items: center; }
+.items-end { align-items: flex-end; }
+.items-stretch { align-items: stretch; }
+.flex-wrap { flex-wrap: wrap; }
+.flex-1 { flex: 1; }
+
+/* ========================================= */
+/* GRID UTILITIES                           */
+/* ========================================= */
+
+.grid-auto { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-1 { grid-template-columns: 1fr; }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-4 { grid-template-columns: repeat(4, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); }
+.grid-6 { grid-template-columns: repeat(6, 1fr); }
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                        */
+/* ========================================= */
+
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--ui-border-color);
+    }
+    
+    /* Mobile spacing adjustments */
+    .mobile-tight { 
+        --space-local: var(--space-xs); 
+    }
+    
+    .mobile-normal { 
+        --space-local: var(--space-sm); 
+    }
 }
