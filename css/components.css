@@ -399,6 +399,18 @@
 }
 
 /* ========================================= */
+/* FORM HINT COMPONENT                      */
+/* ========================================= */
+
+.form-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    /* Use a negative margin to pull the hint closer to the input above it */
+    margin-top: calc(-1 * var(--space-sm)); 
+}
+
+
+/* ========================================= */
 /* CUSTOM SELECT COMPONENTS                 */
 /* ========================================= */
 .custom-select {
@@ -643,20 +655,6 @@
     font-size: var(--font-size-sm);
     font-weight: var(--font-weight-semibold);
 }
-
-/* ========================================= */
-/* FORM HINT COMPONENT                      */
-/* ========================================= */
-
-.form-hint {
-    font-size: var(--font-size-xs);
-    color: var(--color-text-secondary);
-    /* Use a negative margin to pull the hint closer to the input above it */
-    margin-top: calc(-1 * var(--space-sm)); 
-}
-
-
-
 
 /* ========================================= */
 /* RESPONSIVE DESIGN                        */
