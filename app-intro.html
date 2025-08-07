@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontolo - App Introduction</title>
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+    <div class="container">
+        <header class="app-header">
+            <h1 class="app-title">Fontolo - CSS Design System Configurator</h1>
+            <div class="header-controls">
+                <a href="index.html" class="btn">← Choose Style</a>
+                <a href="fontolodemo.html" class="btn btn-primary">Try Configurator</a>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <!-- Sidebar Navigation -->
+            <div class="sidebar">
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="overview">Overview</button>
+                    <button class="nav-btn" data-section="features">Features</button>
+                    <button class="nav-btn" data-section="integration">Integration</button>
+                    <button class="nav-btn" data-section="examples">Examples</button>
+                </nav>
+                
+                <div id="sections-container">
+                    <!-- Overview Section -->
+                    <div class="panel active" id="overview-section">
+                        <h3 class="text-lg font-semibold mb-md">What is Fontolo?</h3>
+                        
+                        <p class="mb-md">Fontolo is a live CSS design system configurator that lets you create complete, professional design systems with real-time preview.</p>
+                        
+                        <h4 class="font-medium text-sm mt-md mb-xs">Key Benefits</h4>
+                        <ul class="text-sm mb-md">
+                            <li>• Self-demonstrating system</li>
+                            <li>• Complete framework export</li>
+                            <li>• Live preview</li>
+                            <li>• Professional components</li>
+                        </ul>
+                        
+                        <div class="mt-lg">
+                            <a href="fontolodemo.html" class="btn btn-primary">Start Configuring</a>
+                        </div>
+                    </div>
+
+                    <!-- Features Section -->
+                    <div class="panel" id="features-section">
+                        <h3 class="text-lg font-semibold mb-md">Core Features</h3>
+                        
+                        <div class="accordion-item primary">
+                            <button class="accordion-header">
+                                <h4>Live Configuration</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content">
+                                <ul class="text-sm">
+                                    <li>• Real-time preview</li>
+                                    <li>• Modular scale support</li>
+                                    <li>• HSL color system</li>
+                                    <li>• Smart accessibility</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="accordion-item secondary">
+                            <button class="accordion-header">
+                                <h4>Export Options</h4>
+                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                </svg>
+                            </button>
+                            <div class="accordion-content">
+                                <ul class="text-sm">
+                                    <li>• Complete CSS framework</li>
+                                    <li>• WordPress theme.json</li>
+                                    <li>• Tailwind configuration</li>
+                                    <li>• Component library</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Integration Section -->
+                    <div class="panel" id="integration-section">
+                        <h3 class="text-lg font-semibold mb-md">Integration Paths</h3>
+                        
+                        <div class="mb-lg">
+                            <h4 class="font-medium mb-sm">WordPress</h4>
+                            <p class="text-sm text-secondary mb-sm">Complete theme.json generation with FSE compatibility</p>
+                            <span class="text-xs bg-accent text-white px-2 py-1 rounded">Coming Soon</span>
+                        </div>
+                        
+                        <div class="mb-lg">
+                            <h4 class="font-medium mb-sm">Modern Frameworks</h4>
+                            <p class="text-sm text-secondary mb-sm">Tailwind configs and React/Vue components</p>
+                            <span class="text-xs bg-accent text-white px-2 py-1 rounded">Coming Soon</span>
+                        </div>
+                        
+                        <div class="mb-lg">
+                            <h4 class="font-medium mb-sm">Vanilla CSS</h4>
+                            <p class="text-sm text-secondary mb-sm">Complete CSS framework ready to use</p>
+                            <span class="text-xs bg-primary text-white px-2 py-1 rounded">Available Now</span>
+                        </div>
+                    </div>
+
+                    <!-- Examples Section -->
+                    <div class="panel" id="examples-section">
+                        <h3 class="text-lg font-semibold mb-md">Live Examples</h3>
+                        
+                        <p class="text-sm text-secondary mb-md">This page itself is built with the Fontolo design system, demonstrating the app-style layout pattern.</p>
+                        
+                        <div class="sample-card mb-md">
+                            <h4 class="text-lg mb-xs">Component Example</h4>
+                            <p class="text-sm mb-sm">This card uses the exported design tokens</p>
+                            <button class="btn btn-primary btn-sm">Sample Button</button>
+                        </div>
+                        
+                        <a href="landing-intro.html" class="btn btn-outline">View Landing Style</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div id="preview-container">
+                <div class="panel active">
+                    <div class="section">
+                        <h2 class="text-2xl mb-lg">App-Style Layout Demo</h2>
+                        <p class="text-lg mb-md">This layout mimics the configurator interface - perfect for tools, dashboards, and documentation.</p>
+                        
+                        <div class="grid grid-2 gap-lg mb-lg">
+                            <div class="cell">
+                                <h3 class="text-xl mb-sm">Sidebar Navigation</h3>
+                                <p class="text-sm">Organized sections with collapsible content</p>
+                            </div>
+                            <div class="cell">
+                                <h3 class="text-xl mb-sm">Main Content</h3>
+                                <p class="text-sm">Dynamic content area with live updates</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex gap-md">
+                            <a href="fontolodemo.html" class="btn btn-primary">Try Live Configurator</a>
+                            <a href="landing-intro.html" class="btn btn-secondary">View Landing Style</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simple navigation handling
+        document.querySelector('.nav').addEventListener('click', (e) => {
+            if (!e.target.matches('.nav-btn')) return;
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            e.target.classList.add('active');
+            
+            document.querySelectorAll('#sections-container .panel').forEach(panel => {
+                panel.classList.remove('active');
+            });
+            document.getElementById(`${e.target.dataset.section}-section`).classList.add('active');
+        });
+        
+        // Accordion handling
+        document.querySelectorAll('.accordion-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                const wasActive = header.classList.contains('active');
+                
+                header.classList.toggle('active');
+                content.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
