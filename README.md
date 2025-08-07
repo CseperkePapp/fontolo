@@ -4,9 +4,7 @@
 
 ## CURRENT BRANCH - Splitting Components.css CSS Structure into:
 
-- `primitives.css` – low-level UI building blocks
-- `composites.css` – reusable component patterns (e.g. tabs, accordions)
-- `application.css` – layout, structure, shells
+Components.css and
 - `demo.css` – visual showcases
 - `overrides.css` – context-specific tweaks or bugfixes
 
