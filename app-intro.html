@@ -12,7 +12,6 @@
 </head>
 <body>
     <div class="container">
-        <!-- Top Header with Main Navigation -->
         <header class="app-header">
             <h1 class="app-title">Fontolo - CSS Design System Configurator</h1>
             <div class="header-controls">
@@ -21,8 +20,10 @@
                     <button class="tab-btn" data-tab="features">Features</button>
                     <button class="tab-btn" data-tab="examples">Examples</button>
                 </div>
-                <a href="index.html" class="btn">← Choose Style</a>
-                <a href="fontolodemo.html" class="btn btn-primary">Try Configurator</a>
+                <div class="button-group">
+                    <a href="index.html" class="btn">← Choose Style</a>
+                    <a href="fontolodemo.html" class="btn btn-primary">Try Configurator</a>
+                </div>
             </div>
         </header>
 
@@ -38,111 +39,131 @@
                 <div id="sections-container">
                     <!-- WordPress Integration -->
                     <div class="panel active" id="wordpress-section">
-                        <h3 class="text-lg font-semibold mb-md">WordPress Integration</h3>
-                        
-                        <div class="accordion-item primary">
-                            <button class="accordion-header active">
-                                <h4>theme.json Export</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content active">
-                                <p class="text-sm mb-sm">Complete FSE theme configuration with Global Styles support</p>
-                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                        <div class="stack tight">
+                            <h3>WordPress Integration</h3>
+                            
+                            <div class="accordion-item primary">
+                                <button class="accordion-header active">
+                                    <h4>theme.json Export</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content active">
+                                    <div class="stack tight">
+                                        <p>Complete FSE theme configuration with Global Styles support</p>
+                                        <span class="text-xs bg-accent text-white px-3 py-1 rounded">Coming Soon</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="accordion-item secondary">
-                            <button class="accordion-header">
-                                <h4>Classic Themes</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="text-sm mb-sm">CSS custom properties for traditional WordPress themes</p>
-                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                            
+                            <div class="accordion-item secondary">
+                                <button class="accordion-header">
+                                    <h4>Classic Themes</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="stack tight">
+                                        <p>CSS custom properties for traditional WordPress themes</p>
+                                        <span class="text-xs bg-accent text-white px-3 py-1 rounded">Coming Soon</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="accordion-item accent">
-                            <button class="accordion-header">
-                                <h4>Page Builders</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="text-sm mb-sm">Elementor, Beaver Builder, and JetEngine integration guides</p>
-                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                            
+                            <div class="accordion-item accent">
+                                <button class="accordion-header">
+                                    <h4>Page Builders</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="stack tight">
+                                        <p>Elementor, Beaver Builder, and JetEngine integration guides</p>
+                                        <span class="text-xs bg-accent text-white px-3 py-1 rounded">Coming Soon</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Modern Frameworks -->
                     <div class="panel" id="frameworks-section">
-                        <h3 class="text-lg font-semibold mb-md">Modern Frameworks</h3>
-                        
-                        <div class="accordion-item primary">
-                            <button class="accordion-header active">
-                                <h4>Tailwind CSS</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content active">
-                                <p class="text-sm mb-sm">tailwind.config.js generation with design tokens</p>
-                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                        <div class="stack tight">
+                            <h3>Modern Frameworks</h3>
+                            
+                            <div class="accordion-item primary">
+                                <button class="accordion-header active">
+                                    <h4>Tailwind CSS</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content active">
+                                    <div class="stack tight">
+                                        <p>tailwind.config.js generation with design tokens</p>
+                                        <span class="text-xs bg-accent text-white px-3 py-1 rounded">Coming Soon</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="accordion-item secondary">
-                            <button class="accordion-header">
-                                <h4>React/Vue</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="text-sm mb-sm">Component examples and CSS-in-JS integration</p>
-                                <span class="text-xs" style="background: var(--color-accent); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Coming Soon</span>
+                            
+                            <div class="accordion-item secondary">
+                                <button class="accordion-header">
+                                    <h4>React/Vue</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="stack tight">
+                                        <p>Component examples and CSS-in-JS integration</p>
+                                        <span class="text-xs bg-accent text-white px-3 py-1 rounded">Coming Soon</span>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                     <!-- Vanilla CSS -->
                     <div class="panel" id="vanilla-section">
-                        <h3 class="text-lg font-semibold mb-md">Vanilla CSS</h3>
-                        
-                        <div class="accordion-item primary">
-                            <button class="accordion-header active">
-                                <h4>Complete Framework</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content active">
-                                <p class="text-sm mb-sm">Design tokens + utilities + components ready to use</p>
-                                <span class="text-xs" style="background: var(--color-primary); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Available Now</span>
+                        <div class="stack">
+                            <h3>Vanilla CSS</h3>
+                            
+                            <div class="accordion-item primary">
+                                <button class="accordion-header active">
+                                    <h4>Complete Framework</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content active">
+                                    <div class="stack tight">
+                                        <p>Design tokens + utilities + components ready to use</p>
+                                        <span class="text-xs bg-primary text-white px-3 py-1 rounded">Available Now</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="accordion-item secondary">
-                            <button class="accordion-header">
-                                <h4>Custom Properties</h4>
-                                <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
-                                    <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-                                </svg>
-                            </button>
-                            <div class="accordion-content">
-                                <p class="text-sm mb-sm">CSS variables for integration with existing projects</p>
-                                <span class="text-xs" style="background: var(--color-primary); color: white; padding: var(--space-xs) var(--space-sm); border-radius: var(--border-radius-sm);">Available Now</span>
+                            
+                            <div class="accordion-item secondary">
+                                <button class="accordion-header">
+                                    <h4>Custom Properties</h4>
+                                    <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" width="20" height="20">
+                                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+                                    </svg>
+                                </button>
+                                <div class="accordion-content">
+                                    <div class="stack tight">
+                                        <p>CSS variables for integration with existing projects</p>
+                                        <span class="text-xs bg-primary text-white px-3 py-1 rounded">Available Now</span>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <div class="mt-lg">
-                            <a href="fontolodemo.html" class="btn btn-primary btn-sm">Try Now</a>
+                            
+                            <div class="button-group">
+                                <a href="fontolodemo.html" class="btn btn-primary btn-sm">Try Now</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -152,84 +173,101 @@
             <div id="preview-container">
                 <!-- Overview Tab -->
                 <div class="panel active" id="tab-overview-preview">
-                    <div class="section">
-                        <h2 class="text-2xl mb-lg">What is Fontolo?</h2>
-                        <p class="text-lg mb-md">Fontolo is a live CSS design system configurator that generates complete, professional design systems with real-time preview.</p>
+                    <div class="section-flow">
+                        <div class="stack">
+                            <h2>What is Fontolo?</h2>
+                            <p>Fontolo is a live CSS design system configurator that generates complete, professional design systems with real-time preview.</p>
+                        </div>
                         
-                        <div class="grid grid-2 gap-lg mb-xl">
-                            <div class="cell">
-                                <h3 class="text-xl mb-sm">Self-Demonstrating</h3>
-                                <p class="text-sm">The interface itself proves the design system works across different component types and layouts.</p>
+                        <div class="card-grid">
+                            <div class="card">
+                                <div class="stack tight">
+                                    <h3>Self-Demonstrating</h3>
+                                    <p>The interface itself proves the design system works across different component types and layouts.</p>
+                                </div>
                             </div>
-                            <div class="cell">
-                                <h3 class="text-xl mb-sm">Complete Export</h3>
-                                <p class="text-sm">Get tokens, utilities, and battle-tested components - not just color palettes.</p>
+                            <div class="card">
+                                <div class="stack tight">
+                                    <h3>Complete Export</h3>
+                                    <p>Get tokens, utilities, and battle-tested components - not just color palettes.</p>
+                                </div>
                             </div>
-                            <div class="cell">
-                                <h3 class="text-xl mb-sm">Live Preview</h3>
-                                <p class="text-sm">See changes instantly across typography, colors, spacing, and animations.</p>
+                            <div class="card">
+                                <div class="stack tight">
+                                    <h3>Live Preview</h3>
+                                    <p>See changes instantly across typography, colors, spacing, and animations.</p>
+                                </div>
                             </div>
-                            <div class="cell">
-                                <h3 class="text-xl mb-sm">Multiple Integrations</h3>
-                                <p class="text-sm">Export for WordPress, Tailwind, React, or vanilla CSS workflows.</p>
+                            <div class="card">
+                                <div class="stack tight">
+                                    <h3>Multiple Integrations</h3>
+                                    <p>Export for WordPress, Tailwind, React, or vanilla CSS workflows.</p>
+                                </div>
                             </div>
                         </div>
                         
-                        <div class="flex gap-md mb-lg">
-                            <a href="fontolodemo.html" class="btn btn-primary">Start Configuring</a>
-                            <a href="landing-intro.html" class="btn btn-secondary">View Landing Style</a>
+                        <div class="stack">
+                            <div class="button-group">
+                                <a href="fontolodemo.html" class="btn btn-primary">Start Configuring</a>
+                                <a href="landing-intro.html" class="btn btn-secondary">View Landing Style</a>
+                            </div>
+                            <p>💡 Use the sidebar to explore integration options for your preferred development workflow.</p>
                         </div>
-                        
-                        <p class="text-sm text-secondary">💡 Use the sidebar to explore integration options for your preferred development workflow.</p>
                     </div>
                 </div>
 
                 <!-- Features Tab -->
                 <div class="panel" id="tab-features-preview">
-                    <div class="section">
-                        <h2 class="text-2xl mb-lg">Core Features</h2>
+                    <div class="section-flow">
+                        <h2>Core Features</h2>
                         
-                        <div class="sample-card mb-lg">
-                            <h3 class="text-xl mb-md">Live Configuration</h3>
-                            <div class="grid grid-2 gap-md">
-                                <div>
-                                    <h4 class="font-medium mb-xs">Design Tokens</h4>
-                                    <ul class="text-sm">
-                                        <li>• HSL color system with automatic variants</li>
-                                        <li>• Modular typography scales (Golden ratio, custom)</li>
-                                        <li>• Consistent spacing system</li>
-                                    </ul>
+                        <div class="sample-card">
+                            <div class="stack">
+                                <h3>Live Configuration</h3>
+                                <div class="grid grid-2">
+                                    <div class="stack tight">
+                                        <h4>Design Tokens</h4>
+                                        <ul>
+                                            <li>• HSL color system with automatic variants</li>
+                                            <li>• Modular typography scales (Golden ratio, custom)</li>
+                                            <li>• Consistent spacing system</li>
+                                        </ul>
+                                    </div>
+                                    <div class="stack tight">
+                                        <h4>Smart Features</h4>
+                                        <ul>
+                                            <li>• Automatic accessibility checking</li>
+                                            <li>• Dynamic font loading from Google Fonts</li>
+                                            <li>• Real-time preview across all components</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div>
-                                    <h4 class="font-medium mb-xs">Smart Features</h4>
-                                    <ul class="text-sm">
-                                        <li>• Automatic accessibility checking</li>
-                                        <li>• Dynamic font loading from Google Fonts</li>
-                                        <li>• Real-time preview across all components</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="sample-card mb-lg">
-                            <h3 class="text-xl mb-md">Professional Components</h3>
-                            <p class="mb-md">Built and battle-tested within Fontolo itself:</p>
-                            <div class="grid grid-3 gap-sm">
-                                <button class="btn btn-primary btn-sm">Buttons</button>
-                                <div class="text-xs border rounded p-2">Cards</div>
-                                <div class="text-xs border rounded p-2">Forms</div>
-                                <div class="text-xs border rounded p-2">Tabs</div>
-                                <div class="text-xs border rounded p-2">Accordions</div>
-                                <div class="text-xs border rounded p-2">Notifications</div>
                             </div>
                         </div>
                         
                         <div class="sample-card">
-                            <h3 class="text-xl mb-md">Export Options</h3>
-                            <div class="flex gap-md flex-wrap">
-                                <span class="text-xs bg-primary text-white px-3 py-1 rounded">Complete CSS Framework</span>
-                                <span class="text-xs bg-accent text-white px-3 py-1 rounded">theme.json (Coming Soon)</span>
-                                <span class="text-xs bg-secondary text-white px-3 py-1 rounded">Tailwind Config (Coming Soon)</span>
+                            <div class="stack">
+                                <h3>Professional Components</h3>
+                                <p>Built and battle-tested within Fontolo itself:</p>
+                                <div class="inline-group">
+                                    <button class="btn btn-primary btn-sm">Buttons</button>
+                                    <div class="text-xs border rounded px-2 py-1">Cards</div>
+                                    <div class="text-xs border rounded px-2 py-1">Forms</div>
+                                    <div class="text-xs border rounded px-2 py-1">Tabs</div>
+                                    <div class="text-xs border rounded px-2 py-1">Accordions</div>
+                                    <div class="text-xs border rounded px-2 py-1">Notifications</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="sample-card">
+                            <div class="stack">
+                                <h3>Export Options</h3>
+                                <div class="inline-group">
+                                    <span class="text-xs bg-primary text-white px-3 py-1 rounded">Complete CSS Framework</span>
+                                    <span class="text-xs bg-accent text-white px-3 py-1 rounded">theme.json (Coming Soon)</span>
+                                    <span class="text-xs bg-secondary text-white px-3 py-1 rounded">Tailwind Config (Coming Soon)</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -237,37 +275,41 @@
 
                 <!-- Examples Tab -->
                 <div class="panel" id="tab-examples-preview">
-                    <div class="section">
-                        <h2 class="text-2xl mb-lg">Live Examples</h2>
-                        <p class="text-lg mb-xl">This entire page is built with the Fontolo design system, demonstrating the app-style layout pattern perfect for tools and dashboards.</p>
+                    <div class="section-flow">
+                        <div class="stack">
+                            <h2>Live Examples</h2>
+                            <p>This entire page is built with the Fontolo design system, demonstrating the app-style layout pattern perfect for tools and dashboards.</p>
+                        </div>
                         
-                        <div class="grid grid-2 gap-lg mb-xl">
-                            <div>
-                                <h3 class="text-xl mb-md">Typography Scale</h3>
-                                <div class="space-y-sm">
-                                    <h1 class="text-3xl">Heading 1</h1>
-                                    <h2 class="text-2xl">Heading 2</h2>
-                                    <h3 class="text-xl">Heading 3</h3>
-                                    <p class="text-base">Body text with proper line height</p>
-                                    <p class="text-sm">Small text for captions</p>
+                        <div class="grid grid-2">
+                            <div class="stack">
+                                <h3>Typography Scale</h3>
+                                <div class="stack tight">
+                                    <h1>Heading 1</h1>
+                                    <h2>Heading 2</h2>
+                                    <h3>Heading 3</h3>
+                                    <p>Body text with proper line height</p>
+                                    <p>Small text for captions</p>
                                 </div>
                             </div>
-                            <div>
-                                <h3 class="text-xl mb-md">Component Examples</h3>
-                                <div class="space-y-md">
-                                    <div class="flex gap-sm">
+                            <div class="stack">
+                                <h3>Component Examples</h3>
+                                <div class="stack">
+                                    <div class="button-group">
                                         <button class="btn btn-primary btn-sm">Primary</button>
                                         <button class="btn btn-secondary btn-sm">Secondary</button>
                                     </div>
                                     <div class="sample-card">
-                                        <h4 class="font-medium mb-xs">Sample Card</h4>
-                                        <p class="text-sm">Using the exported design tokens</p>
+                                        <div class="stack tight">
+                                            <h4>Sample Card</h4>
+                                            <p>Using the exported design tokens</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         
-                        <p class="text-center text-secondary mb-md">
+                        <p class="text-center">
                             <a href="landing-intro.html" class="text-primary">View the landing page style</a> to see how the same design system creates a completely different layout.
                         </p>
                     </div>
