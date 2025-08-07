@@ -264,6 +264,11 @@
     display: flex;
     align-items: center;
     gap: var(--space-sm);
+    
+    /* Add these properties back in */
+    font-weight: var(--font-weight-medium);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-default);
 }
 
 .form-item input[type="number"],
