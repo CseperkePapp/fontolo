@@ -106,17 +106,17 @@
 .card-header {
     padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--ui-border-color);
-    margin: 0 0 var(--space-md) 0; /* Only internal spacing */
+    margin: 0 0 var(--space-md) 0; /* Only internal bottom margin */
 }
 
 .card-body {
-    /* No margins - let internal stack pattern handle spacing */
+    /* NO external margins - let internal stack pattern handle spacing */
 }
 
 .card-footer {
     padding-top: var(--space-md);
     border-top: 1px solid var(--ui-border-color);
-    margin: var(--space-md) 0 0 0; /* Only internal spacing */
+    margin: var(--space-md) 0 0 0; /* Only internal top margin */
 }
 
 /* Sample Cards (specialized) */
@@ -187,7 +187,7 @@
     align-items: center;
     padding-bottom: var(--space-md);
     border-bottom: 1px solid var(--ui-border-color);
-    margin: 0 0 var(--space-md) 0; /* Only bottom margin for internal spacing */
+    /* NO external margins */
 }
 
 .nav-btn {
@@ -266,27 +266,390 @@
 .accent .accordion-header h3 { color: var(--color-accent); }
 
 .accordion-icon {
-    transition: transform 0.3s ease, fill 0.3s ease;
-    fill: var(--color-text-secondary);
+   transition: transform 0.3s ease, fill 0.3s ease;
+   fill: var(--color-text-secondary);
 }
 
 .accordion-header.active .accordion-icon {
-    transform: rotate(90deg);
+   transform: rotate(90deg);
 }
 
 .accordion-content {
-    padding: 0 var(--space-md);
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
-    background-color: white;
-    border-top: 1px solid var(--ui-border-color);
+   padding: 0 var(--space-md);
+   max-height: 0;
+   overflow: hidden;
+   transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+   background-color: white;
+   border-top: 1px solid var(--ui-border-color);
 }
 
 .accordion-content.active {
-    max-height: 800px;
-    padding: var(--space-md);
+   max-height: 800px;
+   padding: var(--space-md);
 }
 
-/* Continue with remaining components... */
-/* All other existing components but with external margins removed */
+/* ========================================= */
+/* FORM COMPONENTS                          */
+/* ========================================= */
+.form-item {
+   /* NO external margins - spacing handled by containers like .stack */
+}
+
+.form-item label {
+   display: block;
+   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+   font-weight: var(--font-weight-medium);
+   color: var(--color-text-default);
+   font-size: var(--font-size-sm);
+}
+
+.form-item input[type="number"],
+.form-item input[type="text"],
+.form-item input[type="email"],
+.form-item input[type="password"],
+.form-item textarea,
+.form-item select {
+   width: 100%;
+   padding: var(--space-xs);
+   border: 1px solid var(--ui-border-color);
+   border-radius: var(--border-radius-sm);
+   background-color: white;
+   color: var(--color-text-default);
+   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+   /* NO external margins */
+}
+
+.form-item input:focus,
+.form-item textarea:focus,
+.form-item select:focus {
+   outline: none;
+   border-color: var(--color-primary);
+   box-shadow: 0 0 0 3px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.1);
+}
+
+.form-item select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+   background-position: right 0.5rem center;
+   background-repeat: no-repeat;
+   background-size: 1.5em 1.5em;
+   padding-right: 2.5rem;
+}
+
+/* Range Sliders */
+.slider {
+   width: 100%;
+   height: 6px;
+   border-radius: 3px;
+   background: #e5e7eb;
+   outline: none;
+   -webkit-appearance: none;
+   position: relative;
+   /* NO external margins */
+}
+
+.slider::-webkit-slider-thumb {
+   -webkit-appearance: none;
+   appearance: none;
+   width: 18px;
+   height: 18px;
+   border-radius: 50%;
+   background: var(--color-primary);
+   border: none;
+   cursor: pointer;
+   transition: all 0.2s ease;
+   box-sizing: border-box;
+}
+
+.slider::-webkit-slider-thumb:hover {
+   transform: scale(1.1);
+   box-shadow: 0 0 0 4px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.2);
+}
+
+.slider::-moz-range-thumb {
+   width: 18px;
+   height: 18px;
+   border-radius: 50%;
+   background: var(--color-primary);
+   border: none;
+   cursor: pointer;
+   box-sizing: border-box;
+}
+
+/* Slider color variants */
+.primary .slider::-webkit-slider-thumb { background-color: var(--color-primary); }
+.primary .slider::-moz-range-thumb { background-color: var(--color-primary); }
+.primary .slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 4px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.25); }
+
+.secondary .slider::-webkit-slider-thumb { background-color: var(--color-secondary); }
+.secondary .slider::-moz-range-thumb { background-color: var(--color-secondary); }
+.secondary .slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 4px hsla(var(--color-secondary-hue), var(--color-secondary-saturation), var(--color-secondary-lightness), 0.25); }
+
+.accent .slider::-webkit-slider-thumb { background-color: var(--color-accent); }
+.accent .slider::-moz-range-thumb { background-color: var(--color-accent); }
+.accent .slider::-webkit-slider-thumb:hover { box-shadow: 0 0 0 4px hsla(var(--color-accent-hue), var(--color-accent-saturation), var(--color-accent-lightness), 0.25); }
+
+.slider-value {
+   font-size: var(--font-size-xs);
+   color: var(--color-text-secondary);
+   margin-top: var(--space-xs); /* Internal spacing is OK */
+   text-align: right;
+}
+
+/* ========================================= */
+/* CUSTOM SELECT COMPONENTS                 */
+/* ========================================= */
+.custom-select {
+   position: relative;
+   font-size: var(--font-size-sm);
+   /* NO external margins */
+}
+
+.select-trigger {
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
+   width: 100%;
+   padding: var(--space-xs) var(--space-sm);
+   border: 1px solid var(--ui-border-color);
+   border-radius: var(--border-radius-sm);
+   background-color: white;
+   cursor: pointer;
+   height: 34px;
+   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.select-trigger:focus {
+   outline: none;
+   border-color: var(--color-primary);
+   box-shadow: 0 0 0 3px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.1);
+}
+
+.select-options {
+   position: absolute;
+   top: calc(100% + 4px);
+   left: 0;
+   right: 0;
+   background-color: white;
+   border: 1px solid var(--ui-border-color);
+   border-radius: var(--border-radius-sm);
+   z-index: 10;
+   max-height: 0;
+   overflow: hidden;
+   opacity: 0;
+   transform: translateY(-10px);
+   transition: max-height 0.2s ease-out, opacity 0.2s ease-out, transform 0.2s ease-out;
+   box-shadow: 0 4px 12px hsla(var(--color-neutral-hue), 20%, 30%, 0.1);
+}
+
+.custom-select.open .select-options {
+   max-height: 200px;
+   opacity: 1;
+   transform: translateY(0);
+}
+
+.select-option {
+   display: flex;
+   align-items: center;
+   padding: var(--space-sm);
+   cursor: pointer;
+   transition: background-color 0.2s ease;
+}
+
+.select-option:hover {
+   background-color: hsl(var(--color-primary-hue), var(--color-primary-saturation), 95%);
+}
+
+.select-option.selected {
+   background-color: var(--color-primary);
+   color: white;
+}
+
+/* ========================================= */
+/* NOTIFICATION COMPONENTS                  */
+/* ========================================= */
+.notification {
+   position: fixed;
+   bottom: -100px;
+   left: 50%;
+   transform: translateX(-50%);
+   padding: var(--space-sm) var(--space-lg);
+   border-radius: var(--border-radius-md);
+   color: white;
+   font-weight: var(--font-weight-medium);
+   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+   transition: bottom 0.5s var(--ease-springy);
+   z-index: 1000;
+   max-width: 90vw;
+   text-align: center;
+   /* NO external margins */
+}
+
+.notification.show { 
+   bottom: var(--space-lg); 
+}
+
+.notification.error { 
+   background-color: hsl(0, 70%, 50%); 
+}
+
+.notification.success { 
+   background-color: hsl(140, 70%, 40%); 
+}
+
+.notification.info { 
+   background-color: var(--color-primary); 
+}
+
+.notification.warning { 
+   background-color: hsl(45, 100%, 50%); 
+   color: var(--color-text-dark);
+}
+
+/* ========================================= */
+/* PREVIEW & SHOWCASE COMPONENTS            */
+/* ========================================= */
+.color-preview {
+   width: 20px;
+   height: 20px;
+   border-radius: var(--border-radius-sm);
+   border: 1px solid var(--ui-border-color);
+   vertical-align: middle;
+   margin-left: var(--space-sm); /* Internal spacing is OK */
+   display: inline-block;
+   flex-shrink: 0;
+}
+
+.typography-scale .example {
+   padding: var(--space-sm);
+   border-left: 3px solid var(--color-primary);
+   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border-radius: var(--border-radius-sm);
+   /* NO external margins */
+}
+
+.typography-scale .size-label {
+   font-size: var(--font-size-xs);
+   color: var(--color-text-secondary);
+   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+}
+
+.color-grid {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+   gap: var(--space-md);
+   /* NO external margins */
+}
+
+.color-swatch {
+   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border-radius: var(--border-radius-md);
+   padding: var(--space-md);
+   border: 1px solid var(--ui-border-color);
+   /* NO external margins */
+}
+
+.color-box {
+   height: 80px;
+   border-radius: var(--border-radius-sm);
+   margin-bottom: var(--space-sm); /* Internal spacing is OK */
+}
+
+.color-primary-box { background-color: var(--color-primary); }
+.color-primary-dark-box { background-color: var(--color-primary-darker); }
+.color-primary-light-box { background-color: var(--color-primary-lighter); }
+.color-secondary-box { background-color: var(--color-secondary); }
+.color-accent-box { background-color: var(--color-accent); }
+.color-neutral-dark-box { background-color: var(--color-text-default); }
+.color-neutral-medium-box { background-color: var(--color-text-secondary); }
+.color-background-box { background-color: var(--color-background); border: 2px solid var(--ui-border-color); }
+
+.color-name {
+   font-weight: var(--font-weight-medium);
+   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+}
+
+.color-value {
+   font-size: var(--font-size-sm);
+   color: var(--color-text-secondary);
+   font-family: monospace;
+}
+
+.spacing-item {
+   display: flex;
+   align-items: center;
+   background: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 2%));
+   border-radius: var(--border-radius-sm);
+   padding: var(--space-md);
+   border: 1px solid var(--ui-border-color);
+   /* NO external margins */
+}
+
+.spacing-box {
+   background-color: var(--color-primary);
+   border-radius: var(--border-radius-sm);
+}
+
+.animation-box {
+   width: 60px;
+   height: 60px;
+   background-color: var(--color-accent);
+   border-radius: var(--border-radius-md);
+   cursor: pointer;
+   transition: all var(--anim-default-transition);
+   /* NO external margins */
+}
+
+.animation-box:hover {
+   transform: scale(1.1) rotate(5deg);
+   background-color: var(--color-primary);
+}
+
+/* ========================================= */
+/* CONTEXTUAL TYPOGRAPHY                     */
+/* ========================================= */
+
+/* App interface context - smaller scale for dashboard/tool interfaces */
+.panel h1,
+#preview-container h1 {
+    font-size: var(--font-size-2xl);
+}
+
+.panel h2,
+#preview-container h2 {
+    font-size: var(--font-size-xl);
+}
+
+.panel h3,
+#preview-container h3 {
+    font-size: var(--font-size-lg);
+}
+
+/* Card context - even more compact */
+.card h3,
+.card h4 {
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* Sidebar context - compact sizing */
+.sidebar h3 {
+    font-size: var(--font-size-base);
+}
+
+.sidebar h4 {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+}
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                        */
+/* ========================================= */
+@media (max-width: 768px) {
+   .header-controls {
+       flex-direction: column;
+       gap: var(--space-sm);
+   }
+}
