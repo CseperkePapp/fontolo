@@ -645,6 +645,20 @@
 }
 
 /* ========================================= */
+/* FORM HINT COMPONENT                      */
+/* ========================================= */
+
+.form-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+    /* Use a negative margin to pull the hint closer to the input above it */
+    margin-top: calc(-1 * var(--space-sm)); 
+}
+
+
+
+
+/* ========================================= */
 /* RESPONSIVE DESIGN                        */
 /* ========================================= */
 @media (max-width: 768px) {
