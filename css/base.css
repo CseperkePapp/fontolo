@@ -1,6 +1,6 @@
 /* ========================================= */
 /* FONTOLO BASE STYLES                      */
-/* Reset, typography, and foundational styles */
+/* Reset all margins - let layout system control spacing */
 /* ========================================= */
 
 html {
@@ -27,15 +27,17 @@ body {
 }
 
 /* ========================================= */
-/* TYPOGRAPHY BASE                          */
+/* TYPOGRAPHY BASE - ALL MARGINS RESET      */
 /* ========================================= */
+
+/* Reset all default margins - layout system controls spacing */
 h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-family-heading);
     line-height: var(--line-height-heading);
-    margin-top: 0;
-    margin-bottom: var(--space-md);
+    margin: 0; /* Reset all margins */
 }
 
+/* Font sizes only - no spacing */
 h1 { font-size: var(--font-size-3xl); color: var(--h1-color); }
 h2 { font-size: var(--font-size-2xl); color: var(--h2-color); }
 h3 { font-size: var(--font-size-xl); color: var(--h3-color); }
@@ -43,9 +45,8 @@ h4 { font-size: var(--font-size-lg); color: var(--h4-color); }
 h5 { font-size: var(--font-size-base); color: var(--h5-color); }
 h6 { font-size: var(--font-size-sm); color: var(--h6-color); }
 
-p {
-    margin-top: 0;
-    margin-bottom: var(--space-md);
+p, ul, ol {
+    margin: 0; /* Reset all margins */
     line-height: var(--base-line-height);
 }
 
@@ -56,7 +57,7 @@ a {
 }
 
 a:hover {
-    color: var(--color-primary-darker);
+    color: var(--color-primary);
     text-decoration: underline;
 }
 
@@ -64,4 +65,20 @@ img, .sample-image {
     max-width: 100%;
     height: auto;
     display: block;
+}
+
+/* ========================================= */
+/* FORM ELEMENTS BASE                       */
+/* ========================================= */
+
+input, textarea, select, button {
+    font-family: inherit;
+    font-size: inherit;
+}
+
+/* Remove default form spacing */
+fieldset, legend {
+    margin: 0;
+    padding: 0;
+    border: none;
 }
