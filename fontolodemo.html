@@ -6,12 +6,28 @@
     <title>Fontolo - Live CSS System Configurator</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     
-    <!-- Fontolo Design System -->
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/utilities.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
+<!-- Foundation Layer -->
+<link rel="stylesheet" href="css/tokens.css">
+<link rel="stylesheet" href="css/base.css">
+
+<!-- Layout System -->
+<link rel="stylesheet" href="css/layout.css">
+
+<!-- Component Layers (dependencies first) -->
+<link rel="stylesheet" href="css/primitives.css">
+<link rel="stylesheet" href="css/composites.css">
+<link rel="stylesheet" href="css/application.css">
+
+<!-- Showcase/Demo (depends on primitives) -->
+<link rel="stylesheet" href="css/demo.css">
+
+<!-- Page-specific extensions -->
+<link rel="stylesheet" href="css/landing.css"> <!-- only where needed -->
+<link rel="stylesheet" href="css/index.css">   <!-- only where needed -->
+
+<!-- Overrides and Utilities (must come last) -->
+<link rel="stylesheet" href="css/overrides.css">
+<link rel="stylesheet" href="css/utilities.css">
 </head>
 <body>
 
