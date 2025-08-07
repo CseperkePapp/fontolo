@@ -2,6 +2,19 @@
 
 🎨 **Currently refining** - Functional live configurator with full CSS framework export
 
+## CURRENT BRANCH - Splitting Components.css CSS Structure into:
+
+- `primitives.css` – low-level UI building blocks
+- `composites.css` – reusable component patterns (e.g. tabs, accordions)
+- `application.css` – layout, structure, shells
+- `demo.css` – visual showcases
+- `overrides.css` – context-specific tweaks or bugfixes
+
+## Working Branches
+
+- `main` – stable demo version
+- `component-split` – refactored CSS experiments
+
 *A customizable, token-driven design system and live CSS configuration tool for modern web development*
 
 ## 🎯 What is Fontolo?
