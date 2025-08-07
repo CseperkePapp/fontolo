@@ -144,16 +144,15 @@ See `CONTRIBUTING.md` for details.
 Fontolo is in active refinement with a **functional core system** that already demonstrates something new in web design tooling. The live configurator works, exports complete CSS frameworks, and proves the concept of self-demonstrating design systems.
 
 **What's working now:**
-- Full live configuration with real-time updates across all components
+- Live configuration system in the main configurator (fontolodemo.html)
 - Complete CSS framework export with production-ready code
-- Professional UI component library built and tested within the tool itself
+- Professional UI component library demonstrated across multiple layout styles
 - Novel three-layer CSS architecture that eliminates common spacing problems
 
 **What we're refining:**
-- User experience and interface polish
+- Extending live configuration to all demo pages and layouts
+- User experience and interface polish across different contexts
 - Component library expansion and customization options
-- Documentation and examples for different use cases
-- Performance optimization for complex configurations
 
 **Where we're heading:**
 This foundation opens doors to entirely new approaches in visual web development. We're exploring how live design systems could transform everything from client presentations to collaborative development workflows. The self-demonstrating concept is just the beginning of what's possible when design tokens become interactive parameters rather than static files.
