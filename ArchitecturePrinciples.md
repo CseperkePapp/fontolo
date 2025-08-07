@@ -1,563 +1,251 @@
-# Fontolo CSS Architecture & Guidelines
+# Fontolo CSS Architecture: The Definitive Guide
 
-## Table of Contents
-1. [Architecture Principles](#architecture-principles)
-2. [CSS Organization](#css-organization)
-3. [Spacing System](#spacing-system)
-4. [Component Guidelines](#component-guidelines)
-5. [HTML Standards](#html-standards)
-6. [Implementation Roadmap](#implementation-roadmap)
-7. [File Specifications](#file-specifications)
+## 1. Introduction: The Fontolo Philosophy
 
----
+Welcome to the Fontolo CSS Architecture Guide. This document is the single source of truth for how we build user interfaces. It is designed to help us create UIs that are **consistent, maintainable, and intuitive** to work with.
 
-## Architecture Principles
+### The Problem We're Solving
 
-### 1. Separation of Concerns
-- **HTML:** Content structure and semantics only
-- **CSS:** All spacing, layout, and visual relationships
-- **JavaScript:** Interactive behavior only
+In many projects, CSS can become a tangled web of overrides, utility classes, and inline styles. This leads to:
 
-### 2. Component Responsibility Model
-Each CSS component manages its own spacing relationships to other elements. No spacing utility classes in HTML.
+* **Inconsistency:** Spacing and layouts differ slightly across the application.
+* **Difficult Refactoring:** Changing a simple layout rule requires hunting down and editing dozens of HTML files.
+* **Semantic Decay:** HTML becomes cluttered with presentational classes (`class="mt-4 p-6 text-blue-500"`), obscuring its actual structure and meaning.
 
-```css
-/* ✅ Component defines its relationship to following elements */
-.hero { margin-bottom: var(--space-xxl); }
-.section { margin-bottom: var(--space-xl); }
-.button-group { margin-bottom: var(--space-lg); }
+### Our Solution: A System of Rules
 
-/* ✅ Last instance removes bottom margin */
-.section:last-child { margin-bottom: 0; }
-```
-
-### 3. CSS-First Approach
-Layout and spacing logic lives in CSS files, not scattered across HTML as utility classes.
-
-```html
-<!-- ✅ GOOD: Clean, semantic HTML -->
-<section class="hero">
-    <h1>Title</h1>
-    <div class="button-group flex">
-        <button class="btn btn-primary">Action</button>
-        <button class="btn btn-secondary">Secondary</button>
-    </div>
-</section>
-
-<!-- ❌ BAD: Spacing responsibilities in HTML -->
-<section class="hero mb-xxl">
-    <h1 class="mb-md">Title</h1>
-    <div class="flex gap-md mb-lg">
-        <button class="btn btn-primary mr-md">Action</button>
-        <button class="btn btn-secondary">Secondary</button>
-    </div>
-</section>
-```
+This architecture solves these problems by establishing a clear, CSS-driven system where layout is predictable, composable, and decoupled from the content's structure. By following these principles, we ensure that our HTML remains clean and our CSS remains scalable.
 
 ---
 
-## CSS Organization
+## 2. Core Principles: The Three Pillars
 
-### File Structure
-```
-css/
-├── tokens.css        # Design tokens (spacing, colors, typography scales)
-├── base.css          # Element defaults (h1, h2, p, a, body)
-├── layout.css        # Layout components (.container, .grid, .flex)
-├── components.css    # UI components (.btn, .card, .accordion)
-├── utilities.css     # Visual-only utilities (.text-center, .hidden, .text-primary)
-└── [page].css        # Page-specific layouts (index.css, landing.css)
-```
+Our entire system is built on three foundational pillars. Understanding these is key to using the system effectively.
 
-### Loading Order
-Always load CSS files in this order:
-```html
-<link rel="stylesheet" href="css/tokens.css">
-<link rel="stylesheet" href="css/base.css">
-<link rel="stylesheet" href="css/utilities.css">
-<link rel="stylesheet" href="css/layout.css">
-<link rel="stylesheet" href="css/components.css">
-<link rel="stylesheet" href="css/[page].css">
-```
+### Pillar 1: Strict Separation of Concerns
 
----
+* **HTML is for Meaning:** It defines the structure and semantics of the content. It should know nothing about how it will be styled.
+* **CSS is for Presentation:** It controls all layout, spacing, colors, and visual relationships.
+* **JavaScript is for Behavior:** It handles user interaction and dynamic states.
 
-## Spacing System
+### Pillar 2: The "Inside vs. Outside" Rule
 
-### Design Tokens
-```css
-/* Base spacing scale (from tokens.css) */
---space-xxs: calc(0.25rem / var(--golden-ratio));  /* ~2.5px */
---space-xs: 0.25rem;                               /* 4px */
---space-sm: 0.5rem;                                /* 8px */
---space-md: 1rem;                                  /* 16px */
---space-lg: calc(1rem * var(--golden-ratio));     /* ~26px */
---space-xl: calc(1rem * var(--golden-ratio) * var(--golden-ratio)); /* ~42px */
---space-xxl: calc(1rem * var(--golden-ratio) * var(--golden-ratio) * var(--golden-ratio)); /* ~68px */
-```
+This is the most important concept in our system.
 
-### Spacing Applications
+* **A component NEVER manages its own external space.** A component (like a `.btn` or `.card`) should never have an outer `margin`. It is self-contained.
+* **A container ALWAYS manages the layout of its children.** The container is responsible for arranging the components inside it, using properties like `gap` or layout patterns like the "Stack."
 
-#### A. Vertical Spacing (Component-to-Component)
-```css
-/* Large page sections */
-.hero, .main-section { 
-    margin-bottom: var(--space-xxl); 
-}
+This mental model is crucial. Before adding space, always ask: "Am I spacing items *inside* this box, or am I spacing this *entire box* from another one?"
 
-/* Content sections */  
-.section { 
-    margin-bottom: var(--space-xl); 
-}
+### Pillar 3: The Right Tool for the Job
 
-/* Component groups */
-.button-group, .card-grid, .feature-list { 
-    margin-bottom: var(--space-lg); 
-}
+We don't use a single tool for all spacing. We use the best tool for the specific context.
 
-/* Typography elements */
-h1, h2, h3, h4, h5, h6 { 
-    margin-bottom: var(--space-md); 
-}
-
-p, ul, ol { 
-    margin-bottom: var(--space-md); 
-}
-
-/* Remove bottom margin from last elements */
-.section:last-child,
-.button-group:last-child,
-p:last-child { 
-    margin-bottom: 0; 
-}
-```
-
-#### B. Horizontal Spacing (Within Components)
-```css
-/* Flex containers auto-space children */
-.flex > * + * { 
-    margin-left: var(--space-md); 
-}
-
-/* Spacing variants */
-.flex-tight > * + * { 
-    margin-left: var(--space-sm); 
-}
-
-.flex-loose > * + * { 
-    margin-left: var(--space-lg); 
-}
-
-/* Grid uses CSS gap */
-.grid { 
-    gap: var(--space-md); 
-}
-
-.grid-tight { 
-    gap: var(--space-sm); 
-}
-
-.grid-loose { 
-    gap: var(--space-lg); 
-}
-```
-
-#### C. Container Spacing (Internal Padding)
-```css
-/* Page containers */
-.container { 
-    padding: var(--space-lg); 
-}
-
-/* Component containers */
-.card { 
-    padding: var(--space-lg); 
-}
-
-.btn { 
-    padding: var(--space-sm) var(--space-lg); 
-}
-
-.sidebar { 
-    padding: var(--space-lg); 
-}
-
-.section { 
-    padding: var(--space-xl) var(--space-lg); 
-}
-```
+* **`gap` Property:** For **internal, grid-like spacing** within a container (e.g., buttons in a group).
+* **`margin` (via Stack Pattern):** For **external, flow-based spacing** between independent layout blocks (e.g., a header and the main content).
 
 ---
 
-## Component Guidelines
+## 3. The Spacing System: A Three-Layer Model
 
-### Button Components
+Our spacing system is built in layers, from abstract tokens down to practical implementation.
+
+### Layer 1: The Foundation (Design Tokens)
+
+Everything starts in `css/tokens.css`. We define a global spacing scale using CSS Custom Properties. This is our single source of truth for all space in the application.
+
 ```css
-.btn {
-    /* Base button styles */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-sm) var(--space-lg);
-    border-radius: var(--border-radius-md);
-    transition: all var(--anim-default-transition);
-    /* No external margins - let container handle spacing */
+/* css/tokens.css */
+:root {
+  --space-xs: 0.25rem;  /* 4px */
+  --space-sm: 0.5rem;   /* 8px */
+  --space-md: 1rem;     /* 16px */
+  --space-lg: 1.5rem;   /* 24px */
+  --space-xl: 2.5rem;   /* 40px */
 }
+```
 
+### Layer 2: Internal Spacing (The `gap` Property)
+
+**When to use:** When you need to create uniform space between direct children in a container.
+**How it works:** You apply `display: flex` or `display: grid` to a container, and then a single `gap` property creates the space.
+
+```css
+/* css/layout.css */
 .button-group {
-    /* Container handles button spacing */
-    display: flex;
-    margin-bottom: var(--space-lg);
+  display: flex;
+  flex-wrap: wrap; /* Allows buttons to wrap on small screens */
+  gap: var(--space-md);
 }
 
-.button-group > * + * {
-    margin-left: var(--space-md);
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
 }
 ```
 
-### Card Components
+### Layer 3: Flow Spacing (The "Stack" Pattern)
+
+**When to use:** When you need to create vertical rhythm between independent, block-level elements like headings, paragraphs, and components.
+**How it works:** We use the "lobotomized owl" selector (`* + *`) to apply a `margin-top` to every element that follows another, creating a "stack" of content.
+
+We have several "flavors" of stacks for different semantic contexts:
+
+| Class Name      | Default Spacing     | When to Use                                             |
+| :-------------- | :------------------ | :------------------------------------------------------ |
+| `.page-flow`    | `var(--space-xl)`   | For major page regions (`<header>`, `<main>`, `<footer>`). |
+| `.section-flow` | `var(--space-lg)`   | For large content blocks within a page section.         |
+| `.stack`        | `var(--space-md)`   | For general-purpose content stacking within a component.  |
+
 ```css
+/* css/layout.css */
+.page-flow > * + * {
+  margin-top: var(--space-local, var(--space-xl));
+}
+.section-flow > * + * {
+  margin-top: var(--space-local, var(--space-lg));
+}
+.stack > * + * {
+  margin-top: var(--space-local, var(--space-md));
+}
+```
+
+---
+
+## 4. The Layout Toolkit: Your Building Blocks
+
+This is your reference for the primary layout classes available in `css/layout.css`.
+
+### Layout Primitives
+
+* `.flex`: A simple flex container. Uses `gap` for spacing.
+* `.grid`: A simple grid container. Uses `gap` for spacing.
+* `.stack`, `.section-flow`, `.page-flow`: Vertical stacking containers.
+
+### Contextual Spacing Modifiers
+
+These classes work by overriding the `--space-local` variable used by our layout primitives. This allows you to easily adjust spacing without writing new CSS.
+
+```css
+/* css/layout.css */
+.tight { --space-local: var(--space-sm); }
+.loose { --space-local: var(--space-lg); }
+```
+
+**How to use them:**
+
+```html
+<!-- A normal stack -->
+<div class="stack">...</div>
+
+<!-- A stack with tighter spacing -->
+<div class="stack tight">...</div>
+
+<!-- A button group with looser spacing -->
+<div class="button-group loose">...</div>
+```
+
+---
+
+## 5. Component Guidelines
+
+* **No External Margins:** All components (`.btn`, `.card`, `.accordion`, etc.) MUST NOT have `margin` applied to them directly.
+* **Self-Contained:** Components should be able to be dropped into any layout container and have the spacing "just work."
+
+```css
+/* css/components.css */
 .card {
-    padding: var(--space-lg);
-    border-radius: var(--border-radius-md);
-    border: 1px solid var(--ui-border-color);
-    /* No external margins - let container handle spacing */
-}
-
-.card-grid {
-    display: grid;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-xl);
-}
-```
-
-### Typography Components
-```css
-/* Typography handles its own bottom spacing */
-h1 { 
-    font-size: var(--font-size-3xl);
-    margin-bottom: var(--space-lg);
-}
-
-h2 { 
-    font-size: var(--font-size-2xl);
-    margin-bottom: var(--space-md);
-}
-
-h3 { 
-    font-size: var(--font-size-xl);
-    margin-bottom: var(--space-md);
-}
-
-p { 
-    margin-bottom: var(--space-md);
-}
-
-/* Last child removes bottom margin */
-h1:last-child,
-h2:last-child,
-h3:last-child,
-p:last-child {
-    margin-bottom: 0;
+  padding: var(--space-lg);
+  border: 1px solid var(--ui-border-color);
+  border-radius: var(--border-radius-md);
+  /* NO MARGINS! */
 }
 ```
 
 ---
 
-## HTML Standards
+## 6. Handling Exceptions: The "Escape Hatch"
 
-### Clean HTML Patterns
+No system is perfect. In rare cases, you may need a one-off spacing adjustment that doesn't fit the system. For these scenarios, and only after considering all other options, use the sanctioned `data-space` attribute.
 
-#### Page Structure
 ```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <!-- meta tags -->
-    <link rel="stylesheet" href="css/tokens.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/utilities.css">
-    <link rel="stylesheet" href="css/layout.css">
-    <link rel="stylesheet" href="css/components.css">
-    <link rel="stylesheet" href="css/[page].css">
-</head>
-<body>
-    <div class="container">
-        <section class="hero">
-            <!-- hero content -->
-        </section>
-        
-        <section class="section">
-            <!-- section content -->
-        </section>
-    </div>
-</body>
-</html>
-```
-
-#### Component Combinations
-```html
-<!-- Button groups -->
-<div class="button-group flex">
-    <button class="btn btn-primary">Primary Action</button>
-    <button class="btn btn-secondary">Secondary Action</button>
+<!-- To be used only when absolutely necessary -->
+<div class="card" data-margin-top="--space-xl">
+  <!-- A code comment explaining why this was needed is required -->
+  <!-- Example: This card must align with a dynamic element -->
 </div>
-
-<!-- Card grids -->
-<div class="card-grid">
-    <div class="card">
-        <h3>Card Title</h3>
-        <p>Card content</p>
-    </div>
-    <div class="card">
-        <h3>Card Title</h3>
-        <p>Card content</p>
-    </div>
-</div>
-
-<!-- Typography sections -->
-<section class="section">
-    <h2>Section Title</h2>
-    <p>Section content with proper spacing.</p>
-    <p>Multiple paragraphs space themselves correctly.</p>
-</section>
 ```
 
-### Forbidden Patterns
-```html
-<!-- ❌ NO spacing utilities in HTML -->
-<div class="mb-lg">
-<h2 class="mb-md">
-<div class="gap-md">
-<button class="mr-md">
+A small JavaScript snippet can be used to apply these as inline styles. This keeps exceptions visible and searchable in the codebase. **Use this power wisely.**
 
-<!-- ❌ NO manual spacing -->
-<div style="margin-bottom: 20px;">
-<div style="gap: 16px;">
-```
+---
 
-### Utility Class Guidelines
-Utilities should only handle **visual properties**, not layout or spacing:
+## 7. Recipes: Common UI Patterns
+
+This is where the system comes to life. Let's see how to build common layouts.
+
+### Recipe 1: A Page Header
+
+**Goal:** A header with a logo on the left and navigation links on the right.
+**Tools:** A `.flex` container with `justify-content: space-between` and a `.button-group` for the nav links.
 
 ```html
-<!-- ✅ ALLOWED utilities -->
-<h2 class="text-center text-primary">Centered Primary Heading</h2>
-<p class="text-secondary">Secondary text color</p>
-<div class="hidden">Hidden content</div>
+<header class="flex items-center justify-between p-lg">
+  <div class="logo">...</div>
+  <nav class="button-group">
+    <a href="#" class="btn">Home</a>
+    <a href="#" class="btn">About</a>
+    <a href="#" class="btn btn-primary">Contact</a>
+  </nav>
+</header>
+```
 
-<!-- ❌ FORBIDDEN utilities -->
-<div class="mb-lg gap-md p-xl">Layout handled by utilities</div>
+### Recipe 2: A Blog Post Article
+
+**Goal:** A clean, readable flow of text with proper typographic rhythm.
+**Tools:** The `.prose` layout class, which is a specialized `stack` for typography.
+
+```html
+<article class="prose">
+  <h1>The Art of CSS Architecture</h1>
+  <p>It begins with a solid foundation...</p>
+  <h2>Core Principles</h2>
+  <p>The first pillar is separation of concerns.</p>
+  <blockquote>"HTML is for meaning."</blockquote>
+</article>
+```
+
+### Recipe 3: A Dashboard with Cards
+
+**Goal:** A responsive grid of metric cards.
+**Tools:** A `.page-flow` for the overall layout and a `.card-grid` for the cards themselves.
+
+```html
+<main class="page-flow p-lg">
+  <div class="stack">
+    <h1>Dashboard</h1>
+    <p>Welcome back, User!</p>
+  </div>
+
+  <div class="card-grid">
+    <div class="card">Metric 1</div>
+    <div class="card">Metric 2</div>
+    <div class="card">Metric 3</div>
+    <div class="card">Metric 4</div>
+  </div>
+</main>
 ```
 
 ---
 
-## Implementation Roadmap
+## 8. Appendix
 
-### Phase 1: Foundation CSS Rules
-1. **Update `css/layout.css`**
-   - Add flex and grid spacing rules
-   - Add container padding standards
-   - Add responsive breakpoint handling
+### Rationale for Key Decisions
 
-2. **Update `css/components.css`**
-   - Add component-to-component spacing rules
-   - Remove any existing margin utilities
-   - Ensure last-child margin removal
+* **Why reset all default margins?** Browsers apply inconsistent default margins to elements like `<h1>` and `<p>`. We reset them all to `0` in `base.css` so that our layout system has full and predictable control over all spacing.
+* **Why `--space-local`?** This generic variable name allows our spacing modifiers (`.tight`, `.loose`) to work on both `gap` and `margin`-based layouts without needing separate classes.
 
-3. **Update `css/base.css`**
-   - Add typography spacing standards
-   - Add element default spacing
+### Browser Support
 
-### Phase 2: Clean HTML Templates
-1. **Create standard HTML patterns**
-   - Document common component combinations
-   - Create reusable page templates
-   - Establish semantic structure guidelines
-
-2. **Audit existing HTML files**
-   - Remove all spacing utility classes
-   - Apply new semantic structure
-   - Test spacing relationships
-
-### Phase 3: Utility Cleanup
-1. **Clean `css/utilities.css`**
-   - Remove all spacing utilities (margin, padding, gap)
-   - Keep only visual utilities (colors, text alignment, visibility)
-   - Document the utilities vs components distinction
-
-2. **Documentation**
-   - Create component usage guide
-   - Document common patterns
-   - Create troubleshooting guide
-
----
-
-## File Specifications
-
-### css/layout.css Rules to Add
-```css
-/* Flex spacing */
-.flex {
-    display: flex;
-}
-
-.flex > * + * {
-    margin-left: var(--space-md);
-}
-
-.flex-tight > * + * {
-    margin-left: var(--space-sm);
-}
-
-.flex-loose > * + * {
-    margin-left: var(--space-lg);
-}
-
-/* Grid spacing */
-.grid {
-    display: grid;
-    gap: var(--space-md);
-}
-
-.grid-tight {
-    gap: var(--space-sm);
-}
-
-.grid-loose {
-    gap: var(--space-lg);
-}
-
-/* Container spacing */
-.container {
-    padding: var(--space-lg);
-}
-
-.section {
-    margin-bottom: var(--space-xl);
-}
-
-.section:last-child {
-    margin-bottom: 0;
-}
-```
-
-### css/components.css Rules to Add
-```css
-/* Button spacing */
-.button-group {
-    margin-bottom: var(--space-lg);
-}
-
-.button-group:last-child {
-    margin-bottom: 0;
-}
-
-/* Card spacing */
-.card-grid {
-    display: grid;
-    gap: var(--space-lg);
-    margin-bottom: var(--space-xl);
-}
-
-.card-grid:last-child {
-    margin-bottom: 0;
-}
-
-/* Hero spacing */
-.hero {
-    margin-bottom: var(--space-xxl);
-}
-
-.hero:last-child {
-    margin-bottom: 0;
-}
-```
-
-### css/base.css Rules to Add
-```css
-/* Typography spacing */
-h1, h2, h3, h4, h5, h6 {
-    margin-top: 0;
-    margin-bottom: var(--space-md);
-}
-
-h1 {
-    margin-bottom: var(--space-lg);
-}
-
-p, ul, ol {
-    margin-top: 0;
-    margin-bottom: var(--space-md);
-}
-
-/* Last child margin removal */
-h1:last-child,
-h2:last-child,
-h3:last-child,
-h4:last-child,
-h5:last-child,
-h6:last-child,
-p:last-child,
-ul:last-child,
-ol:last-child {
-    margin-bottom: 0;
-}
-```
-
-### css/utilities.css - Keep Only Visual Utilities
-```css
-/* Typography Utilities - VISUAL ONLY */
-.text-xs { font-size: var(--font-size-xs); }
-.text-sm { font-size: var(--font-size-sm); }
-.text-base { font-size: var(--font-size-base); }
-.text-lg { font-size: var(--font-size-lg); }
-.text-xl { font-size: var(--font-size-xl); }
-.text-2xl { font-size: var(--font-size-2xl); }
-.text-3xl { font-size: var(--font-size-3xl); }
-
-/* Font Weights - VISUAL ONLY */
-.font-light { font-weight: var(--font-weight-light); }
-.font-normal { font-weight: var(--font-weight-normal); }
-.font-medium { font-weight: var(--font-weight-medium); }
-.font-semibold { font-weight: var(--font-weight-semibold); }
-.font-bold { font-weight: var(--font-weight-bold); }
-
-/* Text Colors - VISUAL ONLY */
-.text-primary { color: var(--color-primary); }
-.text-secondary { color: var(--color-secondary); }
-.text-accent { color: var(--color-accent); }
-.text-neutral { color: var(--color-neutral); }
-.text-dark { color: var(--color-text-dark); }
-.text-light { color: var(--color-text-light); }
-
-/* Text Alignment - VISUAL ONLY */
-.text-left { text-align: left; }
-.text-center { text-align: center; }
-.text-right { text-align: right; }
-
-/* Display Properties - BEHAVIORAL ONLY */
-.block { display: block; }
-.inline { display: inline; }
-.inline-block { display: inline-block; }
-.hidden { display: none; }
-
-/* 
-REMOVE ALL SPACING UTILITIES:
-- No margin utilities (.m-*, .mt-*, .mr-*, .mb-*, .ml-*, .mx-*, .my-*)
-- No padding utilities (.p-*, .pt-*, .pr-*, .pb-*, .pl-*, .px-*, .py-*)
-- No gap utilities (.gap-*, .row-gap-*, .col-gap-*)
-*/
-```
-
----
-
-## Next Steps
-
-1. **Review and approve this architecture document**
-2. **Implement the CSS rules in each file according to specifications**
-3. **Create one clean HTML template as a reference**
-4. **Apply the template approach to all existing HTML files**
-5. **Test and refine the spacing relationships**
-6. **Document common patterns and component combinations**
-
-This architecture ensures Fontolo demonstrates best practices for design system implementation while maintaining clean, maintainable code.
+This system relies on CSS Custom Properties, Flexbox `gap`, and Grid. These features are supported in all modern browsers (Chrome, Firefox, Safari, Edge) since early 2021. This architecture is safe for all projects that do not need to support Internet Explorer 11.
