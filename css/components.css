@@ -403,7 +403,7 @@
 /* ========================================= */
 
 .form-hint {
-    font-size: var(--font-size-s);
+    font-size: var(--font-size-sx);
     color: var(--color-text-secondary);
 }
 
