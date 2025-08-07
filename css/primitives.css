@@ -1,0 +1,193 @@
+/* ========================================= */
+/* FONTOLO PRIMITIVE COMPONENTS             */
+/* Pure, reusable UI building blocks        */
+/* ========================================= */
+
+/* ========================================= */
+/* BUTTON SYSTEM                            */
+/* ========================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-sm) var(--space-lg);
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-semibold);
+    color: white;
+    border: 1px solid transparent;
+    border-radius: var(--border-radius-md);
+    cursor: pointer;
+    transition: all var(--anim-button-hover);
+    line-height: 1;
+    text-decoration: none;
+    user-select: none;
+    /* NO external margins - spacing handled by containers */
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-primary:hover {
+    background-color: var(--color-primary-darker);
+    border-color: var(--color-primary-darker);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px hsla(var(--color-primary-hue), var(--color-primary-saturation), calc(var(--color-primary-lightness) - 20%), 0.25);
+}
+
+.btn-secondary {
+    background-color: var(--color-secondary);
+    border-color: var(--color-secondary);
+}
+.btn-secondary:hover {
+    background-color: var(--color-secondary-darker);
+    border-color: var(--color-secondary-darker);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px hsla(var(--color-secondary-hue), var(--color-secondary-saturation), calc(var(--color-secondary-lightness) - 20%), 0.25);
+}
+
+.btn-outline {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-outline:hover {
+    background-color: var(--color-primary);
+    color: white;
+}
+
+/* Button Sizes */
+.btn-sm { padding: var(--space-xs) var(--space-md); font-size: var(--font-size-sm); }
+.btn-lg { padding: var(--space-md) var(--space-xl); font-size: var(--font-size-lg); }
+
+/* ========================================= */
+/* CARD SYSTEM                              */
+/* ========================================= */
+
+.card {
+    background-color: white;
+    border: 1px solid var(--ui-border-color);
+    border-radius: var(--border-radius-md);
+    padding: var(--space-lg);
+    transition: all 0.2s ease-out;
+    /* NO external margins - spacing handled by containers */
+}
+
+.card:hover {
+    box-shadow: 0 4px 12px hsla(var(--color-neutral-hue), 20%, 30%, 0.1);
+}
+
+.card-header {
+    padding-bottom: var(--space-md);
+    border-bottom: 1px solid var(--ui-border-color);
+    margin: 0 0 var(--space-md) 0; /* Only internal bottom margin */
+}
+
+.card-body {
+    /* NO external margins - let internal stack pattern handle spacing */
+}
+
+.card-footer {
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--ui-border-color);
+    margin: var(--space-md) 0 0 0; /* Only internal top margin */
+}
+
+/* ========================================= */
+/* FORM ELEMENTS                            */
+/* ========================================= */
+
+.form-item {
+   /* NO external margins - spacing handled by containers like .stack */
+}
+
+.form-item label {
+   display: block;
+   margin-bottom: var(--space-xs); /* Internal spacing is OK */
+   font-weight: var(--font-weight-medium);
+   color: var(--color-text-default);
+   font-size: var(--font-size-sm);
+}
+
+.form-item input[type="number"],
+.form-item input[type="text"],
+.form-item input[type="email"],
+.form-item input[type="password"],
+.form-item textarea,
+.form-item select {
+   width: 100%;
+   padding: var(--space-xs);
+   border: 1px solid var(--ui-border-color);
+   border-radius: var(--border-radius-sm);
+   background-color: white;
+   color: var(--color-text-default);
+   transition: border-color 0.2s ease, box-shadow 0.2s ease;
+   /* NO external margins */
+}
+
+.form-item input:focus,
+.form-item textarea:focus,
+.form-item select:focus {
+   outline: none;
+   border-color: var(--color-primary);
+   box-shadow: 0 0 0 3px hsla(var(--color-primary-hue), var(--color-primary-saturation), var(--color-primary-lightness), 0.1);
+}
+
+.form-item select {
+   -webkit-appearance: none;
+   -moz-appearance: none;
+   appearance: none;
+   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+   background-position: right 0.5rem center;
+   background-repeat: no-repeat;
+   background-size: 1.5em 1.5em;
+   padding-right: 2.5rem;
+}
+
+.form-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-secondary);
+}
+
+/* ========================================= */
+/* NOTIFICATION SYSTEM                      */
+/* ========================================= */
+
+.notification {
+   position: fixed;
+   bottom: -100px;
+   left: 50%;
+   transform: translateX(-50%);
+   padding: var(--space-sm) var(--space-lg);
+   border-radius: var(--border-radius-md);
+   color: white;
+   font-weight: var(--font-weight-medium);
+   box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+   transition: bottom 0.5s var(--ease-springy);
+   z-index: 1000;
+   max-width: 90vw;
+   text-align: center;
+   /* NO external margins */
+}
+
+.notification.show { 
+   bottom: var(--space-lg); 
+}
+
+.notification.error { 
+   background-color: hsl(0, 70%, 50%); 
+}
+
+.notification.success { 
+   background-color: hsl(140, 70%, 40%); 
+}
+
+.notification.info { 
+   background-color: var(--color-primary); 
+}
+
+.notification.warning { 
+   background-color: hsl(45, 100%, 50%); 
+   color: var(--color-text-dark);
+}
