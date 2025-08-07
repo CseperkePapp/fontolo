@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontolo - Live CSS Design System Configurator</title>
+    <meta name="description" content="Generate complete CSS design systems with live preview. Self-demonstrating framework for modern web development.">
+    
+    <!-- Fontolo Design System -->
+    <link rel="stylesheet" href="css/tokens.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/utilities.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/landing.css">
+    
+
+</head>
+<body>
+    <div class="container-fluid">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="status-banner">
+                🚧 Currently restructuring - Full launch coming soon!
+            </div>
+            
+            <h1 class="hero-title">Fontolo</h1>
+            <p class="hero-subtitle">
+                Live CSS Design System Configurator<br>
+                <em>This page is built with its own generated design system</em>
+            </p>
+            
+            <div class="cta-group">
+                <a href="fontolodemo.html" class="btn btn-primary btn-lg">Try Live Demo</a>
+                <a href="https://github.com/CseperkePapp/fontolo" class="btn btn-outline btn-lg">View on GitHub</a>
+            </div>
+        </section>
+
+        <!-- Proof of Concept -->
+        <section class="proof-section">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 class="text-2xl text-center mb-lg">Self-Demonstrating System</h2>
+                <p class="text-center text-lg mb-xl color-text-secondary">
+                    Every element on this page uses the same design tokens you can configure in the demo.
+                    Change the colors, fonts, or spacing in the configurator and see the results here instantly.
+                </p>
+                
+                <!-- Sample Components Using the System -->
+                <div class="demo-embed">
+                    <div class="demo-header">
+                        <span>Components built with Fontolo tokens</span>
+                        <span>Live example →</span>
+                    </div>
+                    <div class="demo-content">
+                        <div class="flex gap-lg items-center flex-wrap justify-center">
+                            <button class="btn btn-primary">Primary Button</button>
+                            <button class="btn btn-secondary">Secondary Button</button>
+                            <div class="card" style="min-width: 200px;">
+                                <h3 class="text-lg mb-sm">Sample Card</h3>
+                                <p class="text-sm">Using design system tokens</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integration Pathways -->
+        <section style="padding: var(--space-xl) var(--space-lg);">
+            <div style="max-width: 1200px; margin: 0 auto;">
+                <h2 class="text-2xl text-center mb-md">Integration Pathways</h2>
+                <p class="text-center text-lg mb-lg color-text-secondary">
+                    Choose your development approach - Fontolo adapts to your workflow
+                </p>
+                
+                <div class="integration-grid">
+                    <div class="integration-card coming-soon">
+                        <h3 class="text-xl mb-sm color-primary">WordPress FSE</h3>
+                        <p class="mb-md">Complete theme.json generation with design tokens and Global Styles integration</p>
+                        <div class="text-sm color-text-secondary">
+                            ✓ theme.json export<br>
+                            ✓ Block styles<br>
+                            ✓ Custom properties
+                        </div>
+                    </div>
+                    
+                    <div class="integration-card coming-soon">
+                        <h3 class="text-xl mb-sm color-primary">Modern Frameworks</h3>
+                        <p class="mb-md">Tailwind configs, React/Vue components, and CSS-in-JS integration</p>
+                        <div class="text-sm color-text-secondary">
+                            ✓ Tailwind config<br>
+                            ✓ Component examples<br>
+                            ✓ Token documentation
+                        </div>
+                    </div>
+                    
+                    <div class="integration-card">
+                        <h3 class="text-xl mb-sm color-primary">Vanilla CSS</h3>
+                        <p class="mb-md">Complete CSS framework with utilities and components</p>
+                        <div class="text-sm color-text-secondary">
+                            ✓ Available now<br>
+                            ✓ Complete system<br>
+                            ✓ Copy & paste ready
+                        </div>
+                        <a href="demo.html" class="btn btn-primary btn-sm" style="margin-top: var(--space-md);">Try Now</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Development Roadmap -->
+        <section class="roadmap">
+            <div style="max-width: 800px; margin: 0 auto;">
+                <h2 class="text-2xl text-center mb-xl">Development Progress</h2>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-status status-active">Active</div>
+                    <div>
+                        <h3 class="text-lg mb-xs">Site Restructuring</h3>
+                        <p class="color-text-secondary">Organizing demos, integration guides, and documentation for better user experience</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-status status-next">Next</div>
+                    <div>
+                        <h3 class="text-lg mb-xs">WordPress Integration</h3>
+                        <p class="color-text-secondary">theme.json generation, FSE compatibility, and WordPress-specific documentation</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-status status-planned">Planned</div>
+                    <div>
+                        <h3 class="text-lg mb-xs">Framework Integrations</h3>
+                        <p class="color-text-secondary">Tailwind config export, React/Vue examples, and modern development workflows</p>
+                    </div>
+                </div>
+                
+                <div class="roadmap-item">
+                    <div class="roadmap-status status-planned">Planned</div>
+                    <div>
+                        <h3 class="text-lg mb-xs">Advanced Features</h3>
+                        <p class="color-text-secondary">Preset libraries, collaborative editing, and enterprise integrations</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer style="padding: var(--space-lg); text-align: center; border-top: 1px solid var(--ui-border-color); background-color: hsl(var(--background-hue), var(--background-saturation), calc(var(--background-lightness) + 1%));">
+            <p class="text-sm color-text-secondary mb-sm">
+                Built by <a href="https://github.com/CseperkePapp" class="color-primary">Cseperke Papp</a> with ❤️
+            </p>
+            <p class="text-xs color-text-secondary">
+                This page demonstrates the Fontolo design system in action
+            </p>
+        </footer>
+    </div>
+</body>
+</html>
