@@ -150,6 +150,52 @@ body {
 }
 
 /* ========================================= */
+/* TWO-COLUMN LAYOUT VARIATIONS             */
+/* ========================================= */
+
+.two-column {
+    grid-template-columns: 1fr 1fr;    /* Two equal columns */
+}
+
+/* Make control box and research box same height */
+.top-row.two-column {
+    align-items: stretch;               /* Stretch both boxes to same height */
+    display: grid;                      /* Change from flex to grid */
+    justify-content: normal;            /* Reset justify-content */
+}
+
+.research-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;     /* Distribute content evenly */
+}
+
+.research-btn {
+    margin-top: var(--base-spacing);
+    align-self: center;                 /* Center the button */
+}
+
+/* Adjust control box for side-by-side layout */
+.top-row .control-box {
+    max-width: none;                    /* Remove width constraint */
+    margin: 0;                          /* Remove auto margins */
+}
+
+/* Special styling for research mode indicator */
+.research-box::before {
+    content: "LIVE RESEARCH";
+    position: absolute;
+    top: -1px;
+    right: var(--base-spacing);
+    background: var(--tertiary-color);
+    color: var(--secondary-color);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: calc(var(--base-size) * 0.7);
+    font-weight: bold;
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+}
+
+/* ========================================= */
 /* CONTROL BOX & ENHANCED CONTROLS          */
 /* ========================================= */
 
