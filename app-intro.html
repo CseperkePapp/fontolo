@@ -10,7 +10,11 @@
     <link rel="stylesheet" href="css/layout.css">
     <link rel="stylesheet" href="css/components.css">
 
-    <!-- The original loader is still here for the URL method -->
+    <!-- SCRIPT LOADING ORDER IS CRITICAL -->
+    <!-- 1. Load the central dictionary first -->
+    <script src="js/fontolo-utils.js"></script>
+    
+    <!-- 2. Load the loader script second -->
     <script src="js/fontolo-loader.js"></script>
 </head>
 <body>
