@@ -1,139 +1,312 @@
+/* ========================================= */
+/* FONTOLO SIMPLE - DESIGN TOKEN SYSTEM     */
+/* A minimal, self-demonstrating CSS        */
+/* design system configurator                */
+/* ========================================= */
+
+/* ========================================= */
+/* DESIGN TOKENS (User Controllable)        */
+/* ========================================= */
 :root {
-    --text-ratio: 1.2;
-    --hue: 220;
-    --spacing-ratio: 1;
-    
-    /* Calculated values */
-    --base-size: 16px;
-    --large-size: calc(var(--base-size) * var(--text-ratio));
-    --xlarge-size: calc(var(--large-size) * var(--text-ratio));
-    
-    --base-spacing: calc(1rem * var(--spacing-ratio));
-    --large-spacing: calc(1.5rem * var(--spacing-ratio));
-    
-    --primary-color: hsl(var(--hue), 70%, 50%);
-    --secondary-color: hsl(var(--hue), 70%, 35%);
-    --tertiary-color: hsl(var(--hue), 70%, 85%);
-    --border-color: hsl(var(--hue), 30%, 90%);
+   /* Core user-controlled variables */
+   --text-ratio: 1.2;        /* Multiplier for scaling text sizes */
+   --hue: 220;               /* Base hue (0-360) for entire color system */
+   --spacing-ratio: 1;       /* Multiplier for all spacing and padding */
+   
+   /* ===================================== */
+   /* CALCULATED TYPOGRAPHY SCALE           */
+   /* ===================================== */
+   --base-size: 16px;                                    /* Foundation text size */
+   --large-size: calc(var(--base-size) * var(--text-ratio));         /* Headings */
+   --xlarge-size: calc(var(--large-size) * var(--text-ratio));       /* Main title */
+   
+   /* Smart paragraph sizing - maintains golden ratio relationship but with limits */
+   --paragraph-ratio: clamp(1.1, calc(1 / var(--text-ratio)), 1.4);  /* Inverse ratio with min/max */
+   --paragraph-size: calc(var(--base-size) * var(--paragraph-ratio)); /* Body text size */
+   
+   /* ===================================== */
+   /* CALCULATED SPACING SCALE              */
+   /* ===================================== */
+   --base-spacing: calc(1rem * var(--spacing-ratio));    /* Standard gap/padding */
+   --large-spacing: calc(1.5rem * var(--spacing-ratio)); /* Larger sections */
+   
+   /* ===================================== */
+   /* CALCULATED COLOR SYSTEM               */
+   /* ===================================== */
+   /* All colors derive from the single hue variable */
+   --primary-color: hsl(var(--hue), 70%, 50%);    /* Main brand color */
+   --secondary-color: hsl(var(--hue), 70%, 35%);  /* Darker variant for contrast */
+   --tertiary-color: hsl(var(--hue), 70%, 85%);   /* Light variant for subtle elements */
+   --border-color: hsl(var(--hue), 30%, 90%);     /* Very light borders */
+   --slider-color: hsl(var(--hue), 60%, 45%);     /* Interactive elements */
 }
 
+/* ========================================= */
+/* BROWSER RESET & BASE STYLES              */
+/* ========================================= */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+   margin: 0;           /* Remove all default margins */
+   padding: 0;          /* Remove all default padding */
+   box-sizing: border-box;  /* Include padding/border in element width */
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    font-size: var(--base-size);
-    line-height: calc(1.4 * var(--spacing-ratio));
-    background: #f8f9fa;
-    padding: var(--large-spacing);
+   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;  /* System fonts */
+   font-size: var(--base-size);                    /* Uses our token system */
+   line-height: calc(1.4 * var(--spacing-ratio)); /* Line height scales with spacing */
+   background: #f8f9fa;                           /* Light neutral background */
+   padding: var(--large-spacing);                 /* Page padding scales with system */
 }
 
+/* ========================================= */
+/* LAYOUT CONTAINERS                        */
+/* ========================================= */
+
+/* Main page container - centers content and provides constraints */
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 80vh;
+   max-width: 800px;           /* Prevents overly wide layouts */
+   margin: 0 auto;             /* Centers horizontally */
+   display: flex;              /* Flexbox for vertical centering */
+   justify-content: center;    /* Center horizontally */
+   align-items: center;        /* Center vertically */
+   min-height: 80vh;          /* Takes most of viewport height */
+   text-align: center;        /* Centers inline elements like buttons */
 }
 
+/* ========================================= */
+/* CONFIGURATOR INTERFACE COMPONENTS        */
+/* ========================================= */
+
+/* Main control box - the white card containing all controls */
 .control-box {
-    background: white;
-    padding: var(--large-spacing);
-    border-radius: calc(8px * var(--spacing-ratio));
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
-    border: 2px solid var(--border-color);
-    text-align: center;
-    max-width: 500px;
+   background: white;                                      /* Clean white background */
+   padding: var(--large-spacing);                        /* Padding scales with system */
+   border-radius: calc(8px * var(--spacing-ratio));      /* Corner radius scales with spacing */
+   box-shadow: 0 4px 20px rgba(0,0,0,0.1);              /* Subtle shadow for depth */
+   border: 2px solid var(--border-color);               /* Border uses system color */
+   text-align: center;                                   /* Center-align content */
+   max-width: 500px;                                     /* Prevent overly wide controls */
 }
 
+/* Main title - demonstrates the xlarge text size */
 #title {
-    font-size: var(--xlarge-size);
-    color: var(--primary-color);
-    margin-bottom: var(--large-spacing);
-    font-weight: 600;
+   font-size: var(--xlarge-size);         /* Uses largest text scale */
+   color: var(--primary-color);           /* Uses primary brand color */
+   margin-bottom: var(--large-spacing);   /* Spacing scales with system */
+   font-weight: 600;                      /* Semi-bold weight */
 }
 
+/* ========================================= */
+/* FORM CONTROLS & SLIDERS                  */
+/* ========================================= */
+
+/* Container for all slider controls */
 .controls {
-    margin-bottom: var(--large-spacing);
+   margin-bottom: var(--large-spacing);   /* Space below controls scales with system */
 }
 
+/* Individual control group (label + slider + value) */
 .control {
-    margin-bottom: var(--base-spacing);
-    text-align: left;
+   margin-bottom: var(--base-spacing);    /* Spacing between controls */
+   text-align: left;                      /* Left-align labels for readability */
 }
 
+/* Control labels */
 .control label {
-    display: block;
-    margin-bottom: calc(var(--base-spacing) * 0.5);
-    font-weight: 500;
-    color: var(--secondary-color);
+   display: block;                                     /* Full-width block element */
+   margin-bottom: calc(var(--base-spacing) * 0.5);   /* Half-space below labels */
+   font-weight: 500;                                  /* Medium weight for emphasis */
+   color: var(--secondary-color);                    /* Uses secondary color */
 }
 
+/* ===================================== */
+/* CUSTOM SLIDER STYLING                 */
+/* ===================================== */
+
+/* Base slider track styling */
 .control input[type="range"] {
-    width: 100%;
-    margin-bottom: calc(var(--base-spacing) * 0.25);
+   width: 100%;                                    /* Full width of container */
+   margin-bottom: calc(var(--base-spacing) * 0.25);  /* Small space below */
+   height: 6px;                                    /* Track height */
+   border-radius: 3px;                             /* Rounded track */
+   background: #e5e7eb;                           /* Default track color */
+   outline: none;                                  /* Remove focus outline */
+   -webkit-appearance: none;                       /* Remove default browser styling */
 }
 
+/* Slider thumb (the draggable circle) - WebKit browsers */
+.control input[type="range"]::-webkit-slider-thumb {
+   -webkit-appearance: none;       /* Remove default styling */
+   appearance: none;
+   width: 20px;                    /* Thumb size */
+   height: 20px;
+   border-radius: 50%;             /* Perfect circle */
+   background: var(--slider-color);  /* Uses our color system */
+   cursor: pointer;                /* Pointer cursor on hover */
+   border: 2px solid white;        /* White border for contrast */
+   box-shadow: 0 2px 4px rgba(0,0,0,0.2);  /* Subtle shadow for depth */
+}
+
+/* Slider thumb - Firefox */
+.control input[type="range"]::-moz-range-thumb {
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   background: var(--slider-color);
+   cursor: pointer;
+   border: 2px solid white;
+   box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* Slider track with gradient - WebKit browsers */
+.control input[type="range"]::-webkit-slider-track {
+   background: linear-gradient(to right, var(--tertiary-color) 0%, var(--primary-color) 100%);
+   height: 6px;                    /* Match the input height */
+   border-radius: 3px;             /* Rounded corners */
+}
+
+/* Slider track with gradient - Firefox */
+.control input[type="range"]::-moz-range-track {
+   background: linear-gradient(to right, var(--tertiary-color) 0%, var(--primary-color) 100%);
+   height: 6px;
+   border-radius: 3px;
+   border: none;                   /* Remove default border */
+}
+
+/* Value display next to sliders */
 .control span {
-    font-size: calc(var(--base-size) * 0.9);
-    color: var(--secondary-color);
-    font-family: monospace;
+   font-size: calc(var(--base-size) * 0.9);  /* Slightly smaller than base */
+   color: var(--secondary-color);             /* Muted color */
+   font-family: monospace;                    /* Monospace for consistent number width */
 }
 
+/* ========================================= */
+/* CONTENT TEXT                              */
+/* ========================================= */
+
+/* Descriptive paragraph - demonstrates smart text scaling */
 .description {
-    font-size: var(--base-size);
-    line-height: calc(1.6 * var(--spacing-ratio));
-    color: #666;
-    margin-bottom: var(--large-spacing);
+   font-size: var(--paragraph-size);          /* Uses calculated paragraph size */
+   line-height: calc(1.6 * var(--spacing-ratio));  /* Line height scales with spacing */
+   color: #666;                               /* Muted gray for body text */
+   margin-bottom: var(--large-spacing);      /* Space below scales with system */
 }
 
+/* ========================================= */
+/* BUTTONS & INTERACTIVE ELEMENTS           */
+/* ========================================= */
+
+/* Primary action button - fully integrated with design system */
 .action-btn {
-    background: var(--primary-color);
-    color: white;
-    border: none;
-    padding: var(--base-spacing) var(--large-spacing);
-    border-radius: calc(6px * var(--spacing-ratio));
-    font-size: var(--base-size);
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.2s ease;
+   background: var(--primary-color);              /* Uses primary brand color */
+   color: white;                                  /* White text for contrast */
+   border: none;                                  /* Remove default border */
+   padding: var(--base-spacing) var(--large-spacing);  /* Padding scales with system */
+   border-radius: calc(6px * var(--spacing-ratio));    /* Border radius scales */
+   font-size: var(--base-size);                  /* Font size matches system */
+   font-weight: 500;                             /* Medium weight */
+   cursor: pointer;                              /* Pointer cursor */
+   transition: all 0.2s ease;                   /* Smooth hover transitions */
+   margin: 0 auto;                               /* Center horizontally */
+   display: inline-block;                        /* Allow centering */
+   text-decoration: none;                        /* No underline for link buttons */
 }
 
+/* Button hover state */
 .action-btn:hover {
-    background: var(--secondary-color);
-    transform: translateY(-1px);
+   background: var(--secondary-color);    /* Darker color on hover */
+   transform: translateY(-1px);          /* Subtle lift effect */
 }
 
-/* Grid page styles */
+/* ========================================= */
+/* GRID DEMONSTRATION PAGE                  */
+/* ========================================= */
+
+/* Grid container - responsive 3-column layout */
 .grid-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: var(--large-spacing);
-    margin-bottom: var(--large-spacing);
+   display: grid;                                          /* CSS Grid layout */
+   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));  /* Responsive columns */
+   gap: var(--large-spacing);                            /* Gap scales with system */
+   margin-bottom: var(--large-spacing);                  /* Space below grid */
+   max-width: 100%;                                       /* Prevent overflow */
 }
 
+/* Individual demo boxes in the grid */
 .demo-box {
-    background: white;
-    padding: var(--large-spacing);
-    border-radius: calc(8px * var(--spacing-ratio));
-    border: 2px solid var(--border-color);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+   background: white;                                  /* Clean white background */
+   padding: var(--large-spacing);                    /* Padding scales with system */
+   border-radius: calc(8px * var(--spacing-ratio));  /* Border radius scales */
+   border: 2px solid var(--border-color);           /* Border uses system color */
+   box-shadow: 0 2px 10px rgba(0,0,0,0.1);         /* Subtle shadow */
 }
 
+/* Demo box headings */
 .demo-box h2 {
-    font-size: var(--large-size);
-    margin-bottom: var(--base-spacing);
-    font-weight: 600;
+   font-size: var(--large-size);          /* Uses large text scale */
+   margin-bottom: var(--base-spacing);    /* Space below headings */
+   font-weight: 600;                      /* Semi-bold weight */
 }
 
+/* Demo box paragraphs */
 .demo-box p {
-    line-height: calc(1.5 * var(--spacing-ratio));
+   line-height: calc(1.5 * var(--spacing-ratio));  /* Line height scales */
+   font-size: var(--paragraph-size);               /* Uses calculated paragraph size */
 }
 
-.demo-box.primary h2 { color: var(--primary-color); }
-.demo-box.secondary h2 { color: var(--secondary-color); }
-.demo-box.tertiary h2 { color: var(--tertiary-color); }
+/* ===================================== */
+/* COLOR VARIANTS FOR DEMO BOXES         */
+/* ===================================== */
+.demo-box.primary h2 { color: var(--primary-color); }    /* Primary color variant */
+.demo-box.secondary h2 { color: var(--secondary-color); } /* Secondary color variant */
+.demo-box.tertiary h2 { color: var(--tertiary-color); }   /* Tertiary color variant */
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                        */
+/* ========================================= */
+
+/* Mobile and tablet adjustments */
+@media (max-width: 768px) {
+   /* Stack grid items on smaller screens */
+   .grid-container {
+       grid-template-columns: 1fr;    /* Single column layout */
+   }
+   
+   /* Adjust container spacing on mobile */
+   .container {
+       min-height: auto;                   /* Don't force height on mobile */
+       padding: var(--base-spacing);      /* Reduced padding */
+   }
+   
+   /* Reduce control box padding on mobile */
+   .control-box {
+       padding: var(--base-spacing);      /* Smaller padding for mobile */
+   }
+}
+
+/* ========================================= */
+/* DESIGN SYSTEM NOTES                      */
+/* ========================================= */
+
+/*
+This CSS demonstrates a token-driven design system where:
+
+1. THREE USER CONTROLS drive everything:
+  - Text ratio (scales all typography)
+  - Hue (drives entire color palette)
+  - Spacing ratio (scales all spacing/padding)
+
+2. SYSTEMATIC RELATIONSHIPS:
+  - All colors derive from one hue
+  - All text sizes relate through ratios
+  - All spacing uses consistent multipliers
+  - Paragraph text maintains smart ratio to titles
+
+3. SELF-DEMONSTRATING:
+  - The interface itself proves the system works
+  - Every element responds to the token changes
+  - Visual consistency emerges from systematic rules
+
+This approach shows how a few core variables can drive
+an entire design system, creating consistency without
+complexity.
+*/
