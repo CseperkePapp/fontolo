@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fontolo Simple - Design Token Configurator</title>
+    <title>Fontolo Simple - Typography Test Configurator</title>
     <link rel="stylesheet" href="simpleStyle.css">
 </head>
 <body>
@@ -11,7 +11,7 @@
         <!-- Top Row: Controls -->
         <div class="top-row">
             <div class="control-box">
-                <h2>Design System Controls</h2>
+                <h2>Typography Scaling Test</h2>
                 
                 <div class="controls">
                     <div class="control">
@@ -37,17 +37,23 @@
             </div>
         </div>
 
-        <!-- Bottom Row: Two Text Boxes -->
+        <!-- Bottom Row: Two Typography Test Boxes -->
         <div class="bottom-row">
-            <div class="text-box primary-box">
-                <h1>Live Preview Title</h1>
-                <p>This title and paragraph demonstrate how the text scaling system maintains proper hierarchy while everything scales together.</p>
+            <div class="text-box primary-box proportional-text">
+                <h1>Proportional Scaling</h1>
+                <p class="style-a">This paragraph scales UP with the title. When you increase the text ratio, both title and paragraph grow together, maintaining the same relative size relationship. This approach ensures readability but may create very large body text at high ratios.</p>
+                <div class="scaling-note">
+                    <strong>Scaling Method:</strong> Both title and paragraph use the same multiplier
+                </div>
             </div>
             
-            <div class="text-box secondary-box">
-                <h1>Another Title</h1>
-                <p>We're building a flexible, self-updating design system that works across multiple HTML pages. Adjust the controls above to see how design tokens create consistent, scalable interfaces.</p>
-                <a href="simpleGrid.html" class="action-btn" style="margin-top: var(--base-spacing);">View 6-Box Grid →</a>
+            <div class="text-box secondary-box inverse-text">
+                <h1>Inverse Scaling</h1>
+                <p class="style-b">This paragraph scales DOWN as the title grows larger. When you increase the text ratio, the title gets bigger but the paragraph gets smaller, creating stronger visual hierarchy. This prevents body text from becoming overwhelming at large title sizes.</p>
+                <div class="scaling-note">
+                    <strong>Scaling Method:</strong> Paragraph uses inverse relationship with smart limits
+                </div>
+                <a href="simpleGrid.html" class="action-btn" style="margin-top: var(--base-spacing);">View Grid Test →</a>
             </div>
         </div>
     </div>
