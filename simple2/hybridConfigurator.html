@@ -8,8 +8,8 @@
 </head>
 <body>
     <div class="page-container">
-        <!-- Top Row: Controls -->
-        <div class="top-row">
+        <!-- Top Row: Controls + Hybrid Research Box -->
+        <div class="top-row two-column">
             <div class="control-box">
                 <h2>Typography Research Lab</h2>
                 
@@ -42,10 +42,21 @@
                 
                 <button id="generateCSS" class="action-btn">Generate CSS</button>
             </div>
+            
+            <!-- Hybrid Research Box -->
+            <div class="text-box tertiary-box hybrid-text research-box">
+                <h1>Hybrid Scaling</h1>
+                <p class="style-c">This paragraph switches behavior at your chosen shift point. Below the threshold: proportional scaling. Above: inverse scaling. Find your perfect balance!</p>
+                <div class="scaling-note">
+                    <strong>Method:</strong> <span id="currentMethod">Proportional (below threshold)</span><br>
+                    <strong>Threshold:</strong> <span id="thresholdDisplay">1.4</span>
+                </div>
+                <a href="simpleGrid.html" class="action-btn research-btn">View Research Grid →</a>
+            </div>
         </div>
 
-        <!-- Bottom Row: Three Typography Test Boxes -->
-        <div class="bottom-row three-column">
+        <!-- Bottom Row: Two Typography Comparison Boxes -->
+        <div class="bottom-row two-column">
             <div class="text-box primary-box proportional-text">
                 <h1>Proportional Scaling</h1>
                 <p class="style-a">This paragraph always scales UP with the title. Both grow and shrink together, maintaining consistent relationships regardless of the text ratio setting.</p>
@@ -62,16 +73,6 @@
                     <strong>Method:</strong> Inverse relationship<br>
                     <strong>Formula:</strong> paragraph = base × (1/ratio)
                 </div>
-            </div>
-            
-            <div class="text-box tertiary-box hybrid-text">
-                <h1>Hybrid Scaling</h1>
-                <p class="style-c">This paragraph switches behavior at your chosen shift point. Below the threshold: proportional scaling. Above: inverse scaling. Find your perfect balance!</p>
-                <div class="scaling-note">
-                    <strong>Method:</strong> <span id="currentMethod">Proportional (below threshold)</span><br>
-                    <strong>Threshold:</strong> <span id="thresholdDisplay">1.4</span>
-                </div>
-                <a href="simpleGrid.html" class="action-btn" style="margin-top: var(--base-spacing);">View Research Grid →</a>
             </div>
         </div>
     </div>
