@@ -183,9 +183,8 @@ body {
     justify-content: space-between;     /* Distribute content evenly */
 }
 
-/* --- ADD THIS NEW RULE RIGHT HERE --- */
-.research-box > .style-c {
-    margin-bottom: auto; /* This groups the title and paragraph at the top */
+.research-box > p {
+    margin-bottom: auto; /* Groups title and paragraph in any research box */
 }
 
 .research-btn {
