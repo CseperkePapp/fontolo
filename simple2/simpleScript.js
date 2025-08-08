@@ -76,3 +76,62 @@ if (loadBtn) {
         }
     });
 }
+// [Keep all existing code and add this hybrid calculation]
+
+// Hybrid scaling calculation
+function calculateHybridScaling() {
+    const textRatio = parseFloat(textSizeSlider.value);
+    const shiftPoint = parseFloat(document.getElementById('shiftPoint').value);
+    
+    if (textRatio <= shiftPoint) {
+        // Below threshold: use proportional scaling
+        document.documentElement.style.setProperty('--paragraph-size-c', `calc(var(--base-size) * ${textRatio})`);
+        document.documentElement.style.setProperty('--large-size-c', `calc(var(--paragraph-size-c) * 1.25)`);
+        document.documentElement.style.setProperty('--xlarge-size-c', `calc(var(--large-size-c) * 1.25)`);
+        
+        document.getElementById('currentMethod').textContent = 'Proportional (below threshold)';
+    } else {
+        // Above threshold: use inverse scaling
+        const inverseRatio = Math.max(1.1, Math.min(1.4, 1 / textRatio));
+        document.documentElement.style.setProperty('--paragraph-size-c', `calc(var(--base-size) * ${inverseRatio})`);
+        document.documentElement.style.setProperty('--large-size-c', `calc(var(--base-size) * ${textRatio} * 1.25)`);
+        document.documentElement.style.setProperty('--xlarge-size-c', `calc(var(--large-size-c) * 1.25)`);
+        
+        document.getElementById('currentMethod').textContent = 'Inverse (above threshold)';
+    }
+}
+
+// Add shift point slider handling
+const shiftPointSlider = document.getElementById('shiftPoint');
+const shiftPointValue = document.getElementById('shiftPointValue');
+const thresholdDisplay = document.getElementById('thresholdDisplay');
+
+if (shiftPointSlider) {
+    shiftPointSlider.addEventListener('input', function() {
+        const value = this.value;
+        shiftPointValue.textContent = value;
+        thresholdDisplay.textContent = value;
+        document.documentElement.style.setProperty('--shift-point', value);
+        calculateHybridScaling();
+    });
+}
+
+// Update the main updateDesign function to include hybrid calculation
+function updateDesign() {
+    const textRatio = textSizeSlider.value;
+    const hue = hueSlider.value;
+    const spacing = spacingSlider.value;
+    
+    // Update CSS custom properties
+    document.documentElement.style.setProperty('--text-ratio', textRatio);
+    document.documentElement.style.setProperty('--hue', hue);
+    document.documentElement.style.setProperty('--spacing-ratio', spacing);
+    
+    // Update value displays
+    textSizeValue.textContent = textRatio;
+    hueValue.textContent = hue + '°';
+    spacingValue.textContent = spacing;
+    
+    // Calculate hybrid scaling
+    calculateHybridScaling();
+}
