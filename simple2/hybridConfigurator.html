@@ -1,14 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fontolo Simple - Typography Research Configurator</title>
-    <link rel="stylesheet" href="hybridStyle.css">
-</head>
 <body>
     <div class="page-container">
-        <!-- Top Row: Controls + Hybrid Research Box -->
         <div class="top-row two-column">
             <div class="control-box">
                 <h2>Typography Research Lab</h2>
@@ -36,47 +27,41 @@
                         <label for="shiftPoint">Hybrid Shift Point:</label>
                         <input type="range" id="shiftPoint" min="0.8" max="2" value="1.4" step="0.1">
                         <span id="shiftPointValue">1.4</span>
-                        <div class="control-hint">When text ratio crosses this point, hybrid switches from proportional to inverse scaling</div>
+                        <div class="control-hint">The point where the Hybrid box switches behavior.</div>
                     </div>
                 </div>
                 
                 <button id="generateCSS" class="action-btn">Generate CSS</button>
             </div>
             
-            <!-- Hybrid Research Box -->
-            <div class="text-box tertiary-box hybrid-text research-box">
-                <h1>Hybrid Scaling</h1>
-                <p class="style-c">This paragraph switches behavior at your chosen shift point. Below the threshold: proportional scaling. Above: inverse scaling. Find your perfect balance!</p>
+            <div class="text-box tertiary-box algorithmic-text research-box">
+                <h1>Algorithmic Scaling</h1>
+                <p class="style-d">This paragraph smoothly blends from proportional to inverse scaling across a defined range, creating a fluid, non-abrupt change in hierarchy.</p>
                 <div class="scaling-note">
-                    <strong>Method:</strong> <span id="currentMethod">Proportional (below threshold)</span><br>
-                    <strong>Threshold:</strong> <span id="thresholdDisplay">1.4</span>
+                    <strong>Method:</strong> Smooth Interpolation<br>
+                    <strong>Transition Zone:</strong> 1.2 ↔ 1.8
                 </div>
                 <a href="simpleGrid.html" class="action-btn research-btn">View Research Grid →</a>
             </div>
         </div>
 
-        <!-- Bottom Row: Two Typography Comparison Boxes -->
-        <div class="bottom-row two-column">
+        <div class="bottom-row three-column">
             <div class="text-box primary-box proportional-text">
                 <h1>Proportional Scaling</h1>
-                <p class="style-a">This paragraph always scales UP with the title. Both grow and shrink together, maintaining consistent relationships regardless of the text ratio setting.</p>
-                <div class="scaling-note">
-                    <strong>Method:</strong> Linear scaling<br>
-                    <strong>Formula:</strong> paragraph = base × ratio
-                </div>
+                <p class="style-a">This paragraph always scales UP with the title. Both grow and shrink together, maintaining a consistent relationship.</p>
+            </div>
+            
+            <div class="text-box tertiary-box hybrid-text">
+                <h1>Hybrid Scaling</h1>
+                <p class="style-c">This paragraph switches behavior at a hard threshold, jumping from proportional to inverse scaling instantly.</p>
             </div>
             
             <div class="text-box secondary-box inverse-text">
                 <h1>Inverse Scaling</h1>
-                <p class="style-b">This paragraph always scales DOWN as the title grows. Creates stronger hierarchy but with smart limits to prevent readability issues.</p>
-                <div class="scaling-note">
-                    <strong>Method:</strong> Inverse relationship<br>
-                    <strong>Formula:</strong> paragraph = base × (1/ratio)
-                </div>
+                <p class="style-b">This paragraph always scales DOWN as the title grows, creating a strong hierarchy with smart limits.</p>
             </div>
         </div>
     </div>
     
     <script src="simpleScript.js"></script>
 </body>
-</html>
