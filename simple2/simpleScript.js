@@ -16,28 +16,38 @@ const spacingValue = document.getElementById('spacingValue');
 const shiftPointValue = document.getElementById('shiftPointValue');
 const thresholdDisplay = document.getElementById('thresholdDisplay');
 
-// Hybrid scaling calculation
+// Hybrid scaling calculation - SIMPLIFIED
 function calculateHybridScaling() {
-    if (!textSizeSlider || !shiftPointSlider) return; // Safety check
+    if (!textSizeSlider || !shiftPointSlider) return;
     
     const textRatio = parseFloat(textSizeSlider.value);
     const shiftPoint = parseFloat(shiftPointSlider.value);
     
     if (textRatio <= shiftPoint) {
-        // Below threshold: use PROPORTIONAL scaling
-        document.documentElement.style.setProperty('--paragraph-size-c', `calc(var(--base-size) * ${textRatio})`);
-        document.documentElement.style.setProperty('--large-size-c', `calc(var(--paragraph-size-c) * 1.25)`);
-        document.documentElement.style.setProperty('--xlarge-size-c', `calc(var(--large-size-c) * 1.25)`);
+        // Below threshold: PROPORTIONAL scaling
+        // Paragraph grows WITH the title
+        const paragraphSize = textRatio;
+        const largeSize = paragraphSize * 1.25;
+        const xlargeSize = largeSize * 1.25;
+        
+        document.documentElement.style.setProperty('--paragraph-size-c', `${paragraphSize}rem`);
+        document.documentElement.style.setProperty('--large-size-c', `${largeSize}rem`);
+        document.documentElement.style.setProperty('--xlarge-size-c', `${xlargeSize}rem`);
         
         if (document.getElementById('currentMethod')) {
             document.getElementById('currentMethod').textContent = 'Proportional (below threshold)';
         }
     } else {
-        // Above threshold: use INVERSE scaling
-        const inverseRatio = Math.max(1.1, Math.min(1.4, 1 / textRatio));
-        document.documentElement.style.setProperty('--paragraph-size-c', `calc(var(--base-size) * ${inverseRatio})`);
-        document.documentElement.style.setProperty('--large-size-c', `calc(var(--base-size) * ${textRatio} * 1.25)`);
-        document.documentElement.style.setProperty('--xlarge-size-c', `calc(var(--large-size-c) * 1.25)`);
+        // Above threshold: INVERSE scaling
+        // Paragraph gets smaller as title gets bigger
+        const inverseRatio = Math.max(0.8, Math.min(1.4, 1 / textRatio));
+        const paragraphSize = inverseRatio;
+        const largeSize = textRatio * 1.25;
+        const xlargeSize = largeSize * 1.25;
+        
+        document.documentElement.style.setProperty('--paragraph-size-c', `${paragraphSize}rem`);
+        document.documentElement.style.setProperty('--large-size-c', `${largeSize}rem`);
+        document.documentElement.style.setProperty('--xlarge-size-c', `${xlargeSize}rem`);
         
         if (document.getElementById('currentMethod')) {
             document.getElementById('currentMethod').textContent = 'Inverse (above threshold)';
