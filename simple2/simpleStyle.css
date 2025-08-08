@@ -5,40 +5,83 @@
 /* ========================================= */
 
 /* ========================================= */
-/* DESIGN TOKENS (User Controllable)        */
+/* TYPOGRAPHY SCALING TESTS                 */
+/* Two different approaches to compare       */
 /* ========================================= */
+
 :root {
     /* Core user-controlled variables */
     --text-ratio: 1.2;        /* Multiplier for scaling text sizes */
     --hue: 220;               /* Base hue (0-360) for entire color system */
     --spacing-ratio: 1;       /* Multiplier for all spacing and padding */
     
-    /* ===================================== */
-    /* CALCULATED TYPOGRAPHY SCALE           */
-    /* ===================================== */
+    /* Base typography */
     --base-size: 16px;                                    /* Foundation text size */
     
-    /* Simple scaling - everything scales together, hierarchy preserved */
-    --paragraph-size: calc(var(--base-size) * var(--text-ratio));           /* Body text */
-    --large-size: calc(var(--paragraph-size) * 1.25);                      /* Headings - always 25% bigger */
-    --xlarge-size: calc(var(--large-size) * 1.25);                         /* Main titles - always biggest */
+    /* STYLE A: Proportional Scaling - everything scales together */
+    --paragraph-size-a: calc(var(--base-size) * var(--text-ratio));
+    --large-size-a: calc(var(--paragraph-size-a) * 1.25);
+    --xlarge-size-a: calc(var(--large-size-a) * 1.25);
     
-    /* ===================================== */
-    /* CALCULATED SPACING SCALE              */
-    /* ===================================== */
+    /* STYLE B: Inverse Scaling - paragraph gets smaller as title grows */
+    --paragraph-ratio-b: clamp(1.1, calc(1 / var(--text-ratio)), 1.4);
+    --paragraph-size-b: calc(var(--base-size) * var(--paragraph-ratio-b));
+    --large-size-b: calc(var(--base-size) * var(--text-ratio) * 1.25);
+    --xlarge-size-b: calc(var(--large-size-b) * 1.25);
+    
+    /* Default sizes - use proportional as default */
+    --paragraph-size: var(--paragraph-size-a);
+    --large-size: var(--large-size-a);
+    --xlarge-size: var(--xlarge-size-a);
+    
+    /* Spacing scale */
     --base-spacing: calc(1rem * var(--spacing-ratio));    /* Standard gap/padding */
     --large-spacing: calc(1.5rem * var(--spacing-ratio)); /* Larger sections */
     --xl-spacing: calc(2rem * var(--spacing-ratio));      /* Page-level spacing */
     
-    /* ===================================== */
-    /* CALCULATED COLOR SYSTEM               */
-    /* ===================================== */
-    /* All colors derive from the single hue variable */
+    /* Color system - all colors derive from the single hue variable */
     --primary-color: hsl(var(--hue), 70%, 50%);    /* Main brand color */
     --secondary-color: hsl(var(--hue), 70%, 35%);  /* Darker variant for contrast */
     --tertiary-color: hsl(var(--hue), 70%, 85%);   /* Light variant for subtle elements */
     --border-color: hsl(var(--hue), 30%, 90%);     /* Very light borders */
     --slider-color: hsl(var(--hue), 60%, 45%);     /* Interactive elements */
+}
+
+/* ========================================= */
+/* TYPOGRAPHY STYLE APPLICATIONS            */
+/* ========================================= */
+
+/* Style A: Proportional scaling paragraphs */
+.style-a {
+    font-size: var(--paragraph-size-a) !important;
+    line-height: calc(1.6 * var(--spacing-ratio));
+}
+
+/* Style B: Inverse scaling paragraphs */
+.style-b {
+    font-size: var(--paragraph-size-b) !important;
+    line-height: calc(1.6 * var(--spacing-ratio));
+}
+
+/* Container classes for heading sizes */
+.proportional-text h1 { font-size: var(--xlarge-size-a) !important; }
+.proportional-text h2 { font-size: var(--large-size-a) !important; }
+
+.inverse-text h1 { font-size: var(--xlarge-size-b) !important; }
+.inverse-text h2 { font-size: var(--large-size-b) !important; }
+
+/* ========================================= */
+/* SCALING NOTES (Visual Indicators)        */
+/* ========================================= */
+
+.scaling-note {
+    margin-top: var(--base-spacing);
+    padding: var(--base-spacing);
+    background: var(--tertiary-color);
+    border-radius: calc(4px * var(--spacing-ratio));
+    font-size: calc(var(--base-size) * 0.85);
+    color: var(--secondary-color);
+    border-left: 3px solid var(--primary-color);
 }
 
 /* ========================================= */
@@ -57,6 +100,7 @@ body {
     background: #f8f9fa;                           /* Light neutral background */
     padding: var(--large-spacing);                 /* Page padding scales with system */
 }
+
 
 /* ========================================= */
 /* PAGE LAYOUT CONTAINERS                   */
