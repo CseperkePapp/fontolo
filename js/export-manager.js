@@ -1,157 +1,130 @@
 // js/export-manager.js
 
+// ========================================= 
+// 1. MODULE DEFINITIONS
+// ========================================= 
 const EXPORT_MODULES = {
   tokens: {
     name: 'Design Tokens',
     description: 'CSS variables only (colors, spacing, typography)',
     size: '~5KB',
-    required: true, // Always included
+    required: true,
     includes: ['tokens.css']
   },
-  
-  layout: {
-    name: 'Layout System',
-    description: 'Stack patterns, grid system, spacing utilities',
-    size: '~15KB',
-    requires: ['tokens'],
-    includes: ['layout.css']
-  },
-  
-  components: {
-    name: 'Components',
-    description: 'Buttons, cards, forms, accordions',
-    size: '~25KB',
-    requires: ['tokens', 'layout'],
-    includes: ['components.css']
-  },
-  
-  utilities: {
-    name: 'Utility Classes',
-    description: 'Text colors, backgrounds, borders',
-    size: '~10KB',
-    requires: ['tokens'],
-    includes: ['utilities.css']
-  },
-  
-  reset: {
-    name: 'Base Reset',
-    description: 'Normalize & typography defaults',
-    size: '~3KB',
-    requires: ['tokens'],
-    includes: ['base.css']
-  },
-  
-  examples: {
-    name: 'HTML Examples',
-    description: 'Sample HTML pages using the system',
-    size: '~20KB',
-    requires: ['tokens', 'layout', 'components'],
-    includes: ['examples/index.html', 'examples/blog.html', 'examples/dashboard.html']
-  }
+  // ... rest of modules
 };
 
+// ========================================= 
+// 2. MODAL UI FUNCTIONS
+// ========================================= 
 function createExportModal() {
-  const modal = document.createElement('div');
-  modal.className = 'export-modal';
-  modal.innerHTML = `
-    <div class="modal-overlay"></div>
-    <div class="modal-content">
-      <h2>Export Design System</h2>
-      <p>Choose what to include in your download:</p>
-      
-      <div class="export-modules">
-        ${Object.entries(EXPORT_MODULES).map(([key, module]) => `
-          <label class="module-option ${module.required ? 'required' : ''}">
-            <input type="checkbox" 
-                   value="${key}" 
-                   ${module.required ? 'checked disabled' : ''}
-                   data-requires="${(module.requires || []).join(',')}">
-            <div class="module-info">
-              <div class="module-header">
-                <strong>${module.name}</strong>
-                <span class="module-size">${module.size}</span>
-              </div>
-              <small>${module.description}</small>
-            </div>
-          </label>
-        `).join('')}
-      </div>
-      
-      <div class="export-format">
-        <h3>Export Format:</h3>
-        <label>
-          <input type="radio" name="format" value="separate" checked>
-          Separate Files (development)
-        </label>
-        <label>
-          <input type="radio" name="format" value="combined">
-          Single CSS File (production)
-        </label>
-        <label>
-          <input type="radio" name="format" value="zip">
-          ZIP Package (complete project)
-        </label>
-      </div>
-      
-      <div class="export-preview">
-        <div class="preview-size">Total size: <strong id="totalSize">~5KB</strong></div>
-        <div class="preview-files">Files: <strong id="fileCount">1 file</strong></div>
-      </div>
-      
-      <div class="modal-actions">
-        <button class="btn btn-secondary" onclick="closeExportModal()">Cancel</button>
-        <button class="btn btn-primary" onclick="executeExport()">Download</button>
-      </div>
-    </div>
-  `;
-  
-  document.body.appendChild(modal);
-  
-  // Add dependency management
-  modal.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
-    checkbox.addEventListener('change', handleModuleDependencies);
-  });
-  
-  updateExportPreview();
+  // Modal creation code
 }
 
 function handleModuleDependencies(e) {
-  const checkbox = e.target;
-  const requires = checkbox.dataset.requires?.split(',').filter(Boolean) || [];
-  
-  if (checkbox.checked) {
-    // Auto-check required dependencies
-    requires.forEach(dep => {
-      const depCheckbox = document.querySelector(`input[value="${dep}"]`);
-      if (depCheckbox) depCheckbox.checked = true;
-    });
-  } else {
-    // Check if anything depends on this
-    document.querySelectorAll('input[type="checkbox"]:checked').forEach(other => {
-      const otherRequires = other.dataset.requires?.split(',').filter(Boolean) || [];
-      if (otherRequires.includes(checkbox.value)) {
-        other.checked = false;
-      }
-    });
-  }
-  
-  updateExportPreview();
+  // Dependency management
 }
 
 function updateExportPreview() {
-  const selected = Array.from(document.querySelectorAll('.export-modules input:checked'))
-    .map(cb => cb.value);
-  
-  let totalSize = 0;
-  let fileCount = 0;
-  
-  selected.forEach(key => {
-    const module = EXPORT_MODULES[key];
-    const sizeMatch = module.size.match(/~(\d+)KB/);
-    if (sizeMatch) totalSize += parseInt(sizeMatch[1]);
-    fileCount += module.includes.length;
+  // Preview updates
+}
+
+function closeExportModal() {
+  const modal = document.querySelector('.export-modal');
+  if (modal) modal.remove();
+}
+
+// ========================================= 
+// 3. EXPORT GENERATION
+// ========================================= 
+function executeExport() {
+  // Main export execution
+}
+
+function generateExports(modules, format) {
+  // Generate content for selected modules
+}
+
+// ========================================= 
+// 4. CSS GENERATORS
+// ========================================= 
+function generateTokensCSS() {
+  // Token generation
+}
+
+function generateResetCSS() {
+  // Base/reset CSS generation
+}
+
+function generateLayoutCSS() {
+  // Layout system generation
+}
+
+function generateComponentsCSS() {
+  // Components generation
+}
+
+function generateUtilitiesCSS() {
+  // Utilities generation
+}
+
+// ========================================= 
+// 5. HTML EXAMPLE GENERATORS
+// ========================================= 
+function generateExampleHTML(type) {
+  // Generate example HTML pages
+}
+
+// ========================================= 
+// 6. DOWNLOAD METHODS
+// ========================================= 
+function downloadSeparateFiles(exports) {
+  Object.entries(exports).forEach(([filename, content]) => {
+    downloadFile(filename, content, 'text/css');
   });
+}
+
+function downloadCombinedCSS(exports) {
+  // Combine and download single file
+}
+
+function downloadZipPackage(exports) {
+  // Create ZIP package
+}
+
+function downloadFile(filename, content, mimeType) {
+  // Utility function for downloads
+}
+
+// ========================================= 
+// 7. HELPER FUNCTIONS
+// ========================================= 
+function generateReadme(modules) {
+  return `# Fontolo Design System
   
-  document.getElementById('totalSize').textContent = `~${totalSize}KB`;
-  document.getElementById('fileCount').textContent = `${fileCount} ${fileCount === 1 ? 'file' : 'files'}`;
+Generated: ${new Date().toISOString()}
+Included modules: ${modules.join(', ')}
+
+## Usage
+Link the CSS files in your HTML:
+\`\`\`html
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="layout.css">
+<link rel="stylesheet" href="components.css">
+\`\`\`
+
+## Documentation
+Visit https://github.com/CseperkePapp/fontolo for complete documentation.
+`;
+}
+
+function generatePackageJson() {
+  return JSON.stringify({
+    name: "fontolo-design-system",
+    version: "1.0.0",
+    description: "Generated design system from Fontolo",
+    main: "tokens.css",
+    keywords: ["css", "design-system", "fontolo"],
+    license: "MIT"
+  }, null, 2);
 }
