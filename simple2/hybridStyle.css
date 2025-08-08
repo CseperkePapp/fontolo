@@ -31,9 +31,14 @@
     --xlarge-size-b: calc(var(--large-size-b) * 1.25);
     
     /* STYLE C: Hybrid - JavaScript will set these directly */
-    --paragraph-size-c: calc(var(--base-size) * var(--text-ratio)); /* Default to proportional */
+    --paragraph-size-c: calc(var(--base-size) * var(--text-ratio)); 
     --large-size-c: calc(var(--paragraph-size-c) * 1.25);
     --xlarge-size-c: calc(var(--large-size-c) * 1.25);
+    
+    /* NEW: STYLE D: Algorithmic - also set by JavaScript */
+    --paragraph-size-d: calc(var(--base-size) * var(--text-ratio));
+    --large-size-d: calc(var(--paragraph-size-d) * 1.25);
+    --xlarge-size-d: calc(var(--large-size-d) * 1.25);
     
     /* Default sizes for general use */
     --paragraph-size: var(--paragraph-size-a);
@@ -96,6 +101,12 @@ body {
     line-height: calc(1.6 * var(--spacing-ratio));
 }
 
+/* NEW: Style D: Algorithmic scaling */
+.style-d {
+    font-size: var(--paragraph-size-d) !important;
+    line-height: calc(1.6 * var(--spacing-ratio));
+}
+
 /* Container heading assignments */
 .proportional-text h1 { font-size: var(--xlarge-size-a) !important; }
 .proportional-text h2 { font-size: var(--large-size-a) !important; }
@@ -105,6 +116,10 @@ body {
 
 .hybrid-text h1 { font-size: var(--xlarge-size-c) !important; }
 .hybrid-text h2 { font-size: var(--large-size-c) !important; }
+
+/* NEW: Algorithmic heading assignment */
+.algorithmic-text h1 { font-size: var(--xlarge-size-d) !important; }
+.algorithmic-text h2 { font-size: var(--large-size-d) !import; }
 
 /* ========================================= */
 /* SCALING NOTES (Visual Indicators)        */
