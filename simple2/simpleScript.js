@@ -55,6 +55,37 @@ function calculateHybridScaling() {
     }
 }
 
+function calculateAlgorithmicScaling() {
+    // 1. Define the transition zone
+    const TRANSITION_START = 1.2;
+    const TRANSITION_END = 1.8;
+    
+    const textRatio = parseFloat(textSizeSlider.value);
+    
+    // 2. Calculate the progress (from 0.0 to 1.0) within the zone
+    let progress = (textRatio - TRANSITION_START) / (TRANSITION_END - TRANSITION_START);
+    // Clamp the progress value so it doesn't go below 0 or above 1
+    progress = Math.max(0, Math.min(1, progress));
+
+    // 3. Calculate both potential scales
+    const proportionalScale = textRatio;
+    const inverseScale = Math.max(0.8, Math.min(1.4, 1 / textRatio)); // Using clamps from your old code
+
+    // 4. Blend the scales using interpolation
+    const finalParagraphScale = (proportionalScale * (1 - progress)) + (inverseScale * progress);
+
+    // This logic assumes you've added a new '.style-d' class and CSS variables for it
+    // For example: --paragraph-size-d, --large-size-d, etc.
+    document.documentElement.style.setProperty('--paragraph-size-d', `${finalParagraphScale}rem`);
+    
+    // The title size can remain consistently proportional
+    const largeSize = textRatio * 1.25;
+    const xlargeSize = largeSize * 1.25;
+    document.documentElement.style.setProperty('--large-size-d', `${largeSize}rem`);
+    document.documentElement.style.setProperty('--xlarge-size-d', `${xlargeSize}rem`);
+}
+
+
 // Update all design tokens and displays
 function updateDesign() {
     const textRatio = textSizeSlider ? textSizeSlider.value : '1.2';
@@ -73,6 +104,7 @@ function updateDesign() {
     
     // Calculate hybrid scaling
     calculateHybridScaling();
+    calculateAlgorithmicScaling(); 
 }
 
 // Add event listeners for main controls
