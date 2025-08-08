@@ -90,8 +90,9 @@ function calculateHybridScaling() {
         document.documentElement.style.setProperty('--xlarge-size-c', `calc(var(--large-size-c) * 1.25)`);
         
         document.getElementById('currentMethod').textContent = 'Proportional (below threshold)';
-    } else {
-        // Above threshold: use inverse scaling
+        
+        } else {
+        // Above threshold: use INVERSE scaling (as described in HTML)
         const inverseRatio = Math.max(1.1, Math.min(1.4, 1 / textRatio));
         document.documentElement.style.setProperty('--paragraph-size-c', `calc(var(--base-size) * ${inverseRatio})`);
         document.documentElement.style.setProperty('--large-size-c', `calc(var(--base-size) * ${textRatio} * 1.25)`);
@@ -99,6 +100,7 @@ function calculateHybridScaling() {
         
         document.getElementById('currentMethod').textContent = 'Inverse (above threshold)';
     }
+}
 }
 
 // Add shift point slider handling
