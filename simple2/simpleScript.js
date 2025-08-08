@@ -60,15 +60,16 @@ function calculateHybridScaling() {
 }
 
 function calculateAlgorithmicScaling() {
+    // Read the dampening factor directly from our new slider
+    const dampeningFactor = parseFloat(dampeningSlider.value);
     const textRatio = parseFloat(textSizeSlider.value);
 
     // The title size is always proportional
     const largeSize = textRatio * 1.25;
     const xlargeSize = largeSize * 1.25;
 
-    // The paragraph scale is dampened using a natural logarithm
-    // We add 1 because log(1) is 0, ensuring our base is correct.
-    const finalParagraphScale = 1 + Math.log(textRatio);
+    // The paragraph scale is dampened using the value from the slider
+    const finalParagraphScale = 1 + (Math.log(textRatio) * dampeningFactor);
 
     // Update the CSS variables for the ".style-d" element
     document.documentElement.style.setProperty('--paragraph-size-d', `${finalParagraphScale}rem`);
