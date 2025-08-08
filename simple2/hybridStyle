@@ -1,0 +1,446 @@
+/* ========================================= */
+/* FONTOLO SIMPLE - DESIGN TOKEN SYSTEM     */
+/* A minimal, self-demonstrating CSS        */
+/* design system configurator                */
+/* ========================================= */
+
+/* ========================================= */
+/* TYPOGRAPHY RESEARCH SYSTEM               */
+/* Three approaches for scientific comparison */
+/* ========================================= */
+
+:root {
+    /* Core user-controlled variables */
+    --text-ratio: 1.2;
+    --hue: 220;
+    --spacing-ratio: 1;
+    --shift-point: 1.4;        /* NEW: Threshold for hybrid switching */
+    
+    /* Base typography */
+    --base-size: 16px;
+    
+    /* STYLE A: Proportional Scaling */
+    --paragraph-size-a: calc(var(--base-size) * var(--text-ratio));
+    --large-size-a: calc(var(--paragraph-size-a) * 1.25);
+    --xlarge-size-a: calc(var(--large-size-a) * 1.25);
+    
+    /* STYLE B: Inverse Scaling */
+    --paragraph-ratio-b: clamp(1.1, calc(1 / var(--text-ratio)), 1.4);
+    --paragraph-size-b: calc(var(--base-size) * var(--paragraph-ratio-b));
+    --large-size-b: calc(var(--base-size) * var(--text-ratio) * 1.25);
+    --xlarge-size-b: calc(var(--large-size-b) * 1.25);
+    
+    /* STYLE C: Hybrid Scaling - calculated by JavaScript */
+    --paragraph-size-c: var(--paragraph-size-a);  /* Default to proportional */
+    --large-size-c: var(--large-size-a);
+    --xlarge-size-c: var(--xlarge-size-a);
+    
+    /* Default sizes - use proportional as default */
+    --paragraph-size: var(--paragraph-size-a);
+    --large-size: var(--large-size-a);
+    --xlarge-size: var(--xlarge-size-a);
+    
+    /* Spacing scale */
+    --space-xs: calc(0.25rem * var(--spacing-ratio));
+    --space-sm: calc(0.5rem * var(--spacing-ratio));
+    --base-spacing: calc(1rem * var(--spacing-ratio));
+    --large-spacing: calc(1.5rem * var(--spacing-ratio));
+    --xl-spacing: calc(2rem * var(--spacing-ratio));
+    
+    /* Border radius scale */
+    --border-radius-sm: calc(4px * var(--spacing-ratio));
+    --border-radius-md: calc(8px * var(--spacing-ratio));
+    
+    /* Color system - all colors derive from the single hue variable */
+    --primary-color: hsl(var(--hue), 70%, 50%);
+    --secondary-color: hsl(var(--hue), 70%, 35%);
+    --tertiary-color: hsl(var(--hue), 70%, 85%);
+    --border-color: hsl(var(--hue), 30%, 90%);
+    --slider-color: hsl(var(--hue), 60%, 45%);
+}
+
+/* ========================================= */
+/* BROWSER RESET & BASE STYLES              */
+/* ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    font-size: var(--base-size);
+    line-height: calc(1.4 * var(--spacing-ratio));
+    background: #f8f9fa;
+    padding: var(--large-spacing);
+}
+
+/* ========================================= */
+/* TYPOGRAPHY STYLE APPLICATIONS            */
+/* ========================================= */
+
+/* Style A: Proportional scaling */
+.style-a {
+    font-size: var(--paragraph-size-a) !important;
+    line-height: calc(1.6 * var(--spacing-ratio));
+}
+
+/* Style B: Inverse scaling */
+.style-b {
+    font-size: var(--paragraph-size-b) !important;
+    line-height: calc(1.6 * var(--spacing-ratio));
+}
+
+/* Style C: Hybrid scaling */
+.style-c {
+    font-size: var(--paragraph-size-c) !important;
+    line-height: calc(1.6 * var(--spacing-ratio));
+}
+
+/* Container heading assignments */
+.proportional-text h1 { font-size: var(--xlarge-size-a) !important; }
+.proportional-text h2 { font-size: var(--large-size-a) !important; }
+
+.inverse-text h1 { font-size: var(--xlarge-size-b) !important; }
+.inverse-text h2 { font-size: var(--large-size-b) !important; }
+
+.hybrid-text h1 { font-size: var(--xlarge-size-c) !important; }
+.hybrid-text h2 { font-size: var(--large-size-c) !important; }
+
+/* ========================================= */
+/* SCALING NOTES (Visual Indicators)        */
+/* ========================================= */
+
+.scaling-note {
+    margin-top: var(--base-spacing);
+    padding: var(--base-spacing);
+    background: var(--tertiary-color);
+    border-radius: var(--border-radius-sm);
+    font-size: calc(var(--base-size) * 0.85);
+    color: var(--secondary-color);
+    border-left: 3px solid var(--primary-color);
+}
+
+/* ========================================= */
+/* PAGE LAYOUT CONTAINERS                   */
+/* ========================================= */
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--xl-spacing);
+}
+
+.top-row {
+    display: flex;
+    justify-content: center;
+}
+
+.bottom-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--large-spacing);
+}
+
+.three-column {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+/* ========================================= */
+/* CONTROL BOX & ENHANCED CONTROLS          */
+/* ========================================= */
+
+.control-box {
+    background: white;
+    padding: var(--large-spacing);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 2px solid var(--border-color);
+    text-align: center;
+    max-width: 500px;
+}
+
+.control-box h2 {
+    font-size: var(--large-size);
+    color: var(--primary-color);
+    margin-bottom: var(--large-spacing);
+    font-weight: 600;
+}
+
+.hybrid-control {
+    border-top: 1px solid var(--border-color);
+    padding-top: var(--base-spacing);
+    margin-top: var(--base-spacing);
+}
+
+.control-hint {
+    font-size: calc(var(--base-size) * 0.75);
+    color: var(--secondary-color);
+    margin-top: calc(var(--base-spacing) * 0.5);
+    font-style: italic;
+    line-height: 1.3;
+}
+
+/* ========================================= */
+/* TEXT BOXES                               */
+/* ========================================= */
+
+.text-box {
+    background: white;
+    padding: var(--large-spacing);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    border: 2px solid var(--border-color);
+}
+
+.text-box h1 {
+    font-size: var(--xlarge-size);
+    margin-bottom: var(--base-spacing);
+    font-weight: 600;
+}
+
+.text-box p {
+    font-size: var(--paragraph-size);
+    line-height: calc(1.6 * var(--spacing-ratio));
+    color: #666;
+}
+
+/* Color variants */
+.primary-box h1 { color: var(--primary-color); }
+.secondary-box h1 { color: var(--secondary-color); }
+
+/* Hybrid box special styling */
+.tertiary-box {
+    border: 2px solid var(--tertiary-color);
+    position: relative;
+}
+
+.tertiary-box::before {
+    content: "RESEARCH MODE";
+    position: absolute;
+    top: -1px;
+    right: var(--base-spacing);
+    background: var(--tertiary-color);
+    color: var(--secondary-color);
+    padding: var(--space-xs) var(--space-sm);
+    font-size: calc(var(--base-size) * 0.7);
+    font-weight: bold;
+    border-radius: 0 0 var(--border-radius-sm) var(--border-radius-sm);
+}
+
+/* ========================================= */
+/* FORM CONTROLS & SLIDERS                  */
+/* ========================================= */
+
+.controls {
+    margin-bottom: var(--large-spacing);
+}
+
+.control {
+    margin-bottom: var(--base-spacing);
+    text-align: left;
+}
+
+.control label {
+    display: block;
+    margin-bottom: calc(var(--base-spacing) * 0.5);
+    font-weight: 500;
+    color: var(--secondary-color);
+}
+
+.control input[type="range"] {
+    width: 100%;
+    margin-bottom: calc(var(--base-spacing) * 0.25);
+    height: 6px;
+    border-radius: 3px;
+    background: #e5e7eb;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.control input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--slider-color);
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.control input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--slider-color);
+    cursor: pointer;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.control input[type="range"]::-webkit-slider-track {
+    background: linear-gradient(to right, var(--tertiary-color) 0%, var(--primary-color) 100%);
+    height: 6px;
+    border-radius: 3px;
+}
+
+.control input[type="range"]::-moz-range-track {
+    background: linear-gradient(to right, var(--tertiary-color) 0%, var(--primary-color) 100%);
+    height: 6px;
+    border-radius: 3px;
+    border: none;
+}
+
+.control span {
+    font-size: calc(var(--base-size) * 0.9);
+    color: var(--secondary-color);
+    font-family: monospace;
+}
+
+/* ========================================= */
+/* BUTTONS & DEMO BOXES                     */
+/* ========================================= */
+
+.action-btn {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: var(--base-spacing) var(--large-spacing);
+    border-radius: calc(6px * var(--spacing-ratio));
+    font-size: var(--base-size);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.action-btn:hover {
+    background: var(--secondary-color);
+    transform: translateY(-1px);
+}
+
+/* ========================================= */
+/* STANDARD DEMO BOXES                      */
+/* ========================================= */
+
+/* Individual demo boxes in the grid */
+.demo-box {
+    background: white;                                  /* Clean white background */
+    padding: var(--large-spacing);                    /* Padding scales with system */
+    border-radius: calc(8px * var(--spacing-ratio));  /* Border radius scales */
+    border: 2px solid var(--border-color);           /* Border uses system color */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);         /* Subtle shadow */
+}
+
+/* Demo box headings */
+.demo-box h2 {
+    font-size: var(--large-size);          /* Uses large text scale */
+    margin-bottom: var(--base-spacing);    /* Space below headings */
+    font-weight: 600;                      /* Semi-bold weight */
+}
+
+/* Demo box paragraphs */
+.demo-box p {
+    line-height: calc(1.5 * var(--spacing-ratio));  /* Line height scales */
+    font-size: var(--paragraph-size);               /* Uses calculated paragraph size */
+    color: #666;                                     /* Muted text color */
+}
+
+/* ===================================== */
+/* COLOR VARIANTS FOR DEMO BOXES         */
+/* ===================================== */
+.demo-box.primary h2 { color: var(--primary-color); }    /* Primary color variant */
+.demo-box.secondary h2 { color: var(--secondary-color); } /* Secondary color variant */
+.demo-box.tertiary h2 { color: var(--tertiary-color); }   /* Tertiary color variant */
+
+/* ========================================= */
+/* RESPONSIVE DESIGN                        */
+/* ========================================= */
+
+/* Mobile and tablet adjustments */
+@media (max-width: 968px) {
+    /* Simplify grid on medium screens */
+    .six-grid {
+        grid-template-columns: 1fr 1fr;            /* Two columns */
+        grid-template-areas: 
+            "feature  feature"
+            "box2     box3" 
+            "box4     box5"
+            "box6     box6";                       /* Box 6 spans full width */
+    }
+}
+
+@media (max-width: 768px) {
+    /* Stack everything on mobile */
+    .bottom-row {
+        grid-template-columns: 1fr;               /* Single column layout */
+    }
+    
+    .six-grid {
+        grid-template-columns: 1fr;               /* Single column */
+        grid-template-areas: 
+            "feature"
+            "box2" 
+            "box3"
+            "box4"
+            "box5"
+            "box6";
+    }
+    
+    /* Adjust page container padding on mobile */
+    .page-container {
+        padding: var(--base-spacing);             /* Reduced padding */
+    }
+    
+    /* Reduce control box padding on mobile */
+    .control-box {
+        padding: var(--base-spacing);             /* Smaller padding for mobile */
+        max-width: 100%;                          /* Full width on mobile */
+    }
+    
+    /* Adjust feature box on mobile */
+    .demo-box.feature {
+        min-height: 150px;                        /* Smaller on mobile */
+    }
+    
+    .demo-box.feature h2 {
+        font-size: var(--large-size);            /* Smaller title on mobile */
+    }
+    
+    .demo-box.feature p {
+        font-size: var(--paragraph-size);        /* Smaller text on mobile */
+    }
+}
+
+/* ========================================= */
+/* DESIGN SYSTEM NOTES                      */
+/* ========================================= */
+
+/*
+This updated grid system demonstrates:
+
+1. ASYMMETRICAL LAYOUTS:
+   - Large feature area for important content/controls
+   - Five smaller boxes showing systematic application
+   - Responsive behavior that maintains hierarchy
+
+2. VISUAL HIERARCHY:
+   - Feature box gets primary border and gradient
+   - Larger typography in feature area
+   - Clear content organization
+
+3. GRID AREAS:
+   - Clean, semantic grid-template-areas
+   - Easy to modify layout structure
+   - Responsive breakpoints that make sense
+
+This shows how design tokens can drive consistency
+across complex, asymmetrical layouts while maintaining
+clear visual hierarchy and responsive behavior.
+*/
