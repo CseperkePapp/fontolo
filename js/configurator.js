@@ -583,7 +583,9 @@ ${document.documentElement.style.cssText}`;
         // UI event listeners
         elements.ui.nav.addEventListener('click', handleSidebarNav);
         elements.ui.tabControls.addEventListener('click', handleTabSwitch);
-        elements.ui.generateCssBtn.addEventListener('click', generateAndDownloadCSS);
+        elements.ui.generateCssBtn.addEventListener('click', () => {
+  createExportModal();
+});
         
         // Accordion listeners
         document.querySelectorAll('.accordion-header').forEach(header => {
