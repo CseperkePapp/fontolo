@@ -4,9 +4,6 @@
 > 
 > **For the cleanest experience:** Check back in 1-2 weeks for the simplified version, or try the current live demo at [fontolodemo.html](fontolodemo.html)
 
-*Original description continues below...*
-
-
 ## 🎯 What is Fontolo?
 
 Fontolo is a **living design system generator** that lets you visually configure design tokens and see them work in real-time. It's a complete UI framework that demonstrates itself through its own interface.
