@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fontolo Simple - 6-Box Grid Demo</title>
+    <link rel="stylesheet" href="simpleStyle.css">
+</head>
+<body>
+    <div class="page-container">
+        <div class="grid-header">
+            <h1>Six-Box Grid Demonstration</h1>
+            <p>All boxes use the same design tokens, showing systematic color and spacing relationships.</p>
+            <button id="loadCSS" class="action-btn">Load CSS from Configurator</button>
+            <a href="simpleConfigurator.html" class="action-btn" style="margin-left: var(--base-spacing);">← Back to Configurator</a>
+        </div>
+        
+        <div class="grid-container six-grid">
+            <div class="demo-box primary">
+                <h2>Primary Box 1</h2>
+                <p>This box uses the primary color variant derived from your hue setting. All spacing scales together.</p>
+            </div>
+            
+            <div class="demo-box secondary">
+                <h2>Secondary Box 2</h2>
+                <p>This box uses a darker variant of the same hue for contrast and visual hierarchy.</p>
+            </div>
+            
+            <div class="demo-box tertiary">
+                <h2>Tertiary Box 3</h2>
+                <p>This box uses the lightest variant, showing systematic color relationships across the grid.</p>
+            </div>
+
+            <div class="demo-box primary">
+                <h2>Primary Box 4</h2>
+                <p>Notice how all primary boxes share the same color, demonstrating design token consistency.</p>
+            </div>
+            
+            <div class="demo-box secondary">
+                <h2>Secondary Box 5</h2>
+                <p>Typography scales proportionally in all boxes, maintaining readability at any size.</p>
+            </div>
+            
+            <div class="demo-box tertiary">
+                <h2>Tertiary Box 6</h2>
+                <p>The spacing between and within boxes all derives from the same spacing ratio control.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="simpleScript.js"></script>
+</body>
+</html>
