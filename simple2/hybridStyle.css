@@ -91,7 +91,7 @@ body {
 }
 
 /* Style C: Hybrid scaling */
-.style-c {
+.text-box .style-c { /* Making the selector more specific */
     font-size: var(--paragraph-size-c) !important;
     line-height: calc(1.6 * var(--spacing-ratio));
 }
