@@ -1,6 +1,7 @@
 /* ========================================= */
-/* FONTOLO CONFIGURATOR                     */
+/* FONTOLO CONFIGURATOR (Updated)           */
 /* Live CSS design system configuration     */
+/* Integrated with Export Manager           */
 /* ========================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,8 +35,14 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
+    // =========================================
+    // 2. GLOBAL TOKEN STORE
+    // Establishes the "data bridge" for export-manager.js
+    // =========================================
+    window.__FONT_TOKENS__ = {};
+
     // ========================================= 
-    // 2. DOM ELEMENT SELECTION
+    // 3. DOM ELEMENT SELECTION
     // ========================================= 
     const elements = {
         controls: {
@@ -119,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         ui: {
             notification: document.getElementById('notification'),
-            generateCssBtn: document.getElementById('generateCssBtn'),
+            // generateCssBtn is now handled by export-manager.js
             tabControls: document.querySelector('.tab-controls'),
             nav: document.querySelector('.nav'),
             sectionsContainer: document.getElementById('sections-container')
@@ -127,7 +134,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ========================================= 
-    // 3. UTILITY FUNCTIONS
+    // 4. UTILITY FUNCTIONS
     // ========================================= 
     const updateCSSVariable = (property, value) => {
         document.documentElement.style.setProperty(property, value);
@@ -141,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ========================================= 
-    // 4. TOKEN MANAGEMENT
+    // 5. TOKEN MANAGEMENT
     // ========================================= 
     function updateColorPreviews() {
         const previews = {
@@ -186,7 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================= 
-    // 5. INPUT HANDLING
+    // 6. INPUT HANDLING (MODIFIED FOR EXPORT MANAGER)
     // ========================================= 
     function handleInputChange(e) {
         const { id, value } = e.target;
@@ -194,114 +201,144 @@ document.addEventListener('DOMContentLoaded', () => {
         let unit = '';
         let displayValue = value;
 
-        // Handle different input types
+        // Handle different input types and update the global token store
         switch(id) {
             case 'baseFontSize': 
                 updateCSSVariable('--base-font-size', value + 'px'); 
+                window.__FONT_TOKENS__.baseFontSize = value + 'px';
                 unit = 'px'; 
                 break;
             case 'lineHeight': 
                 updateCSSVariable('--base-line-height', value); 
+                window.__FONT_TOKENS__.lineHeight = Number(value);
                 break;
             case 'goldenRatio': 
                 const ratio = CONFIG.ratioValues[parseInt(value)]; 
                 updateCSSVariable('--golden-ratio', ratio.value); 
+                window.__FONT_TOKENS__.goldenRatio = ratio.value;
                 displayValue = `${ratio.symbol} ${ratio.value}`; 
                 break;
             case 'primaryHue': 
                 updateCSSVariable('--color-primary-hue', value); 
+                window.__FONT_TOKENS__.primaryHue = Number(value);
                 break;
             case 'primarySaturation': 
                 updateCSSVariable('--color-primary-saturation', value + '%'); 
+                window.__FONT_TOKENS__.primarySaturation = Number(value);
                 unit = '%'; 
                 break;
             case 'primaryLightness': 
                 updateCSSVariable('--color-primary-lightness', value + '%'); 
+                window.__FONT_TOKENS__.primaryLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'secondaryHue': 
                 updateCSSVariable('--color-secondary-hue', value); 
+                window.__FONT_TOKENS__.secondaryHue = Number(value);
                 break;
             case 'secondarySaturation': 
                 updateCSSVariable('--color-secondary-saturation', value + '%'); 
+                window.__FONT_TOKENS__.secondarySaturation = Number(value);
                 unit = '%'; 
                 break;
             case 'secondaryLightness': 
                 updateCSSVariable('--color-secondary-lightness', value + '%'); 
+                window.__FONT_TOKENS__.secondaryLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'accentHue': 
                 updateCSSVariable('--color-accent-hue', value); 
+                window.__FONT_TOKENS__.accentHue = Number(value);
                 break;
             case 'accentSaturation': 
                 updateCSSVariable('--color-accent-saturation', value + '%'); 
+                window.__FONT_TOKENS__.accentSaturation = Number(value);
                 unit = '%'; 
                 break;
             case 'accentLightness': 
                 updateCSSVariable('--color-accent-lightness', value + '%'); 
+                window.__FONT_TOKENS__.accentLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'neutralHue': 
                 updateCSSVariable('--color-neutral-hue', value); 
+                window.__FONT_TOKENS__.neutralHue = Number(value);
                 break;
             case 'neutralSaturation': 
                 updateCSSVariable('--color-neutral-saturation', value + '%'); 
+                window.__FONT_TOKENS__.neutralSaturation = Number(value);
                 unit = '%'; 
                 break;
             case 'neutralLightness': 
                 updateCSSVariable('--color-neutral-lightness', value + '%'); 
+                window.__FONT_TOKENS__.neutralLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'backgroundHue': 
                 updateCSSVariable('--background-hue', value); 
+                window.__FONT_TOKENS__.backgroundHue = Number(value);
                 break;
             case 'backgroundSaturation': 
                 updateCSSVariable('--background-saturation', value + '%'); 
+                window.__FONT_TOKENS__.backgroundSaturation = Number(value);
                 unit = '%'; 
                 break;
             case 'backgroundLightness': 
                 updateCSSVariable('--background-lightness', value + '%'); 
+                window.__FONT_TOKENS__.backgroundLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'darkLightness': 
                 updateCSSVariable('--color-neutral-dark-lightness', value + '%'); 
+                window.__FONT_TOKENS__.darkLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'mediumLightness': 
                 updateCSSVariable('--color-neutral-medium-lightness', value + '%'); 
+                window.__FONT_TOKENS__.mediumLightness = Number(value);
                 unit = '%'; 
                 break;
             case 'fontFamilyBody': 
                 updateCSSVariable('--font-family-body', value); 
+                window.__FONT_TOKENS__.fontFamilyBody = value;
                 break;
             case 'fontFamilyHeading': 
                 updateCSSVariable('--font-family-heading', value); 
+                window.__FONT_TOKENS__.fontFamilyHeading = value;
                 break;
             case 'borderRadiusMd': 
                 updateCSSVariable('--border-radius-md', value + 'rem'); 
+                window.__FONT_TOKENS__.borderRadiusMd = value + 'rem';
                 unit = 'rem'; 
                 break;
             case 'uiBorderWidth': 
                 updateCSSVariable('--ui-border-width', value + 'px'); 
+                window.__FONT_TOKENS__.uiBorderWidth = value + 'px';
                 unit = 'px'; 
                 break;
             case 'borderStyle': 
                 updateCSSVariable('--ui-border-style', value); 
+                window.__FONT_TOKENS__.borderStyle = value;
                 break;
             case 'borderImageSource': 
                 updateCSSVariable('--border-image-source', `url(${value})`); 
+                window.__FONT_TOKENS__.borderImageSource = `url(${value})`;
                 break;
             case 'borderImageSlice': 
                 updateCSSVariable('--border-image-slice', value); 
+                window.__FONT_TOKENS__.borderImageSlice = value;
                 break;
             case 'borderImageWidth': 
                 updateCSSVariable('--border-image-width', `${value}px`); 
+                window.__FONT_TOKENS__.borderImageWidth = `${value}px`;
                 break;
             case 'borderImageOutset': 
                 updateCSSVariable('--border-image-outset', `${value}px`); 
+                window.__FONT_TOKENS__.borderImageOutset = `${value}px`;
                 break;
             case 'animDuration': 
                 updateCSSVariable('--anim-duration-medium', value + 's'); 
+                window.__FONT_TOKENS__.animDuration = value + 's';
                 unit = 's'; 
                 break;
         }
@@ -318,7 +355,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================= 
-    // 6. FONT MANAGEMENT
+    // 7. FONT MANAGEMENT
     // ========================================= 
     function loadDynamicFont(fontFamilyValue, type) {
         const fontName = fontFamilyValue.split(',')[0].trim().replace(/['"]/g, '');
@@ -348,7 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================= 
-    // 7. UI INTERACTIONS
+    // 8. UI INTERACTIONS
     // ========================================= 
     function handleTabSwitch(e) {
         if (!e.target.matches('.tab-btn')) return;
@@ -407,7 +444,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================= 
-    // 8. CUSTOM SELECT COMPONENTS
+    // 9. CUSTOM SELECT COMPONENTS
     // ========================================= 
     function createCustomSelect(container, selectedValue) {
         if (!container) return;
@@ -464,7 +501,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================= 
-    // 9. ACCESSIBILITY
+    // 10. ACCESSIBILITY
     // ========================================= 
     function getLuminance(r, g, b) {
         const a = [r, g, b].map(v => {
@@ -528,41 +565,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ========================================= 
-    // 10. EXPORT FUNCTIONALITY
+    // 11. EXPORT FUNCTIONALITY (REMOVED)
+    // This is now handled entirely by export-manager.js
     // ========================================= 
-    function generateAndDownloadCSS() {
-        // Collect all CSS from the linked stylesheets
-        const cssContent = Array.from(document.styleSheets)
-            .filter(sheet => sheet.href && sheet.href.includes('css/'))
-            .map(sheet => {
-                try {
-                    return Array.from(sheet.cssRules).map(rule => rule.cssText).join('\n');
-                } catch (e) {
-                    return '/* Could not access external stylesheet */';
-                }
-            })
-            .join('\n\n');
-
-        // Create organized export
-        const exportContent = `/* Generated by Fontolo - Live CSS Configurator */
-/* https://github.com/CseperkePapp/fontolo */
-
-${cssContent}
-
-/* Current Configuration */
-${document.documentElement.style.cssText}`;
-
-        const blob = new Blob([exportContent], { type: 'text/css' });
-        const a = document.createElement('a');
-        a.href = URL.createObjectURL(blob);
-        a.download = 'fontolo-design-system.css';
-        a.click();
-        URL.revokeObjectURL(a.href);
-        showNotification('Design system CSS downloaded!', false);
-    }
 
     // ========================================= 
-    // 11. INITIALIZATION
+    // 12. INITIALIZATION
     // ========================================= 
     function initializeUI() {
         // Add event listeners to all controls
@@ -583,7 +591,8 @@ ${document.documentElement.style.cssText}`;
         // UI event listeners
         elements.ui.nav.addEventListener('click', handleSidebarNav);
         elements.ui.tabControls.addEventListener('click', handleTabSwitch);
-        elements.ui.generateCssBtn.addEventListener('click', generateAndDownloadCSS);
+        
+        // REMOVED: The event listener for generateCssBtn is now in export-manager.js
         
         // Accordion listeners
         document.querySelectorAll('.accordion-header').forEach(header => {
@@ -606,7 +615,7 @@ ${document.documentElement.style.cssText}`;
         });
         document.body.addEventListener('click', handleCustomSelectEvents);
 
-        // Initial state
+        // Initial state: Dispatch an 'input' event for all controls to populate the UI and token store
         Object.values(elements.controls).forEach(control => { 
             if (control) control.dispatchEvent(new Event('input')); 
         });
