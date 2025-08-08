@@ -1,14 +1,20 @@
 # Fontolo - Live CSS Configurator and Design System
 
-🎨 **Currently refining** - Functional live configurator with full CSS framework export
 
-*A customizable, token-driven design system and live CSS configuration tool for modern web development*
+# Fontolo - Live CSS Configurator and Design System
+
+> **⚠️ CURRENT STATUS:** This repository is under major revision. The current version is functional but complex. We're building a simplified v2 in the `v2-simple` branch.
+> 
+> **For the cleanest experience:** Check back in 1-2 weeks for the simplified version, or try the current live demo at [fontolodemo.html](fontolodemo.html)
+
+*Original description continues below...*
+
 
 ## 🎯 What is Fontolo?
 
 Fontolo is a **living design system generator** that lets you visually configure design tokens and see them work in real-time. It's a complete UI framework that demonstrates itself through its own interface.
 
-**Try it now:** [Live Configurator](fontolodemo.html)
+**Try a temporary version now:** [Live Configurator](fontolodemo.html)
 
 **What makes Fontolo unique:**
 - **Self-demonstrating system** - every UI component proves the design system works
@@ -39,19 +45,13 @@ This approach opens up possibilities we're actively exploring:
 - Dynamic Google Fonts integration.
 
 ### Complete CSS Framework Export
-- Design tokens as CSS custom properties.
+- Design tokens as CSS custom properties. (This is messy now, but working on it)
 - Utility class system for rapid development.
 - Professional UI components (buttons, cards, forms, tabs, accordions).
 - Three-layer spacing system with predictable layouts.
 - Animation framework with easing functions.
 
-### Battle-Tested Components
-All components are built and proven within Fontolo itself:
-- Navigation and tab controls
-- Form elements with custom styling
-- Accordion panels with smooth animations
-- Notification system
-- Card layouts and grid systems
+
 
 ---
 
@@ -96,7 +96,7 @@ fontolo/
 
 ## Roadmap
 
-### Phase 1: Core System (Complete)
+### Phase 1: Core System (In progress)
 - Live CSS configuration with real-time preview
 - Complete utility class generation
 - Professional component library
