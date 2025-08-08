@@ -3,6 +3,10 @@
 // Typography Research Configurator
 // ===============================
 
+// At the top of simpleScript.js
+const dampeningSlider = document.getElementById('dampeningFactor');
+const dampeningValue = document.getElementById('dampeningValue');
+
 // Get all controls
 const textSizeSlider = document.getElementById('textSize');
 const hueSlider = document.getElementById('hue');
