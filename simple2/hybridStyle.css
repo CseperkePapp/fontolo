@@ -411,17 +411,16 @@ body {
 
 /* Mobile and tablet adjustments */
 @media (max-width: 968px) {
-    /* Simplify grid on medium screens */
-    .six-grid {
-        grid-template-columns: 1fr 1fr;            /* Two columns */
-        grid-template-areas: 
-            "feature  feature"
-            "box2     box3" 
-            "box4     box5"
-            "box6     box6";                       /* Box 6 spans full width */
+    .two-column {
+        grid-template-columns: 1fr;     /* Stack on smaller screens */
     }
-}
-
+    
+    .top-row.two-column {
+        align-items: normal;            /* Reset alignment on mobile */
+        display: flex;                  /* Back to flex on mobile */
+        justify-content: center;        /* Center single column */
+    }
+    
 @media (max-width: 768px) {
     /* Stack everything on mobile */
     .bottom-row {
