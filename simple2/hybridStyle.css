@@ -246,11 +246,6 @@ body {
     font-weight: 600;
 }
 
-.text-box p {
-    font-size: var(--paragraph-size);
-    line-height: calc(1.6 * var(--spacing-ratio));
-    color: #666;
-}
 
 /* Color variants */
 .primary-box h1 { color: var(--primary-color); }
