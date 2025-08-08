@@ -168,6 +168,11 @@ body {
     justify-content: space-between;     /* Distribute content evenly */
 }
 
+/* --- ADD THIS NEW RULE RIGHT HERE --- */
+.research-box > .style-c {
+    margin-bottom: auto; /* This groups the title and paragraph at the top */
+}
+
 .research-btn {
     margin-top: var(--base-spacing);
     align-self: center;                 /* Center the button */
@@ -178,7 +183,6 @@ body {
     max-width: none;                    /* Remove width constraint */
     margin: 0;                          /* Remove auto margins */
 }
-
 /* Special styling for research mode indicator */
 .research-box::before {
     content: "LIVE RESEARCH";
