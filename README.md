@@ -1,8 +1,5 @@
 # Fontolo - Live CSS Configurator and Design System
 
-
-# Fontolo - Live CSS Configurator and Design System
-
 > **⚠️ CURRENT STATUS:** This repository is under major revision. The current version is functional but complex. We're building a simplified v2 in the `v2-simple` branch.
 > 
 > **For the cleanest experience:** Check back in 1-2 weeks for the simplified version, or try the current live demo at [fontolodemo.html](fontolodemo.html)
